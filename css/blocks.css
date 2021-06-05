@@ -1,0 +1,179 @@
+/*
+ * XCL 2.3.0 Theme : ui-basic5
+ * Refactoring of Theme Basic5
+ * @version    2.3.0
+ * @date       2021-05-21 (update)
+ * @author     NUno Luciano (aka gigamaster)
+ * @copyright  2005-2021 The XOOPSCube Project
+ * @license    Cube : https://github.com/xoopscube/xcl/blob/master/BSD_license.txt
+ * @link       https://github.com/xoopscube/xcl
+ */
+
+
+ul.menu-shadow-out,
+ul#usermenu {
+	display         : block;
+	list-style-type : none;
+	margin          : 0;
+	padding         : 0;
+}
+ul.menu-shadow-out li,
+ul#usermenu li {
+	text-decoration : none;
+	margin-bottom   : 0.25em;
+}
+ul.menu-shadow-out li a,
+ul#usermenu li a {
+    background      : transparent;
+	box-shadow      : none;
+	color           : var(--color-link);
+	display         : block;
+	border          : 1px solid rgb(44, 50, 60);
+	padding         : .5em 1.25em;
+	transition      : all .3s;
+}
+
+ul.menu-shadow-out li:hover > a,
+ul#usermenu li:hover > a {
+	color           : var(--color-link-hover)
+
+}
+ul.menu-shadow-out li a:active,
+ul.menu-shadow-out li a:focus,
+ul.menu-shadow-out li a:hover,
+ul#usermenu li a:active,
+ul#usermenu li a:focus,
+ul#usermenu li a:hover {
+	background      : transparent;
+	box-shadow      : none;
+	border          : 1px solid rgb(44, 51, 63);
+	color           : var(--color-link-hover);
+	padding         : .5em 1.25em;
+	text-decoration : none;
+}
+.userMenuTop,
+.userMenuEdit,
+.userMenuComments,
+.userMenuLogout,
+.userMenuEmail,
+.userMenuAdmin {
+}
+
+
+ul#mainmenu {
+	display         : block;
+	list-style-type : none;
+	margin          : 0;
+	padding         : 0;
+}
+
+ul#mainmenu li {
+	text-decoration : none;
+	margin-bottom   : 0.25em;
+}
+
+ul#mainmenu li a {
+	color           :#abc;
+	display         : block;
+	border          : 1px solid rgb(44, 50, 60);
+	padding         : .5em 1.25em;
+	transition      : all .3s;
+}
+ul#mainmenu li a.menuSub {
+	padding-left    : 2.5em
+}
+
+/*body.<{$xoops_dirname}> ul#mainmenu li a.<{$xoops_dirname}>,*/
+ul#mainmenu li a:active,
+ul#mainmenu li a:focus,
+ul#mainmenu li a:hover {
+	color           : #face74;
+	text-decoration : none;
+	border          : 1px solid rgb(44, 51, 63);
+	padding         : .5em 1.25em;
+}
+
+
+.block-online {
+    align-items     : center; /* Place items around the center */
+    display         : flex;
+	flex-direction  : column;
+    justify-content : center; /* Alignment of all items on the main axis */
+	width           : 100%;
+}
+.block-online-user {
+    height          : auto;
+	max-width       : 95%;
+	width           : 90%;
+}
+.block-online-avatar {
+    display         : flex;
+	flex-direction  : row;
+	justify-content : space-between;
+    margin-bottom   : 0.42em;
+	padding         : 0.25em 2em 0.25em 0.74em;
+}
+
+#featured	{
+	background 	    : inherit;
+	border 		    : inherit;
+	color 		    : var(--text-color);
+	margin 		    : inherit;
+	padding 	    : inherit;;
+}
+#latest	{
+	background 	    : inherit;
+	border 		    : inherit;
+	color 		    : var(--text-color);
+	margin 		    : inherit;
+	padding 	    : inherit;
+}
+#about	{
+	background 	    : inherit;
+	border 		    : inherit;
+	color 		    : var(--text-color);
+	margin 		    : inherit;
+	padding 	    : inherit;
+}
+
+#featured div	{
+	line-height     : 1.5;
+	padding-bottom  :20px;
+}
+
+/* basic5 headerSearch */
+#headerSearch {
+	position:absolute;
+	height:30px;
+	width:202px;
+	top:2px;
+	right:10px;
+}
+#headerSearch-searchform {
+	width: 200px;
+	background: transparent;
+	display: block;
+	height: 30px;
+}
+#headerSearch-keywords	{
+	position: absolute;
+	top: 0;
+	left: 12px;
+	width: 156px;
+	height: 20px;
+	padding-left:6px;
+	background-image:-moz-linear-gradient(top, var(--color-20), var(--color-40));
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(var(--color-20)), to(var(--color-40)), color-stop(1,var(--color-60)));
+	border:1px solid #AFAFAF;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.25);
+	-moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.25);
+	-webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.25);
+}
+#headerSearch-searchBtn	{
+	position: absolute;
+	top: 3px;
+	left: 182px;
+}

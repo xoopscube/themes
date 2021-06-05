@@ -3,15 +3,18 @@
   
   
   
-## /////////////////////// — XCL : : Web Application Platform [ USER INTERFACE ]
-
-**User Interface for XCL Version 2.3.x**    
-
-**Description**    : Themes and Templates for XCL Web Application Platform  
-**Render Engine**  : Smarty v2 and v3   
-**Author**         : Nuno Luciano (aka Gigamaster)  
+## /////////////////////// — THEME :: UI-BASIC5  
   
-  
+
+**Theme**          : UI-Basic5  
+**Description**    : Responsive Theme with darkmode and custom modules templates  
+**Render Engine**  : Smarty v2 and XCube Layout   
+**Version**        : 2.3.0  
+**Author**         : Original Theme by Marine/Mistgreen  
+**Author**         : Update by Nuno Luciano (aka Gigamaster)  
+**Copyright**      : 2005-2021 The XOOPSCube Project  
+**license**        : MIT
+
   
 ##### :computer: The Minimum Requirements
   
@@ -52,7 +55,6 @@
 ### Overview
   
 :construction: [WIP] Wiki Documentation.  
-Please refer to XCL's documentation for instructions on installing modules, extension and themes.  
   
   
   

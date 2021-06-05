@@ -1,0 +1,37 @@
+<{if $xoops_isadmin}>
+
+
+<div class="nav-sticky">
+  <div id="nav-tool-admin">
+    <div class="nav-tool-link"><{$check_cookie}></div>
+    <div class="nav-tool-link"><p onclick="location.href='#xclayout';">XCLayout Helper</p></div>
+    <div class="nav-tool-link"><p onclick="location.href='#template';">Templates</p></div>
+    <div class="nav-tool-link"><p onclick="window.open('theme-options.php','theme-options');">Theme Options</p></div>
+    <div id="nav-tool-arrow">
+      <div class="arrow" id="down"></div>
+    </div>
+  </div>
+</div>
+<style>
+  div.nav-sticky {height: 15px;position: fixed;right: 100px;top: 0;width: 250px;z-index:100}
+  #nav-tool-admin {background: rgba(0, 0, 0,.75);display: block;height: 115px;margin: -105px 0 0 calc(100% - 250px);position: absolute;width: 250px;}
+  #nav-tool-arrow {background: rgba(0, 0, 0,.75);border-radius: 5px;cursor: pointer;height: 15px;margin: -1px 0 0 calc(100% - 50px);position: absolute;width: 50px;}
+  #down {background: linear-gradient(0.5turn, #607d8b, #455a64, #263238);border-radius: 5px;}
+  .arrow {height: 15px;margin: 0 0 0 -webkit-calc(50% - 10px);position: relative;width: 25px;}
+  .nav-tool-link {width: 240px;margin: 5px;cursor: pointer;text-decoration: none;color: rgb(199, 201, 207);}
+  .nav-tool-link:hover {background: RGBa(0, 0, 0, 0.75);}
+  .nav-tool-link p {height: 20px;margin: 0;font-size: 13px;text-align: left;}
+</style>
+<script>
+  $("#nav-tool-arrow").click( function(event){
+    event.preventDefault();
+    if ( $(this).hasClass("isDown") ) {
+      $("#nav-tool-admin").stop().animate({marginTop:"-105px"}, 200);
+    } else {
+      $("#nav-tool-admin").stop().animate({marginTop:"0px"}, 200);
+    }
+    $(this).toggleClass("isDown");
+    return false;
+  });
+</script>
+<{/if}>

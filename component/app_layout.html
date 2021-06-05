@@ -1,0 +1,72 @@
+<{include file="$xoops_theme/component/nav_menu.html"}>
+
+<main>
+
+    <{* LAYOUT BLOCK/CONTENT/BLOCK-CENTER *}>
+    <div layout="column sm-p-0 sm-m-0" id="top">
+
+        <{* Block-Left, Content, Block-Right *}>
+        <div layout="lg-column" self="size-x1">
+
+            <{if $xoops_showlblock==1}>
+            <div self="size-xsmall p-4 sm-p-0">
+            <{foreach item=block from=$xoops_lblocks name=lblock}>
+                <{* _____/!\ Remove blocks from the loop : MainMenu, UserMenu and Search /!\_____  *}>
+                <{if ! $block.title|strstr:"Main" and ! $block.title|strstr:"User" and ! $block.title|strstr:"Search"}>
+                    <{include file="$xoops_theme/component/block_left.html"}>
+                <{/if}>
+            <{/foreach}>
+            </div>
+            <{/if}>
+
+
+            <{if !empty($xoops_contents)}>
+            <div self="size-x3 sm-first p-4 sm-p-0" data-tooltip="(first on small screen)">
+                <div class="content"><{$xoops_contents}></div>
+            </div>
+            <{/if}>
+
+
+            <{if $xoops_showrblock==1}>
+            <div self="size-x1 p-4 sm-p-0" name="show-right-block">
+                <{include file="$xoops_theme/component/block_right.html"}>
+            </div>
+            <{/if}>
+
+        </div>
+
+
+        <{if $xoops_showcblock==1}>
+        <hr>
+
+        <section class="full-width" name="show-center-block">
+
+            <div layout="row center md-column sm-column m-0 p-0" self="center size-xlarge">
+
+                <{if $xoops_clblocks}>
+                <div self="size-x1 sm-first">
+                    <{include file="$xoops_theme/component/block_center_left.html"}>
+                </div>
+                <{/if}>
+
+                <{if $xoops_ccblocks}>
+                <div self="size-x1 sm-full" data-tooltip="(first on small screen)">
+                    <{include file="$xoops_theme/component/block_center_center.html"}>
+                </div>
+                <{/if}>
+
+                <{if $xoops_crblocks}>
+                <div self="size-x1 sm-full">
+                    <{include file="$xoops_theme/component/block_center_right.html"}>
+                </div>
+                <{/if}>
+
+            </div>
+
+        </section>
+        <{/if}>
+
+
+    </div>
+
+</main>

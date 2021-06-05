@@ -1,0 +1,49 @@
+/*
+ * XCL 2.3.0 Theme : ui-basic5
+ * Refactoring of Theme Basic5
+ * @version    2.3.0
+ * @date       2021-05-21 (update)
+ * @author     NUno Luciano (aka gigamaster)
+ * @copyright  2005-2021 The XOOPSCube Project
+ * @license    Cube : https://github.com/xoopscube/xcl/blob/master/BSD_license.txt
+ * @link       https://github.com/xoopscube/xcl
+ */
+/* -------------------- -------------------- Table */
+
+table {
+    background: var( --ui-table-background );
+    border-color: var( --ui-border-color );
+    border-radius: var( --ui-border-radius );
+    border-style: var( --ui-border-radius );
+    border-width: var( --ui-border-width );
+    border-collapse: collapse;
+    box-shadow: none;
+    padding: var( --ui-space-400 );
+    margin: 0;
+    width: 100%;
+}
+table.outer {
+    /*background: rgba(0,0,0,.2);*/
+    border-radius: 7px;
+    border:1px solid #777879;
+    border-spacing: 0;
+    margin:1em 0;
+    width: 100%;
+}
+table th {border-bottom: 1px solid dimgrey;}
+table tr {border-bottom: 1px solid rgba(105, 105, 105, 0.5);}
+table td {border-bottom: 1px solid rgba(105, 105, 105, 0.5); padding: .5em;}
+table tr:last-child td{border:none}
+
+table {
+    background: rgba(0,0,0,.2);
+    border-radius: 7px;
+    border:1px solid #000;
+    border-spacing: 0px;
+    margin:1em 0;
+    width: 100%;
+}
+table th {border-bottom: 1px solid dimgrey;}
+table tr {border-bottom: 1px solid rgba(105, 105, 105, 0.5);}
+table td {border-bottom: 1px solid rgba(105, 105, 105, 0.5); padding: .5em;}
+table tr:last-child td{border:none}

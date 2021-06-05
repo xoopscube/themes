@@ -1,0 +1,26 @@
+<div id="latest">
+  <section class="left-col">
+    <{* CenterColumn BlockWeight>0 *}>
+    <{include file="$xoops_theme/component/theme_centercolumn.html"}>
+  </section> <!-- END Left Column -->
+
+  <aside class="sidebar">
+    <{if $xoops_showlblock == 1}>
+    <{foreach item=block from=$xoops_lblocks name=lbloop}>
+    <div>
+      <{if ! $block.title|strstr:"none"}><h4><{$block.title}></h4><{/if}>
+      <{$block.content}>
+    </div>
+    <{/foreach}>
+    <{/if}>
+    <{if $xoops_showrblock == 1}>
+    <{foreach item=block from=$xoops_rblocks name=rbloop}>
+    <div>
+      <{if ! $block.title|strstr:"none"}><h4><{$block.title}></h4><{/if}>
+      <{$block.content}>
+    </div>
+    <{/foreach}>
+    <{/if}>
+  </aside>
+
+</div> <!-- END Latest -->

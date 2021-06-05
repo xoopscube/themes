@@ -1,0 +1,49 @@
+<{* set tab sent-box to current active *}>
+<{if $smarty.template == 'db:message_outboxview.html'}>
+<{assign var="tabSent" value="active"}>
+<{/if}>
+
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<ul class="breadcrumb" aria-label="breadcrumb">
+    <li><a href="<{$xoops_url}>/">
+        <img class="svg home" src="<{$xoops_url}>/images/icons/home.svg" alt=""></a>
+    <li><a href="index.php">
+    <img class="svg inbox" src="<{$xoops_url}>/images/icons/inbox.svg"> <span self="sm-hide"><{$smarty.const._MI_MESSAGE_NAME}></span></a>
+    <li><a href="index.php?action=send"><{$smarty.const._MD_MESSAGE_TEMPLATE7}></a>
+    <li aria-current="<{$smarty.const._MD_MESSAGE_TEMPLATE4}>"><{$smarty.const._MD_MESSAGE_TEMPLATE4}>
+</ul>
+
+<hr>
+
+    <div class="ui-tab-wrap">
+
+    <{include file="$xoops_theme/templates/message/inc_compo_nav.html"}>
+
+    <{* ------- /card-header *}>
+
+    <div class="ui-tab-content" id="printhis">
+
+        <h5 class="card-title my-4"><{$smarty.const._MD_MESSAGE_TEMPLATE3}> : <{$msgdata.title}></h5>
+        <div class="card-subtitle mb-4">
+        <{$smarty.const._MD_MESSAGE_TEMPLATE9}> <img src="<{$msgdata.to_uid|xoops_user_avatarize}>" width="24px" class="rounded-lg"> <{$msgdata.toname}> (<{$msgdata.utime|xoops_formattimestamp:l}>)
+        </div>
+        <div class="card-text">
+            <{$smarty.const._MD_MESSAGE_TEMPLATE4}>
+        <hr>
+            <{$msgdata.message}>
+        </div>
+    </div>
+
+
+     <div class="card-footer">
+         <form method="post" action="index.php?action=delete&amp;inout=out">
+             <input type="hidden" name="outbox" value="<{$msgdata.outbox_id}>">
+             <button type="submit" class="btn btn-danger btn-sm" value="<{$smarty.const._MD_MESSAGE_TEMPLATE14}>">
+                 <img class="svg delete" src="<{$xoops_url}>/images/icons/delete.svg" alt=""> <{$smarty.const._MD_MESSAGE_TEMPLATE14}></button>
+         </form>
+     </div>
+
+</div>
+

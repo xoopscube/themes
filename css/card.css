@@ -1,0 +1,18 @@
+/*
+ * XCL 2.3.0 Theme : ui-basic5
+ * Refactoring of Theme Basic5
+ * @version    2.3.0
+ * @date       2021-05-21 (update)
+ * @author     NUno Luciano (aka gigamaster)
+ * @copyright  2005-2021 The XOOPSCube Project
+ * @license    Cube : https://github.com/xoopscube/xcl/blob/master/BSD_license.txt
+ * @link       https://github.com/xoopscube/xcl
+ */
+
+.card {
+    background 	: inherit;
+    border 		: inherit;
+    color 		: var(--text-color);
+    margin 		: inherit;
+    padding 	: inherit;
+}

@@ -1,0 +1,68 @@
+<meta charset="<{$xoops_charset}>">
+<meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>">
+<meta http-equiv="content-language" content="<{$xoops_langcode}>">
+
+<meta name="robots" content="<{$xoops_meta_robots}>">
+<meta name="keywords" content="<{$xoops_meta_keywords}>">
+<meta name="description" content="<{$xoops_meta_description}>">
+<meta name="rating" content="<{$xoops_meta_rating}>">
+<meta name="author" content="<{$xoops_meta_author}> <{$xoops_meta_copyright}>">
+<{* meta copyright is not HTML5
+<meta name="copyright" content="<{$xoops_meta_copyright}>">
+*}>
+<meta name="generator" content="XOOPS Cube">
+
+<title><{$xoops_sitename}> - <{if $xoops_pagetitle}><{$xoops_pagetitle}><{else}><{$xoops_slogan}><{/if}></title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Meta Webmaster Tools-->
+<meta name="msvalidate.01" content="<{$xoops_meta_bing}>">
+<meta name="google-site-verification" content="<{$xoops_meta_google}>">
+<meta name="yandex-verification" content="<{$xoops_meta_yandex}>">
+
+<!-- Theme color -->
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#212527">
+
+<!-- Theme UI Common CSS -->
+<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/common/css/xcl-style.css" media="all">
+<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/common/js/prismjs/prism.css">
+
+<!-- Theme Layout and Colorscheme style.css  -->
+<link rel="stylesheet" media="screen" href="<{$xoops_themecss}>">
+
+<!-- Mobile App favicon.ico Place in the root directory -->
+<link rel="icon" href="<{$xoops_url}>/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="<{$xoops_url}>/favicon.png" type="image/png">
+<link rel="alternate icon" href="<{$xoops_url}>/favicon.ico">
+
+<script type="text/javascript"><{$xoops_js|regex_replace:"/(\/\/\-\->|<!\-\-)/":""}></script>
+
+<!--JQUERY CHECK LOADED-->
+<{if ! $xcl22_jquery_is_already and ! $xugj_jquery_is_already}>
+<script type="text/javascript" src="<{$xoops_imageurl}>js/jquery.js"></script>
+<{/if}>
+
+<{* Module and Block header *}>
+<{if $xoops_module_header}><{$xoops_module_header}><{/if}>
+<{if $xoops_block_header}><{$xoops_block_header}><{/if}>
+
+<!--REDIRECT-->
+<{include file="$xoops_theme/theme_redirect_js.html"}>
+
+<script type="text/javascript">
+  var GuideSentence = '<{$smarty.const._BASIC_SEARCH}>';
+  function ShowFormGuide(obj) {
+    if( obj.value == '' ) {
+      obj.value = GuideSentence;
+      obj.style.color = '#808080';
+    }
+  }
+  function HideFormGuide(obj) {
+    if( obj.value == GuideSentence ) {
+      obj.value='';
+      obj.style.color = '#000000';
+    }
+  }
+</script>

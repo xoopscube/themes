@@ -1,0 +1,13 @@
+<div id="about">
+  <{if $xoops_ccblocks}><{* Start bottom Column BlockWeight >= 500 *}>
+  <{foreach item=block from=$xoops_ccblocks name=ccloop}>
+  <{if $block.weight >= 500 }>
+  <hr/>
+  <div>
+    <{if ! $block.title|strstr:"none"}><h3><{$block.title}></h3><{/if}>
+    <{$block.content}>
+  </div>
+  <{/if}>
+  <{/foreach}>
+  <{/if}>
+</div>

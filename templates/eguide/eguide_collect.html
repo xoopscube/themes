@@ -1,0 +1,143 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<{if $mod_config.show_breadcrumbs}>
+<{include file="db:eguide_breadcrumbs.html"}>
+<{/if}>
+
+
+<table class="outer">
+    <{foreach from=$event key=eid item=ev}>
+    <tr>
+        <td>
+
+            <a href="event.php?eid=<{$eid}>" class="evhead"><{$ev.title|truncate:30}></a> (<{$smarty.const._MD_POSTDATE}>
+            <{$ev.postdate}>)
+        </td>
+
+        <td>
+            <a href="admin.php?eid=<{$eid}>"><img class="svg edit" src="<{$xoops_url}>/images/icons/edit.svg" alt="edit"> <{$smarty.const._EDIT}></a>
+
+
+
+            <a href="export.php?eid=<{$eid}>"><img class="svg file-excel" src="<{$xoops_url}>/images/icons/file-excel.svg" alt="file-excel"> <{$smarty.const._MD_EXPORT_OUT}></a>
+
+
+            <{if count($event)>1}>
+            <a href="collect.php?eid=<{$eid}>" title="management">
+                <img class="svg update" src="<{$xoops_url}>/images/icons/update.svg" alt="event@"></a>
+            <{/if}>
+
+
+            <{if $ev.exid}>
+            <a href="editdate.php?eid=<{$eid}>"><img class="svg new" src="<{$xoops_url}>/images/icons/new.svg" alt="new"> <{$smarty.const._MD_EDIT_EXTENT}></a>
+            <{/if}>
+
+
+
+        </td>
+    </tr>
+    <{/foreach}>
+</table>
+
+<hr>
+
+<{if count($event)==1}>
+
+    <{foreach from=$event key=eid item=ev}>
+
+        <{if $ev.catname}>
+        <a href="index.php?cat=<{$ev.catid}>">
+
+            <{if $ev.catimg}>
+            <img src="<{$ev.catimg}>" alt="<{$ev.catname}>" class="catbox"/>
+            <{else}>
+            <span class="catbox"><{$ev.catname}></span>
+            <{/if}>
+        </a>
+        <{/if}>
+
+    <div class="evinfo">
+        <{$smarty.const._MD_POSTERC}>
+        <a href="<{$xoops_url}>/userinfo.php?uid=<{$ev.uid}>"><{$ev.uname}></a>
+    </div>
+
+    <div class="evbody"><{$ev.disp_summary}></div>
+
+    <{/foreach}>
+
+<{/if}>
+
+
+<form method="post">
+
+    <table class="outer">
+
+        <tr class="day-timeline">
+            <th></th>
+            <{foreach from=$timeline item=time}>
+            <th><div class="day-time"><{$time}></div></th>
+            <{/foreach}>
+        </tr>
+
+        <{foreach from=$cells key=day item=cell}>
+
+        <tr>
+        <td class="head"><span class="badge"><{$dateline[$day]}></span></td>
+
+
+        <{foreach from=$timeline key=time item=disp}>
+        <td align="center">
+
+            <{if $cell[$time]}>
+
+            <{foreach from=$cell[$time] item=ev}>
+            <input type="number" style="width: 5em" name="persons[<{$ev.eid}><{if $ev.exid}>-<{$ev.exid}><{/if}>]"
+                                value="<{if $ev.exid}><{$ev.expersons}><{else}><{$ev.persons}><{/if}>">
+
+            <div class="ui-dropdown">
+
+                <a href="#" class="btn ui-dropdown-toggle" title="<{$smarty.const._MD_RESERV_PERSONS}>">
+                    <img class="svg dropdown" src="<{$xoops_url}>/images/icons/dropdown.svg" alt="">
+                </a>
+
+                <div class="ui-dropdown-content">
+                    <ul>
+                        <li><a href="#"><img class="svg users" src="<{$xoops_url}>/images/icons/group.svg" alt="">
+                            <{$smarty.const._MD_RESERV_PERSONS}>  <{$ev.reserved}>/<{$ev.persons}></a>
+                </li>
+                        <li><a href="entry.php?eid=<{$ev.eid}><{if $ev.exid}>&sub=<{$ev.exid}><{/if}>" title="<{$ev.date}> <{$ev.title}>">
+                        <img class="svg register" src="<{$xoops_url}>/images/icons/date-event.svg" alt="<{$smarty.const._REGISTER}>">
+                        <{$smarty.const._REGISTER}></a>
+                    </li>
+                        <li><a href="receipt.php?eid=<{$ev.eid}><{if $ev.exid}>&sub=<{$ev.exid}><{/if}>" title="<{$ev.date}> <{$ev.title}>">
+                            <img class="svg view" src="<{$xoops_url}>/images/icons/view.svg" alt="<{$smarty.const._MD_DETAIL}>">
+                            <{$smarty.const._MD_DETAIL}></a>
+                        </li>
+                </ul>
+                </div>
+            </div>
+
+            <{/foreach}>
+
+            <{elseif $peid}>
+            <a href="editdate.php?eid=<{$peid}>&adds=<{$day}>+<{$time}>" title="<{$day}> <{$time}> <{$event[$peid].title}>">
+                <img class="svg date-time" src="<{$xoops_url}>/images/icons/date-time.svg" alt="<{$smarty.const._MD_ADD_EXTENT}>"> <{$smarty.const._MD_ADD_EXTENT}>
+                </a>
+            <{/if}>
+        </td>
+        <{/foreach}>
+
+        </tr>
+
+        <{/foreach}>
+    </table>
+    <p style="text-align:center">
+        <button type="submit" value="<{$smarty.const._MD_UPDATE}>">
+            <img class="svg check" src="<{$xoops_url}>/images/icons/check.svg" alt="check"> <{$smarty.const._MD_UPDATE}>
+        </button>
+        <!-- <input type="submit" value="<{$smarty.const._MD_UPDATE}>"> -->
+    </p>
+    </form>
+
+

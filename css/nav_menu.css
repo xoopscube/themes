@@ -1,0 +1,298 @@
+/*
+ * XCL 2.3.0 Theme : ui-basic5
+ * Refactoring of Theme Basic5
+ * @version    2.3.0
+ * @date       2021-05-21 (update)
+ * @author     NUno Luciano (aka gigamaster)
+ * @copyright  2005-2021 The XOOPSCube Project
+ * @license    Cube : https://github.com/xoopscube/xcl/blob/master/BSD_license.txt
+ * @link       https://github.com/xoopscube/xcl
+ */
+/**
+ * ui-navbar-fixed
+ * ui-navbar-fixed.sticky
+ * ui-navbar @media
+ * ui-navbar Color-Scheme
+ * ui-dropdown Menu
+*/
+
+/* -------------------- -------------------- UI-NAVBAR-MENU COMPONENT */
+/* class "ui-navbar-fixed" for sticky   */
+/* class "ui-navbar-wrap for max-width */
+
+.ui-navbar-fixed,
+.ui-navbar-wrap {
+    margin: 0 auto 2.5em;
+    max-width: 100%;
+    transition: all 0.5s ease-in-out;
+
+    -webkit-animation: top 1s .4s both;
+    animation: top 1s .4s both;
+    position:relative; /*required to get navbar animation with menu on top of main*/
+    z-index:2;
+}
+
+.ui-navbar-fixed.sticky {
+    display: block;
+    margin: 0 auto;
+    padding:0;
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index:100;
+}
+
+.ui-navbar-menu,
+.ui-navbar-menu-sub {
+    margin: 0;
+    padding: 0;
+}
+.ui-navbar-menu-item,
+.ui-navbar-menu-sub,
+.ui-navbar-dropdown-icon {
+    border: 0 solid;
+}
+.ui-navbar-menu .ui-navbar-menu-item {
+    display: block;
+    /*height: au*
+    ,léto;*/
+}
+.ui-navbar-menu .ui-navbar-menu-item.has-children,
+.ui-navbar-menu .ui-navbar-menu-item.has-children .ui-navbar-menu-item {
+    position: relative;
+}
+.ui-navbar-menu .ui-navbar-menu-item:not(:last-child) {
+    border-width: 0 0 1px;
+}
+.ui-navbar-menu .ui-navbar-menu-item a {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+.ui-navbar-menu .ui-navbar-menu-sub {
+    border-width: 1px 0 0;
+    height: 0;
+    opacity: 0;
+    transition: visibility .25s, opacity .25s ease-in-out;
+    width: 0;
+    visibility: hidden;
+}
+.ui-navbar-menu .ui-navbar-menu-sub .ui-navbar-menu-item {
+    visibility: hidden;
+}
+.ui-navbar-menu .ui-navbar-menu-item:hover > .ui-navbar-menu-sub,
+.ui-navbar-menu .ui-navbar-menu-item:active > .ui-navbar-menu-sub,
+.ui-navbar-menu .ui-navbar-menu-item:focus > .ui-navbar-menu-sub {
+    height: auto;
+    opacity: 1;
+    width: auto;
+}
+.ui-navbar-menu .ui-navbar-menu-item:hover > .ui-navbar-menu-sub,
+.ui-navbar-menu .ui-navbar-menu-item:hover > .ui-navbar-menu-sub .ui-navbar-menu-item,
+.ui-navbar-menu .ui-navbar-menu-item:active > .ui-navbar-menu-sub,
+.ui-navbar-menu .ui-navbar-menu-item:active > .ui-navbar-menu-sub .ui-navbar-menu-item,
+.ui-navbar-menu .ui-navbar-menu-item:focus > .ui-navbar-menu-sub,
+.ui-navbar-menu .ui-navbar-menu-item:focus > .ui-navbar-menu-sub .ui-navbar-menu-item {
+    visibility: visible;
+}
+.ui-navbar-menu .ui-navbar-menu-item > a:hover .ui-navbar-dropdown-icon:after,
+.ui-navbar-menu .ui-navbar-menu-item > a:active .ui-navbar-dropdown-icon:after,
+.ui-navbar-menu .ui-navbar-menu-item > a:focus .ui-navbar-dropdown-icon:after {
+    transform: rotate(45deg);
+}
+.ui-navbar-menu .ui-navbar-dropdown-icon {
+    border-width: 0 0 0 1px;
+    margin: -.5em -1em -.5em .5em;
+    padding: .5em 1.25em;
+    text-decoration: none;
+}
+.ui-navbar-menu .ui-navbar-dropdown-icon:after {
+    content: "+";
+    display: block;
+    transition: transform .25s ease-in-out;
+}
+.ui-navbar-nav--rtl {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+.ui-navbar-nav--rtl .ui-navbar-menu .ui-navbar-dropdown-icon {
+    border-width: 0 1px 0 0;
+    margin: -.5em -1em -.5em .5em;
+}
+@media only screen and (min-width: 1024px) {
+    .ui-navbar-nav .ui-navbar-menu {
+        display: flex;
+        flex-flow: row wrap;
+        margin: auto;
+        max-width: 1242px;
+    }
+    .ui-navbar-nav .ui-navbar-menu > .ui-navbar-menu-item {
+        border-width: 0 1px 0 0;
+    }
+    .ui-navbar-nav .ui-navbar-menu > li.ui-navbar-menu-item:last-child {
+        display: inline-flex;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+    .ui-navbar-nav .ui-navbar-menu > .ui-navbar-menu-item > a .ui-navbar-dropdown-icon {
+        padding-left: 0;
+    }
+    .ui-navbar-nav .ui-navbar-menu .ui-navbar-menu-item:hover > .ui-navbar-menu-sub,
+    .ui-navbar-nav .ui-navbar-menu .ui-navbar-menu-item:active > .ui-navbar-menu-sub,
+    .ui-navbar-nav .ui-navbar-menu .ui-navbar-menu-item:focus > .ui-navbar-menu-sub {
+        width: 225px;
+    }
+    .ui-navbar-nav .ui-navbar-menu .ui-navbar-menu-sub {
+        /*left: 0;*/
+        border-width: 0;
+        position: absolute;
+        right: auto;
+        top: 100%;
+        z-index: 3000;
+    }
+    .ui-navbar-nav .ui-navbar-menu .ui-navbar-menu-sub .ui-navbar-menu-sub {
+        left: 100%;
+        top: 0;
+    }
+    .ui-navbar-nav .ui-navbar-menu .ui-navbar-dropdown-icon {
+        border-width: 0;
+        /*padding: 1em;*/
+    }
+    .ui-navbar-nav--rtl .menu > .ui-navbar-menu-item > a .ui-navbar-dropdown-icon {
+        padding-left: 1em;
+        padding-right: 0;
+    }
+    .ui-navbar-nav--rtl .ui-navbar-menu .ui-navbar-menu-sub {
+        left: auto;
+        right: 0;
+        top: 100%;
+    }
+    .ui-navbar-nav--rtl .ui-navbar-menu .ui-navbar-menu-sub .ui-navbar-menu-sub {
+        left: auto;
+        right: 100%;
+    }
+    .ui-navbar-nav--cen .ui-navbar-menu {
+        justify-content: center;
+    }
+}
+
+/* -------------------- -------------------- UI-NAVBAR-MENU COMPONENT - COLOR SCHEME */
+
+.ui-navbar-nav {
+    background      : var( --nav-menu-bg-color );
+    border 		    : var( --nav-menu-border );
+    /*border-radius   : var( --border-radius );*/
+    color 		    : var( --nav-menu-link );
+    margin 		    : 0;
+
+}
+.ui-navbar-nav .ui-navbar-menu > .ui-navbar-menu-item,
+.ui-navbar-nav .ui-navbar-menu > .ui-navbar-menu-item .ui-navbar-dropdown-icon {
+    border-color    : var( --nav-menu-border-color );
+}
+.ui-navbar-nav .ui-navbar-menu > .ui-navbar-menu-item,
+.ui-navbar-nav .ui-navbar-menu > .ui-navbar-menu-item > a {
+    color 		    : var( --nav-menu-link );
+}
+.ui-navbar-nav .ui-navbar-menu > .ui-navbar-menu-item > a:hover,
+.ui-navbar-nav .ui-navbar-menu > .ui-navbar-menu-item > a:active,
+.ui-navbar-nav .ui-navbar-menu > .ui-navbar-menu-item > a:focus {
+    background      : var( --nav-menu-bg-hover );
+    color           : var( --nav-menu-link-hover );
+}
+/* 1-> 2-> 3 Level Menu Sub */
+.ui-navbar-nav .ui-navbar-menu-sub {
+    background      : var( --nav-menu-bg-color );
+    box-shadow      : 3px 3px 2px 1px rgba(0,0,0,.25);
+}
+
+.ui-navbar-nav .ui-navbar-menu-sub,
+.ui-navbar-nav .ui-navbar-menu-sub .ui-navbar-dropdown-icon,
+.ui-navbar-nav .ui-navbar-menu-sub .ui-navbar-menu-item,
+.ui-navbar-nav .ui-navbar-menu-sub .ui-navbar-menu-item .ui-navbar-dropdown-icon {
+    border-color    : var( --nav-menu-border-color );
+}
+/*.ui-navbar-nav .ui-navbar-menu-sub .ui-navbar-menu-item,*/
+.ui-navbar-nav .ui-navbar-menu-sub .ui-navbar-menu-item a {
+    /*color: #222;*/
+    color 		    : var( --nav-menu-link );
+    padding         : var( --nav-menu-padding );
+}
+.ui-navbar-nav .ui-navbar-menu-sub .ui-navbar-menu-item a:hover,
+.ui-navbar-nav .ui-navbar-menu-sub .ui-navbar-menu-item a:active,
+.ui-navbar-nav .ui-navbar-menu-sub .ui-navbar-menu-item a:focus {
+    background      : var( --nav-menu-bg-hover );
+}
+
+
+/* -------------------- -------------------- UI-DROPDOWN MENU */
+
+.ui-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* .ui-dropdown::before {
+position: absolute;
+content: "›";
+font-size: 1.25em;
+right: 1px;
+transform: rotate(90deg);
+} */
+
+.ui-dropdown.xopen .ui-dropdown-content {
+    display: block;
+    z-index: 100;
+}
+
+.ui-dropdown .ui-dropdown-toggle {
+    border: none;
+    cursor: pointer;
+    padding-right: 5px;
+}
+
+/* .ui-dropdown .ui-dropdown-toggle .arrow {
+  font-size: 1.25em;
+  position: absolute;
+  right: 1px;
+  top: 10px;
+  transform: rotate(90deg);
+} */
+
+.ui-dropdown-content {
+    background      : var(--nav-menu-bg-color);
+    border-radius   : var( --border-radius );
+    box-shadow      : 2px 4px 8px 0 rgba(0, 0, 0, .8);
+    display         : none;
+    min-width       : 160px;
+    position        : absolute;
+    right           : 1px; /* Fix device Viewport */
+    text-align      : left;
+    top             : 100%;
+    z-index         : 101;
+}
+
+.ui-dropdown-content ul {
+    margin          : 0;
+    padding         : 0;
+    list-style      : none; /* Remove list bullets */
+}
+
+.ui-dropdown-content ul li {
+    padding         : 0; /*padding:.5em 1em;*/
+}
+
+/* Links inside the dropdown */
+.ui-dropdown-content a {
+    border-radius   : var( --border-radius );
+    color 		    : var( --nav-menu-link );
+    display         : block;
+    padding         : .5em;
+    text-decoration : none;
+}
+
+/* Change color of dropdown links on hover */
+.ui-dropdown-content a:hover {
+    background      : var( --nav-menu-bg-hover );
+    color 		    : var( --nav-menu-link-hover );
+}

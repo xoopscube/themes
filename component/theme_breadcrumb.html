@@ -1,0 +1,41 @@
+<{if $xoops_dirname == "webphoto"}>
+	<h3>//
+	<{foreach from=$xoops_breadcrumbs item="item"}>
+		<{if $item.url}>
+			<a href="<{$item.url}>"><{$item.name}></a>
+		<{/if}>
+	<{/foreach}>
+		//&nbsp; <{$title_bread_crumb}>
+	</h3>
+
+<{elseif $xoops_dirname == "piCal"}>
+	<{foreach from=$xoops_breadcrumbs item="item"}>
+		<h3>//&nbsp; <{$item.name}></h3>
+	<{/foreach}>
+
+<{elseif $xoops_dirname == "ccenter"}>
+	<{foreach from=$xoops_breadcrumbs item="item" name="loop"}>
+		<{if $smarty.foreach.loop.first}>
+			<h3>//&nbsp; <{$item.name}></h3>
+	  	<{/if}>
+	<{/foreach}>
+
+<{else}>
+<h3>// <a href="<{$xoops_url}>"><{$smarty.const._MB_LEGACY_HOME}></a> //
+	<{foreach from=$xoops_breadcrumbs item="item" name="loop"}>
+		<{if $smarty.foreach.loop.first}>
+			<{if $item.url}>
+				<a href="<{$item.url}>"><{$item.name}></a>
+		  	<{else}>
+		&nbsp; <{$item.name}>
+		  	<{/if}>
+	  	<{else}>
+			<{if $item.url}>
+			// <a href="<{$item.url}>"><{$item.name}></a>
+		  	<{else}>
+			//&nbsp; <{$item.name}>
+		  	<{/if}>
+	  	<{/if}>
+	<{/foreach}>
+	</h3>
+<{/if}>

@@ -1,0 +1,17 @@
+<div id="featured">
+
+  <{if $xoops_showcblock == 1}>
+  <{if $xoops_ccblocks}><{* Start Center Center Column BlockWeight = 0 *}>
+  <{foreach item=block from=$xoops_ccblocks name=ccloop}>
+  <{if $block.weight == 0 }>
+  <div>
+    <{if ! $block.title|strstr:"none"}><h3><{$block.title}></h3><{/if}>
+    <{$block.content}>
+  </div>
+  <hr/>
+  <{/if}>
+  <{/foreach}>
+  <{/if}><{* End Center Center Column *}>
+  <{/if}>
+
+</div> <!-- END Featured -->

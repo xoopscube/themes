@@ -1,36 +1,41 @@
 # Change Log
 
+## THEME : UI-BASIC5
+
+**Refactoring for XCL 2.3.x**
+
 All notable changes to this project will be documented in this file.
 
 - Format based on [Keep A Change Log](https://keepachangelog.com/en/1.0.0/).
 - This project adheres to [Semantic Versioning](https://semver.org/).
 
 
-## [unreleased] - 2019-03-04.
+## [unreleased] - 2021-05-21
 
-**XCL 2.3.0 THEMES**
+**UI_BASIC5**
 
 ### Added
 
 - Initial commit
-- update repo status active
+- update repo status active  
+- XCLayout helper
+- Dark/Light mode  
+- templates
 
 ### Changed
 
-- no
+- theme  
+- templates 
+- screenshot
 
 ### Deprecated
 
-- no
+- modules templates
 
 ### Removed
 
-- no
+- unused files and templates
 
 ### Fixed
 
-- no
-
-### Security
-
-- no
+- functions (menu, breadcrumb)  

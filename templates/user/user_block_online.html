@@ -1,0 +1,19 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<div id="online-users" layout="column" class="shadow-out">
+    <div layout="row"><{$block.online_total}></div>
+    <div self="size-x1 my-4"><{$smarty.const._MB_USER_MEMBERS}> <span class="badge"><{$block.online_members}></span>
+        <{$smarty.const._MB_USER_GUESTS}> <span class="badge"><{$block.online_guests}></span></div>
+    <{foreach item=member from=$block.online_member_list}>
+    <div self="size-x1">
+        <a href="<{$smarty.const.XOOPS_URL}>/userinfo.php?uid=<{$member.uid}>" class="block-online-avatar">
+            <img src="<{$member.uid|xoops_user_avatarize}>" alt=" <{$member.uname}>" height="32" self="radius-circle"/>
+            <span><{$member.uname}></span>
+        </a>
+    </div>
+    <{/foreach}>
+
+    <a class="btn" href="javascript:openWithSelfMain('<{$xoops_url}>/misc.php?action=showpopups&amp;type=online','Online',420,350);"><{$smarty.const._MB_USER_MORE}></a>
+
+</div>

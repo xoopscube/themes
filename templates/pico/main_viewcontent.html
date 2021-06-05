@@ -1,0 +1,224 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+
+<{include file="db:`$mydirname`_inc_breadcrumbs.html"}>
+
+    <section layout="column my-4 sm-first" name="module-top">
+
+        <h2 class="pico_title"><{$content.subject}></h2>
+
+        <{* ------- information for admin *}>
+
+        <{if $category.isadminormod}>
+            <div layout="row center-justify p-2" class="shadow-in">
+                <div class="size-x1">
+                    <img class="svg user" src="<{$xoops_url}>/images/icons/user.svg">
+                    <{$content.poster_uname}>
+                    <img class="svg date-time" src="<{$xoops_url}>/images/icons/date-time.svg">
+                    <span self="sm-hide"><{$smarty.const._MD_PICO_CREATED}></span> <span class="badge"><{$content.created_time_formatted}></span>
+
+                    <{if $content.modified_time > $content.created_time}>
+                    <{$smarty.const._MD_PICO_MODIFIED}> <span class="badge"><{$content.modified_time_formatted}></span> <{$content.modifier_uname}>
+                    <{/if}>
+
+                    <img class="svg view" src="<{$xoops_url}>/images/icons/view.svg">
+                    <span self="sm-hide"><{$smarty.const._MD_PICO_VIEWED}></span> <span class="badge"><{$content.viewed}></span>
+
+                </div>
+            </div>
+        <{/if}>
+
+    </section>
+
+
+    <{if ! $content.approval}>
+        <span class="badge badge-warning"><{$smarty.const._MD_PICO_WAITINGAPPROVAL}></span>
+    <{/if}>
+
+    <{if ! $content.visible}>
+        <span class="badge badge-warning">
+            <img class="svg file-view" src="<{$xoops_url}>/images/icons/file-view.svg"> <{$smarty.const._MD_PICO_INVISIBLE}></span>
+    <{/if}>
+
+    <{if $content.created_time >= time()}>
+        <span class="badge badge-warning"><{$smarty.const._MD_PICO_WAITINGRELEASE}></span>
+    <{/if}>
+
+    <{if $content.expiring_time < time()}>
+        <span class="badge badge-warning"><{$smarty.const._MD_PICO_EXPIRED}></span>
+    <{/if}>
+
+
+
+<article layout="column" id="<{$mydirname}>_container">
+
+
+    <{* ----- Admin controllers *}>
+
+    <{capture name="controllers"}>
+        <div layout="row center-left">
+
+            <{if $content.can_edit}>
+                <a self="mr-2 center-left" class="btn" href="<{$mod_url}>/index.php?page=contentmanager&amp;content_id=<{$content.id}>" title="<{$smarty.const._MD_PICO_LINK_EDITCONTENT}>">
+                    <img class="svg file-edit" src="<{$xoops_url}>/images/icons/file-edit.svg">  <span self="sm-hide"><{$smarty.const._MD_PICO_LINK_EDITCONTENT}></span></a>
+            <{/if}>
+
+            <{if $xoops_isadmin}>
+                <a self="mx-2 center-left" class="btn" href="<{$mod_url}>/admin/index.php?page=contents&amp;cat_id=<{$category.id}>" title="<{$smarty.const._MD_PICO_LINK_BATCHCONTENTS}>">
+                    <img class="svg file-swap" src="<{$xoops_url}>/images/icons/file-swap.svg">
+                    <span self="sm-hide"><{$smarty.const._MD_PICO_LINK_BATCHCONTENTS}></span></a>
+            <{/if}>
+
+            <{if $mod_config.show_printicon}>
+            <a self="mx-2" class="btn" href="<{$mod_url}>/<{$content.link}><{if $mod_config.use_wraps_mode || $mod_config.use_rewrite}>?<{else}>&amp;<{/if}>page=print" title="<{$smarty.const._MD_PICO_LINK_PRINTERFRIENDLY}>">
+                <img class="svg print" src="<{$xoops_url}>/images/icons/print.svg"> <span self="sm-hide"><{$smarty.const._MD_PICO_LINK_PRINTERFRIENDLY}></span></a>
+            <{/if}>
+
+            <{if $mod_config.show_tellafriend && $content.tellafriend_uri}>
+                <a self="ml-2" class="btn" href="<{$content.tellafriend_uri}>" target="_top" title="<{$smarty.const._MD_PICO_LINK_TELLAFRIEND}>">
+                    <img class="svg email-send" src="<{$xoops_url}>/images/icons/email-send.svg"> <span self="sm-hide"><{$smarty.const._MD_PICO_LINK_TELLAFRIEND}></span></a>
+            <{/if}>
+
+        </div>
+    <{/capture}>
+
+    <{* ------- Capture admin controllers *}>
+
+        <{if trim($smarty.capture.controllers)}>
+            <{$smarty.capture.controllers}>
+        <{/if}>
+
+
+
+    <{* ------- Waiting Overview *}>
+
+    <{if $category.isadminormod }>
+        <div layout="column">
+
+            <{* ------- subject reference for a waiting content *}>
+
+            <{if $content.subject_waiting && $page != 'makecontent'}>
+                <div self="size-x1">
+                    <h4 class="pico_waiting">
+                        <span class="badge badge-warning"><{$smarty.const._MD_PICO_TH_SUBJECT_WAITING}></span>
+                        <{$content.subject_waiting|htmlspecialchars_decode}>
+                    </h4>
+                </div>
+            <{/if}>
+
+            <{* -------  body reference for a waiting content *}>
+
+            <{if $content.body_waiting && $page != 'makecontent'}>
+                <div self="size-x1">
+                    <p class="badge badge-warning pico_waiting"><{$smarty.const._MD_PICO_TH_BODY_WAITING}></p>
+                    <div class="pico_waiting"><{$content.body_waiting|htmlspecialchars_decode|nl2br}></div>
+                </div>
+            <{/if}>
+
+        </div>
+    <{/if}>
+
+
+    <div self="size-x1 mt-2" id="<{$mydirname}>_body">
+        <{$content.body}>
+    </div>
+
+
+    <{* ----- Vote and Tags *}>
+
+    <div layout="row center-justify" aria-label="Vote group">
+
+        <div self="center inline">
+            <{if $mod_config.use_vote && $content.id}>
+
+                <{if $content.can_vote}>
+                <form action="<{$mod_url}>/index.php" method="get" name="pico_vote_best" id="pico_vote_best">
+                    <input type="hidden" name="page" value="vote_to_content">
+                    <input type="hidden" name="content_id" value="<{$content.id}>">
+                    <input type="hidden" name="point" value="10">
+                    <button class="btn" type="submit" value="<{$smarty.const._MD_PICO_VOTEPOINTDSCBEST}>"><{$smarty.const._MD_PICO_VOTEPOINTDSCBEST}></button>
+                </form>
+                    <{* <form action="<{$mod_url}>/index.php" method="get" name="pico_vote_worst" id="pico_vote_worst">
+                    <input type="hidden" name="page" value="vote_to_content">
+                    <input type="hidden" name="content_id" value="<{$content.id}>">
+                    <input type="hidden" name="point" value="0">
+                    <input type="submit" value="<{$smarty.const._MD_PICO_VOTEPOINTDSCWORST}>">
+                </form> *}>
+                <{/if}>
+
+            <span self="small my-4">
+                <img class="svg chart" src="<{$xoops_url}>/images/icons/chart.svg">
+
+                <{$smarty.const._MD_PICO_VOTECOUNT}> <span class="badge"> <{$content.votes_count}></span>
+                <{$smarty.const._MD_PICO_VOTEPOINTAVG}> <span class="badge"><{$content.votes_avg|string_format:"%.2f"}></span>
+                <{/if}>
+            </span>
+
+        </div>
+
+        <{* ----- Tags *}>
+
+        <{if $content.tags_array}>
+        <div self="mr-1">
+            <{foreach from=$content.tags_array item="tag"}>
+            <span self="mr-1" class="badge"><{$tag}></span>
+            <{/foreach}>
+        </div>
+        <{/if}>
+
+    </div>
+
+
+    <{* ------- Capture admin controllers *}>
+
+        <{if trim($smarty.capture.controllers)}>
+            <{$smarty.capture.controllers}>
+        <{/if}>
+
+</article>
+
+    <!-- jump to top
+    <div class="bottom_of_content_body"><a href="#top_of_pico_body"><{$smarty.const._MD_PICO_JUMPTOTOPOFPICOBODY}></a></div> -->
+
+    <{* ------- Page navigation *}>
+
+    <{if $mod_config.show_pagenavi && $content.id}>
+    <div layout="row-justify my-4">
+
+        <div class="<{$smarty.const._ALIGN_START}>">
+        <{if $prev_content.id}>
+
+            <a href="<{$mod_url}>/<{$prev_content.link}>" accesskey="F" title="<{$smarty.const._MD_PICO_PREV}>">
+                <img class="svg arrow-left" src="<{$xoops_url}>/images/icons/arrow-left.svg"> <{$prev_content.subject|truncate:30}></a>
+
+
+        <{/if}>
+        </div>
+
+        <div align="center">
+            <a href="<{$mod_url}>/<{$category.link}>" accesskey="P" title="<{$smarty.const._MD_PICO_CATEGORYINDEX}>">
+                <img class="svg arrow-up" src="<{$xoops_url}>/images/icons/arrow-up.svg"> <{$category.title|truncate:30}></a>
+        </div>
+
+        <div class="<{$smarty.const._ALIGN_END}>">
+        <{if $next_content.id}>
+            <a href="<{$mod_url}>/<{$next_content.link}>" accesskey="F" title="<{$smarty.const._MD_PICO_NEXT}>">
+                <{$next_content.subject|truncate:30}> <img class="svg arrow-right" src="<{$xoops_url}>/images/icons/arrow-right.svg"></a>
+
+        <{/if}>
+        </div>
+
+    </div>
+    <{/if}>
+
+
+    <{* ------- d3forum comment integration *}>
+
+    <{if $mod_config.comment_dirname && $mod_config.comment_forum_id && $content.allow_comment}>
+        <{d3comment mydirname=$mydirname class="PicoD3commentContent"}>
+    <{/if}>
+
+
+<hr class="notification">
+<{include file='db:legacy_notification_select.html'}>

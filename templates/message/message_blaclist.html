@@ -1,0 +1,77 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<ul class="breadcrumb" aria-label="breadcrumb">
+    <li><a href="index.php">
+        <img class="svg inbox" src="<{$xoops_url}>/images/icons/inbox.svg"> <{$smarty.const._MI_MESSAGE_NAME}></a>
+    <li aria-current="page"><{$smarty.const._MD_MESSAGE_SETTINGS_MSG15}>
+</ul>
+
+
+<div class="ui-tab-wrap">
+
+    <{include file="$xoops_theme/templates/message/inc_compo_nav.html"}>
+
+    <{* ------- /card-header *}>
+
+    <div class="ui-tab-content" id="printhis">
+
+
+        <div class="d-flex align-items-center justify-content-end my-4">
+
+        <form action="index.php?action=blacklist" method="post" name="adduser" class="form-inline">
+            <input type="hidden" name="cmd" value="add">
+
+            <div class="form-group mx-sm-3">
+                <label for="uname"><{$smarty.const._MD_MESSAGE_TEMPLATE2}></label>
+                <input type="text" class="form-control form-control-sm ml-2" id="uname" name="uname" value="" placeholder="uname">
+            </div>
+            <button type="submit" class="btn btn-danger btn-sm">
+                <img class="svg shield" src="<{$xoops_url}>/images/icons/shield.svg"> <{$smarty.const._MD_MESSAGE_ADDBLACKLIST}></button>
+        </form>
+
+        </div>
+
+
+        <form action="index.php?action=blacklist" method="post" name="listform">
+
+        <input type="hidden" name="cmd" value="del">
+
+        <table class="table table-hover">
+            <thead>
+            <tr class="small">
+                <th><{$smarty.const._MD_MESSAGE_TEMPLATE14}></th>
+                <th><{$smarty.const._MD_MESSAGE_TEMPLATE2}></th>
+            </tr>
+            </thead>
+
+            <{foreach item=uname key=uid from=$blackuser}>
+            <tr>
+                <td class="odd">
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" id="<{$uid}>" name="deluid[]" value="<{$uid}>">
+                        <label class="custom-control-label" for="<{$uid}>"></label>
+                    </div>
+                </td>
+                <td class="even">
+
+                    <img src="<{$uid|xoops_user_avatarize}>" width="24px" class="rounded-lg mr-3"> <{$uname}></td>
+            </tr>
+            <{/foreach}>
+
+        </table>
+
+
+    </div>
+
+    <div class="card-footer">
+        <button id=Submit class="btn btn-success btn-sm">
+            <img class="svg check" src="<{$xoops_url}>/images/icons/check.svg"> <{$smarty.const._SUBMIT}></button>
+    </div>
+
+    </form>
+
+</div>
+
+
+

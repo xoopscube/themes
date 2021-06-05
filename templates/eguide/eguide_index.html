@@ -1,0 +1,29 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<{if $mod_config.show_breadcrumbs}>
+<{include file="db:eguide_breadcrumbs.html"}>
+<{/if}>
+
+<style>
+
+
+</style>
+
+
+<{include file='db:eguide_block_category.html' block=$categories}>
+
+<{foreach from=$events item=event}>
+<{include file="db:eguide_item.html"}>
+<{/foreach}>
+
+<hr>
+
+<table width="100%">
+    <tr>
+        <td><{if $page_prev}><a href="index.php<{$page_prev}>"><{$smarty.const._MD_SHOW_PREV}></a><{/if}></td>
+        <td align="right"><{if $page_next}><a href="index.php<{$page_next}>"><{$smarty.const._MD_SHOW_NEXT}></a><{/if}>
+        </td>
+    </tr>
+</table>
+<{include file='db:legacy_notification_select.html'}>
