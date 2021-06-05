@@ -3,9 +3,9 @@
   
   
   
-## /////////////////////// — XCL : : Web Application Platform [ USER INTERFACE ]
+## /////////////////////// — Web Application Platform [ USER INTERFACE ]
 
-**User Interface for XCL Version 2.3.x**    
+**User Interface Themes for XCL Version 2.3.x**    
 
 **Description**    : Themes and Templates for XCL Web Application Platform  
 **Render Engine**  : Smarty v2 and v3   
@@ -60,8 +60,8 @@ Please refer to XCL's documentation for instructions on installing modules, exte
   
 :construction: [WIP] Wiki Documentation !  
 Please refer to XCL's store X-Update (click and run) documentation!    
-Otherwhise select a Branch of this repo and, from the GitHub dropdown button "Download" select Clone or Download zip.  
-Upload folder <theme name> to your public /themes  
+Otherwise select a Branch of this repo and, from the GitHub dropdown button "Code" select Clone or Download zip.  
+Upload folder <theme name> to your / public /themes  
 Template set: from the Administration dashboard "Render", select "Template set" and Upload Archive. 
         
   
@@ -107,7 +107,12 @@ The Smarty design was largely driven by these goals:
   
 ### XCL Themes
   
-:construction: [WIP] Wiki Documentation !  
+:construction: [WIP] A Branch starting with "xt-" includes :  
+
+- theme (built on XCLayout or CSS frameworks)    
+- css/js  
+
+Wiki Documentation   
 Please refer to XCL's documentation for instructions on installing modules, extensions and themes.  
   
   
