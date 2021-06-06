@@ -112,7 +112,7 @@
                 <{/if}>
 
                 <{* ------- Activity Overview - Subcategories *}>
-                <div layout="row center-justify p-2 my-4" class="shadow-in">
+                <div layout="row center-justify p-2 my-4">
                     <div><{$smarty.const._MD_D3FORUM_TOTALTOPICSCOUNT}> <span class="badge"><{$subcategory.topics_count_in_tree}></span></div>
                     <div><{$smarty.const._MD_D3FORUM_TOTALPOSTSCOUNT}> <span class="badge"><{$subcategory.posts_count_in_tree}></span></div>
                     <{* RSS margin-right = negative 4x 0.25rem (mr-n4) *}>
@@ -158,7 +158,7 @@
             </div>
 
             <{* ------- Activity Overview - Forums *}>
-            <div layout="row center-justify p-2 my-4" class="shadow-in">
+            <div layout="row center-justify p-2 my-4">
                 <{if $forum.isadminormod}>
                 <div self="px-2">
                     <{include file="db:`$mydirname`_inc_moderators.html" target=$forum}>

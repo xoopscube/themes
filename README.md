@@ -59,7 +59,7 @@ License | MIT
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/1905497/120908555-a9f2e400-c66b-11eb-8938-263080cad892.png" alt="screenshot">
-</p>  
+</p>
 
 #### Folder Structure
 
@@ -95,7 +95,7 @@ themes
 ## Features
 
 Render Engine - Smarty is a template engine for PHP, facilitating the separation of presentation (HTML/CSS) from application logic.
-This implies that PHP code is application logic, and is separated from the presentation, making it easier to customize theme and templates.  
+This implies that PHP code is application logic, and is separated from the presentation, making it easier to customize theme and templates.
 
 - Custom properties
 - Customization Options
@@ -109,21 +109,23 @@ This implies that PHP code is application logic, and is separated from the prese
 ## Installation
 
 1. Select this repo Branch "ui-basic5" and, from the dropdown button "Code" select Clone or Download zip.  
-Upload folder <theme name> to your domain, eg.: public/html/themes/ui-basic5/theme.html  
-From the Administration dashboard, activate the Theme (checkbox/select).
-
-2. Or from the Administration dashboard, click "X-Update Store" to automatically download and install the theme.
+2. Extract and upload the folder "ui-basic5" to your domain, eg.: public/html/themes/ui-basic5/theme.html  
+3. From the Administration dashboard, activate the Theme (checkbox/select).  
+  
+Or, from the Administration dashboard, click "X-Update Store" to automatically download and install the theme.
 
 
 
 ## Usage
 
 :construction: [WIP] Wiki Documentation !  
+
 The header navigation generates a Three-Level Menu from the loop Block-Left.  
-From the Administration dashboard, select "Blocks Management"   
+From the Administration dashboard, select "Blocks Management"  
 and set (rename if nedded) "Main Menu", "User Menu" and "Search"  
-to be displayed in the Block-Left loop.            
-Please refer to Theme's documentation for instructions on installing plugins.
+to be displayed in the Block-Left loop.  
+
+Please refer to Theme's documentation for instructions on installing plugins.  
 
 
 

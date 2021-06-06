@@ -1,0 +1,27 @@
+/*
+ * XCL 2.3.0 Theme : ui-basic5
+ * Refactoring of Theme Basic5
+ * @version    2.3.0
+ * @date       2021-05-21 (update)
+ * @author     NUno Luciano (aka gigamaster)
+ * @copyright  2005-2021 The XOOPSCube Project
+ * @license    MIT
+ * @link       https://github.com/xoopscube/themes
+
+    ---------- ---------- ---------- ---------- ---------- ---------- IMPORT */
+	@import "./css/_ui_root.css";    /*  UI Default Settings           */
+	@import "./css/body.css";        /*  Body Elements                */
+	@import "./css/button.css";      /*  Button Styling              */
+	@import "./css/layout.css";      /*  Layout Grid-Flex           */
+	@import "./css/breadcrumb.css";  /*  Breadcrumbs               */
+	@import "./css/blocks.css";      /*  Blocks                   */
+	@import "./css/card.css";        /*  Card elements           */
+	@import "./css/form.css";        /*  Form Elements          */
+	@import "./css/nav_menu.css";	 /*  Menu Navigation       */
+	@import "./css/media.css";       /*  Modules CSS          */
+	@import "./css/module.css";      /*  Media Queries       */
+	@import "./css/notification.css";/*  Notifications      */
+	@import "./css/svg.css";         /*  SVG settings      */
+	@import "./css/table.css";       /*  Tables           */
+	@import "./css/tab.css";         /*  Tabs            */
+/*  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

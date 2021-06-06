@@ -75,7 +75,7 @@
     /* -------------------- -------------------- CSS Custom Properties (variables)
      * X-Layout Helper can set the order to render items in a flex container */
 
-    --ui-dev-mode       : block; /* Development Mode to show "Smarty Template Name" display : block | none */
+    --ui-dev-mode       : none; /* Development Mode to show "Smarty Template Name" display : block | none */
     --vh                : 1vh; /* Fallback for Custom Properties */
 
     --font-family       : "system", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif; /* sans-serif : keyword fallback */
@@ -229,10 +229,6 @@ Scrollbars Module Level 1 draft and are currently only supported in Firefox */
     border-radius       : 10px;
     background          : linear-gradient(145deg, hsl(220, 15%, 15%), hsl(220, 21%, 15%));
     /*box-shadow          : inset 5px 5px 8px 1px rgba(0, 0, 0, 0.4),*/
-    /*5px 5px 10px 3px rgb(45, 50, 60),*/
-    /*inset -5px -5px 8px 0 rgba(47,65, 74, 0.4),*/
-    /*inset -1px -2px 2px 0 rgba(45, 50, 60, 0.4),*/
-    /*-5px -5px 8px 3px rgba(45, 50, 60, 0.5);*/
 }
 /*  ::-webkit-scrollbar-track-piece
 the track not covered by the scrollbar-thumb or handle */

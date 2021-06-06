@@ -26,7 +26,7 @@
 
             <{* ------- Activity Overview - Top Category *}>
             <{if $category.isadminormod}>
-            <div layout="left" class="shadow-in">
+            <div layout="left">
                 <div self="px-2"><{$smarty.const._MD_PICO_CONTENTS_TOTAL}> <span class="badge"><{$category.redundants.contents_total}></span></div>
                 <div self="px-2"><{$smarty.const._MD_PICO_SUBCATEGORIES_TOTAL}> <span class="badge"><{$category.redundants.subcategories_total}></span></div>
             </div>
@@ -100,7 +100,7 @@
 
                         <{* ------- Activity Overview - Subcategories *}>
                         <{if $category.isadminormod}>
-                        <div layout="center p-2 my-4" class="shadow-in">
+                        <div layout="center p-2 my-4">
                             <div self="px-2"><{$smarty.const._MD_PICO_CONTENTS_TOTAL}> <span class="badge"><{$subcategory.redundants.contents_total}></span></div>
                             <div self="px-2"><{$smarty.const._MD_PICO_SUBCATEGORIES_TOTAL}> <span class="badge"><{$subcategory.redundants.subcategories_total > 0}></span></div>
                         </div>

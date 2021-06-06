@@ -9,20 +9,18 @@
  * @link       https://github.com/xoopscube/xcl
  */
 
-
-ul.menu-shadow-out,
 ul#usermenu {
 	display         : block;
 	list-style-type : none;
 	margin          : 0;
 	padding         : 0;
 }
-ul.menu-shadow-out li,
+
 ul#usermenu li {
 	text-decoration : none;
 	margin-bottom   : 0.25em;
 }
-ul.menu-shadow-out li a,
+
 ul#usermenu li a {
     background      : transparent;
 	box-shadow      : none;
@@ -33,14 +31,11 @@ ul#usermenu li a {
 	transition      : all .3s;
 }
 
-ul.menu-shadow-out li:hover > a,
 ul#usermenu li:hover > a {
 	color           : var(--color-link-hover)
 
 }
-ul.menu-shadow-out li a:active,
-ul.menu-shadow-out li a:focus,
-ul.menu-shadow-out li a:hover,
+
 ul#usermenu li a:active,
 ul#usermenu li a:focus,
 ul#usermenu li a:hover {

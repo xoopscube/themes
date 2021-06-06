@@ -4,7 +4,7 @@
 
 <form action="<{$xoops_url}>/user.php" method="post" layout="column center-center">
 
-    <div class="shadow-out" self="size-x1 lg-full">
+    <div self="size-x1 lg-full">
 
         <{* Smarty local variable concatenation : const + cat:'' *}>
         <label for="<{$smarty.const.XOOPS_INPUT_DEFID_PREFIX|cat:'block_uname'}>" aria-label="<{$smarty.const._MB_USER_USERNAME}>"></label>
@@ -26,7 +26,7 @@
         <{/if}>
     </div>
 
-    <div class="shadow-in" layout="row center-center p-2 my-2">
+    <div layout="row center-center p-2 my-2">
         <a href="<{$xoops_url}>/lostpass.php" self="mx-2"><{$smarty.const._MB_USER_LOSTPASS}></a>
         <{if $block.allow_register == '1'}>
         &nbsp;|  <a href="<{$xoops_url}>/register.php" self="mx-2"><{$smarty.const._MB_USER_USERREG}></a>

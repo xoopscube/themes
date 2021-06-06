@@ -68,7 +68,7 @@
 
         <{if $results}>
 
-        <div class="msg-callout msg-info shadow">
+        <div class="msg-callout msg-info">
             <p><{$hits_count|string_format:$smarty.const._MD_D3FORUM_FMT_SEARCHHITS}></p>
         </div>
 
@@ -102,7 +102,7 @@
         <{else}>
 
         <{* no hit *}>
-        <div class="msg-callout msg-warning shadow">
+        <div class="msg-callout msg-warning">
             <p><{$smarty.const._MD_D3FORUM_MSG_NOMATCH}></p>
         </div>
 

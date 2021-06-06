@@ -8,15 +8,22 @@
         <{* Block-Left, Content, Block-Right *}>
         <div layout="lg-column" self="size-x1">
 
-            <{if $xoops_showlblock==1}>
-            <div self="size-xsmall p-4 sm-p-0">
+            <{if $xoops_showlblock}>
             <{foreach item=block from=$xoops_lblocks name=lblock}>
-                <{* _____/!\ Remove blocks from the loop : MainMenu, UserMenu and Search /!\_____  *}>
-                <{if ! $block.title|strstr:"Main" and ! $block.title|strstr:"User" and ! $block.title|strstr:"Search"}>
+
+            <{* _____/!\ Remove blocks from the loop : MainMenu, UserMenu and Search /!\_____  *}>
+            <{if ! $block.title|strstr:"Main" and ! $block.title|strstr:"User" and ! $block.title|strstr:"Search"}>
+
+                <{* _____/!\ Render only if any block-left /!\_____  *}>
+                <{if $xoops_lblocks|@count gt 0}>
+                <div self="size-xsmall p-4 sm-p-0">
                     <{include file="$xoops_theme/component/block_left.html"}>
+                </div>
                 <{/if}>
+
+            <{/if}>
+
             <{/foreach}>
-            </div>
             <{/if}>
 
 

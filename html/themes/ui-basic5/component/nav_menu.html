@@ -31,13 +31,13 @@
         <{if $xoops_showlblock==1}>
             <{foreach item=block from=$xoops_lblocks}>
 
-            <{if $block.title|strstr:"Main" || $block.weight == 10}>
+            <{if $block.title|strstr:"Main"}>
             <li class="ui-navbar-menu-item has-children"><a href="#"><{$smarty.const._MB_LEGACY_HOME}> <span class="ui-navbar-dropdown-icon"></span></a>
                 <{$block.content}>
             </li>
             <{/if}>
 
-            <{if $block.title|strstr:"User" || $block.weight == 20}>
+            <{if $block.title|strstr:"User"}>
             <li class="ui-navbar-menu-item has-children"><a href="#"><{$block.title}> <span class="ui-navbar-dropdown-icon"></span></a>
                 <{$block.content}>
             </li>

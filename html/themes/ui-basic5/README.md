@@ -38,11 +38,10 @@ License | MIT
 
 
 - [Overview](#overview)
-- [Render Engine](#render-engine)
-- [Smarty Template Engine](#smarty-template-engine)
-- [User Interface](#user-interface)
-- [XCL Themes](#xcl-themes)
-- [CSS Frameworks](#css-frameworks)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Changelog](#changelog)
 - [License](#license)
 - [Big Thanks](#big-thanks)
 
@@ -58,80 +57,86 @@ License | MIT
 
 :construction: [WIP] Wiki Documentation.
 
-  ![image](https://user-images.githubusercontent.com/1905497/120908555-a9f2e400-c66b-11eb-8938-263080cad892.png)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/1905497/120908555-a9f2e400-c66b-11eb-8938-263080cad892.png" alt="screenshot">
+</p>
+
+#### Folder Structure
+
+```bash
+themes
+└───ui-basic5
+    │   CHANGELOG.md
+    │   manifesto.ini.php
+    │   README.md
+    │   screenshot.png
+    │   theme.html
+    │   theme_already_js.php
+    │   theme_assign_language.php
+    │   theme_assign_menu.php
+    │   theme_redirect_js.html
+    │
+    ├───component
+    ├───css
+    ├───images
+    ├───js
+    ├───language
+    └───templates
+        ├───d3forum
+        ├───eguide
+        ├───legacy
+        ├───message
+        ├───pico
+        ├───profile
+        └───user
+```
 
 
-### Installation
+## Features
 
-:construction: [WIP] Wiki Documentation !
-Please refer to XCL's store X-Update (click and run) documentation!
-Otherwhise select a Branch of this repo and, from the GitHub dropdown button "Download" select Clone or Download zip.
-Upload folder <theme name> to your public /themes
-Template set: from the Administration dashboard "Render", select "Template set" and Upload Archive.
+Render Engine - Smarty is a template engine for PHP, facilitating the separation of presentation (HTML/CSS) from application logic.
+This implies that PHP code is application logic, and is separated from the presentation, making it easier to customize theme and templates.
 
-
-
-### Render Engine
-
-:construction: [WIP] Wiki Documentation !
-Please refer to XCL's documentation for instructions on installing modules, extensions and themes.
-
-
-
-### Smarty Template Engine
-
-Smarty is a template engine for PHP, facilitating the separation of presentation (HTML/CSS) from application logic.
-This implies that PHP code is application logic, and is separated from the presentation.
-
-
-
-**The Philosophy**
-The Smarty design was largely driven by these goals:
-
-- clean separation of presentation from application code
-- PHP backend, Smarty template frontend
-- complement PHP, not replace it
-- fast development/deployment for programmers and designers
-- quick and easy to maintain
-- syntax easy to understand, no PHP knowledge required
-- flexibility for custom development
-- security: insulation from PHP
-- free, open source
-
-
-
-### User Interface
-
-:construction: A Branch starting with "ui-" includes :
-
-- icon set
-- theme
-- templates (customize modules)
+- Custom properties
+- Customization Options
+- Flexbox layout
+- Localization
+- Responsive theme
+- User Interface consistency
 
 
 
-### XCL Themes
+## Installation
 
-:construction: [WIP] Wiki Documentation !
-Please refer to XCL's documentation for instructions on installing modules, extensions and themes.
-
-
-
-### CSS Frameworks
-
-:construction: Samples :
-
-+ Bootstrap
-+ Fondation
-+ Metro
-+ Semantic
-+ ...
+1. Select this repo Branch "ui-basic5" and, from the dropdown button "Code" select Clone or Download zip.  
+2. Extract and upload the folder "ui-basic5" to your domain, eg.: public/html/themes/ui-basic5/theme.html  
+3. From the Administration dashboard, activate the Theme (checkbox/select).  
+  
+Or, from the Administration dashboard, click "X-Update Store" to automatically download and install the theme.
 
 
 
-### License
+## Usage
 
-Please refer Theme's documentation for the License and instructions.
+:construction: [WIP] Wiki Documentation !  
+
+The header navigation generates a Three-Level Menu from the loop Block-Left.  
+From the Administration dashboard, select "Blocks Management"  
+and set (rename if nedded) "Main Menu", "User Menu" and "Search"  
+to be displayed in the Block-Left loop.  
+
+Please refer to Theme's documentation for instructions on installing plugins.  
+
+
+
+## Changelog
+
+Please see CHANGELOG for more details.
+
+
+## License
+
+Please refer Theme's documentation for the License.
 
 
 -----

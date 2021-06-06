@@ -39,7 +39,7 @@
 
                     <div layout="column center-center" self="size-1of2">
 
-                        <div self="center p-4 m-auto" class="shadow-in">
+                        <div self="center p-4 m-auto">
                             <{if $actionForm->get('uid')|xoops_user:user_avatar != "blank.gif"}>
                             <img src="<{$smarty.const.XOOPS_UPLOAD_URL}>/<{$actionForm->get('uid')|xoops_user:user_avatar}>" alt="Avatar" title="Avatar">
                             <{else}>
