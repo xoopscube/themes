@@ -1,0 +1,43 @@
+<div class="block-messages">
+<ul id="privatemessages">
+    <li>
+
+    <{if $block>0}>
+            <a href="<{$message_url}>?action=index">
+            <span><img class="svg inbox-full" src="<{$xoops_url}>/images/icons/inbox-full.svg"> <{$smarty.const._MD_MESSAGE_TEMPLATE15}></span>
+            <span class="badge"><b style="color:orange"><{$block}></b>/<{$incount}></span>
+        </a>
+          <{else}>
+        <a href="<{$message_url}>?action=index">
+            <img class="svg inbox" src="<{$xoops_url}>/images/icons/inbox.svg">
+            <{$smarty.const._MD_MESSAGE_TEMPLATE15}> <b class="badge"><{$incount}></b></a>
+    <{/if}>
+
+
+    <li>
+    <a href="<{$message_url}>?action=send">
+        <span><img class="svg inbox-out" src="<{$xoops_url}>/images/icons/inbox-out.svg"> <{$smarty.const._MD_MESSAGE_TEMPLATE7}></span> <span class="badge"> <{$outcount}></span></a>
+
+    <li>
+    <a href="<{$message_url}>?action=new">
+        <img class="svg email-edit" src="<{$xoops_url}>/images/icons/email-edit.svg"> <{$smarty.const._MD_MESSAGE_TEMPLATE8}></a>
+
+    <li>
+    <a href="<{$message_url}>?action=settings">
+        <img class="svg settings" src="<{$xoops_url}>/images/icons/settings.svg"> <{$smarty.const._MI_MESSAGE_SUB_SETTINGS}></a>
+
+        <{if $UserSearch}>
+            <li>
+            <a href="<{$message_url}>?action=search">
+<!--                <img src="<{$smarty.const.XOOPS_MODULE_URL}>/message/images/email_edit.png" alt="">-->
+                <img class="svg email-edit" src="<{$xoops_url}>/images/icons/email-edit.svg">
+                <{$smarty.const._MI_MESSAGE_SUB_SEARCH}></a>
+
+            <li>
+            <a href="<{$message_url}>?action=favorites">
+<!--                <img src="<{$smarty.const.XOOPS_MODULE_URL}>/message/images/email_edit.png" alt="">-->
+                <img class="svg email-edit" src="<{$xoops_url}>/images/icons/email-edit.svg">
+                <{$smarty.const._MI_MESSAGE_SUB_FAVORITES}></a>
+        <{/if}>
+</ul>
+</div>

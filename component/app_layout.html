@@ -1,0 +1,103 @@
+<{include file="$xoops_theme/component/header_nav_menu.html"}>
+
+<main>
+
+    <{* LAYOUT BLOCK/CONTENT/BLOCK-CENTER *}>
+    <div layout="column" id="main-content">
+
+        <{* Block-Left, Content, Block-Right *}>
+        <div layout="lg-column md-full" self="size-x1">
+
+            <{if $xoops_showlblock}>
+
+
+            <{foreach item=block from=$xoops_lblocks name=lblock}>
+
+            <{* _____/!\ Remove blocks from the loop : MainMenu, UserMenu and Search /!\_____  *}>
+            <{if ! $block.title|strstr:"Main" and ! $block.title|strstr:"User" and ! $block.title|strstr:"Search"}>
+
+                <{* _____/!\ Render only if a block-left is active /!\_____  *}>
+                <{if $xoops_lblocks|@count gt 0}>
+                <div layout="column top-stretch" self="size-xsmall sm-full">
+                    <{include file="$xoops_theme/component/block_left.html"}>
+                </div>
+                <{/if}>
+            <{/if}>
+
+            <{/foreach}>
+
+
+            <{/if}>
+
+
+
+            <div self="size-x3 sm-first md-first" data-tooltip="Show first on small and medium screens">
+                <{if !empty($xoops_contents)}>
+                <div class="content"><{$xoops_contents}></div>
+                <{else}>
+                    <{include file="$xoops_theme/component/front_page.html"}>
+                    <{/if}>
+            </div>
+
+
+            <{if $xoops_showrblock==1}>
+            <div self="size-x1 sm-full">
+                <{include file="$xoops_theme/component/block_right.html"}>
+            </div>
+            <{/if}>
+
+        </div>
+
+
+        <{if $xoops_showcblock==1}>
+
+        <section class="full-width" name="Main Block Center">
+
+            <div layout="row center md-column sm-column" self="center size-xlarge">
+
+                <{if $xoops_clblocks}>
+                <div self="size-x1 sm-first">
+                    <{include file="$xoops_theme/component/block_center_left.html"}>
+                </div>
+                <{/if}>
+
+                <{if $xoops_ccblocks}>
+                <div self="size-x1 sm-full" data-tooltip="(first on small screen)">
+                    <{include file="$xoops_theme/component/block_center_center.html"}>
+                </div>
+                <{/if}>
+
+                <{if $xoops_crblocks}>
+                <div self="size-x1 sm-full">
+                    <{include file="$xoops_theme/component/block_center_right.html"}>
+                </div>
+                <{/if}>
+
+            </div>
+
+        </section>
+        <{/if}>
+
+
+    <{if $xoops_banner and $xoops_banner!=""}>
+    <div self="center center sm-hide" class="banner-center"><{$xoops_banner}></div>
+    <{/if}>
+
+    </div>
+
+</main>
+
+<{include file="$xoops_theme/component/theme_help.html"}>
+
+
+<!--<div class="side-help">
+    <span class="code-label">Code</span>
+    <div class="code-logos">
+        <a href="#info-css" title="CSS3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);color: #027dde;" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" data-inline="false" data-width="1em" data-height="1em" data-icon="simple-icons:css3"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622l10.125.002l-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523l-2.91.804l-2.956-.81l-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z" fill="currentColor"></path></svg></a>
+
+        <a href="#info-render" title="HTML5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" style="vertical-align: -0.125em;-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);color: #ff460c;" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718l10.059.003l.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426l-2.91.804l-2.955-.81l-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443l.744-8.157H8.531z" fill="currentColor"></path></svg></a>
+    </div>
+</div>-->
+

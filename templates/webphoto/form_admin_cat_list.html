@@ -1,0 +1,102 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<{* form *}>
+<form name="cat_list_form" action="<{$xoops_url}>/modules/<{$xoops_dirname}>/admin/index.php" method="post"
+      style="margin:10px;">
+    <input type="hidden" name="XOOPS_G_TICKET" value="<{$xoops_g_ticket}>"/>
+    <input type="hidden" name="fct" value="catmanager"/>
+    <input type="hidden" name="action" value="weight"/>
+
+    <{* table *}>
+    <table width="95%" class="outer" cellpadding="4" cellspacing="1">
+
+        <tr valign="middle">
+            <th><{$lang_edit}></th>
+            <th width="80%"><{$lang_cat_title}></th>
+            <th><{$lang_cat_th_photos}></th>
+
+            <{if $show_cat_add }>
+            <th nowrap="nowrap"><{$lang_cat_th_operation}></th>
+            <{/if}>
+
+            <th><{$lang_cat_weight}></th>
+            <th nowrap="nowrap"><{$lang_cat_th_image}></th>
+        </tr>
+
+        <{* line *}>
+        <{foreach from=$cat_list item=cat}>
+        <{cycle values="odd,even" assign=class_oddeven}>
+
+        <tr>
+            <td class="<{$class_oddeven}>" nowrap="nowrap">
+                <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/admin/index.php?fct=catmanager&amp;disp=edit&amp;cat_id=<{$cat.cat_id}>">
+                    <img class="svg cat-edit" src="<{$xoops_url}>/images/icons/folder-edit.svg" width="1em" height="1em" alt="<{$lang_cat_link_edit}>" title="<{$lang_cat_link_edit}>">
+                    <{$cat.cat_id|string_format:"%03d"}>
+                </a>
+            </td>
+
+            <td class="<{$class_oddeven}>" width="80%">
+                <{if $cfg_use_pathinfo }>
+                <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/category/<{$cat.cat_id}>/">
+                    <{else}>
+                    <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=category&amp;cat_id=<{$cat.cat_id}>">
+                        <{/if}>
+                        <{$cat.tree_prefix}>
+                        <{$cat.cat_title|escape}>
+                    </a>
+            </td>
+
+            <td class="<{$class_oddeven}>" nowrap="nowrap" align="right">
+                <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/admin/index.php?fct=photomanager&amp;cat_id=<{$cat.cat_id}>">
+                    <{$cat.tree_photo_num}>
+                </a> &nbsp;
+                <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/admin/index.php?fct=item_manager&amp;op=submit_form&amp;cat_id=<{$cat.cat_id}>" title="<{$lang_title_addphoto}>">
+                    <img class="svg file-plus" src="<{$xoops_url}>/images/icons/file-plus.svg" width="1em" height="1em" alt="<{$lang_title_addphoto}>"/>
+                </a>
+            </td>
+
+            <{if $show_cat_add }>
+            <td class="<{$class_oddeven}>" nowrap="nowrap" align="center">
+                <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/admin/index.php?fct=catmanager&amp;disp=new&amp;cat_id=<{$cat.cat_id}>" title="<{$lang_cat_link_makesubcat}>">
+                    <img class="svg cat-plus" src="<{$xoops_url}>/images/icons/folder-plus.svg" width="1em" height="1em" alt="<{$lang_cat_link_makesubcat}>"/>
+                </a>
+            </td>
+            <{/if}>
+
+            <td class="<{$class_oddeven}>" align="center">
+                <input type="hidden" name="oldweight[<{$cat.cat_id}>]" value="<{$cat.cat_weight}>"/>
+                <input type="text" id="weight[<{$cat.cat_id}>]" name="weight[<{$cat.cat_id}>]" value="<{$cat.cat_weight}>" size="5"/>
+            </td>
+
+            <td class="<{$class_oddeven}>" nowrap="nowrap" align="center">
+                <{if $cat.img_show }>
+                <a href="<{$cat.img_src|escape}>" target="_blank">
+                    <img src="<{$cat.img_src|escape}>" height="<{$cat.img_height}>" loading="lazy">
+                </a>
+                <{/if}>
+            </td>
+
+        </tr>
+        <{/foreach}>
+        <{* line end *}>
+
+        <tr class="foot">
+
+            <{if $show_cat_add }>
+            <td colspan="4">
+                <{else}>
+            <td colspan="3">
+                <{/if}>
+
+            </td>
+            <td colspan="2">
+                <input type="submit" id="submit" name="submit" value="<{$lang_edit}>"/>
+            </td>
+        </tr>
+
+    </table>
+    <{* table end *}>
+
+</form>
+<{* form end *}>

@@ -1,0 +1,328 @@
+<{* Dev-Mode Toggle : page_detail.html *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<{* /////// -------------------- BREADCRUMB-NAV *}>
+<ul class="breadcrumb" aria-label="breadcrumb">
+    <li><a href="<{$xoops_url}>/">
+        <svg class="i-home" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+        </svg></a></li>
+    <li><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php">
+        <svg class="i-chat" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2.5a2 2 0 0 1 1.6.8L8 14.333 9.9 11.8a2 2 0 0 1 1.6-.8H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+            <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg> <{$xoops_modulename}></a></li>
+
+    <{* if $show_title && $title_bread_crumb *}>
+    <li aria-current="page"><{$title_bread_crumb}> ( <{$total_bread_crumb}> )</li>
+    <{* /if *}>
+
+    <{* ------- catpath for category*}>
+    <{* if $show_catpath *}>
+    <{* include file="db:`$mydirname`_inc_catpath.html" *}>
+    <{* /if *}>
+</ul>
+
+
+<!--( <{$total_bread_crumb}> )-->
+<{if $show_rss_icon }>
+<{include file="db:`$mydirname`_inc_rss_icon.html" }>
+<{/if}>
+
+<section name="description" layout="row center-justify">
+
+    <div self="size-1 sm-full">
+
+        <div class="webphoto_page_title">
+            <{$xoops_modulename}>            <{if $is_module_admin}>
+            <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/admin/index.php?fct=catmanager&disp=edit&cat_id=<{$cat_id}>" target="_blank">
+                <img class="svg cat-edit" src="<{$xoops_url}>/images/icons/folder-edit.svg" width="1em" height="1em"></a>
+            <{/if}>
+        </div>
+
+        <{if $show_index_desc && ($cfg_index_desc != '')}>
+        <div class="webphoto_index_desc">
+            <{$cfg_index_desc}>
+        </div>
+
+        <{else}>
+
+        <div class="webphoto_page_title">
+            <{if $catpath.first.cat_title}>
+            <h3><{$catpath.first.cat_title}></h3>
+            <{/if}>
+
+            <{if $catpath.first.cat_title}>
+            <br>
+
+            cat_title :: <{$catpath.first.cat_title}><br>
+            cat_description :: <{$catpath.first.cat_description}><br>
+            <{/if}>
+
+            <{if $catpath.first.cat_title && ($catpath.first.imgurl_s != '')}>
+            <img src="<{$catpath.first.imgurl}>" alt="img-url" loading="lazy"><br>
+            <{$catpath.first.imgurl_s}>
+            <{/if}>
+<br>------<br>
+            sub_title_s : <{$sub_title_s}><br>
+            title_bread_crumb : <{$title_bread_crumb}><br>
+            cat_id : <{$cat_id}><br>
+
+
+        </div>
+        <{/if}>
+
+        <{* /////// -------------------- SEARCH *}>
+        <{if $show_search}>
+        <div class="webphoto_page_subtitle"><{$search_lang_searchresults}></div>
+
+        <{$search_lang_keywords}>
+        <br>
+            <{foreach item=keyword from=$search_keywords}>
+                <span class="webphoto_sr_keyword"><{$keyword}></span>
+            <{/foreach}>
+        <br>
+        <{if $search_show_candidate}>
+        <{$lang_sr_candicate}>:<br>
+            <{foreach item=candidate from=$search_candidates}>
+                <span class="webphoto_sr_keyword"><{$candidate.keyword}></span>
+                (<{$candidate.lang}>)
+            <{/foreach}>
+            <br>
+        <{/if}>
+
+        <{if $search_show_ignore}>
+            <br>
+            <{$search_lang_keyignore}>
+            <br>
+            <{foreach item=ignore from=$search_ignores}>
+                <span class="webphoto_sr_keyword"><{$ignore}></span>
+            <{/foreach}>
+        <br>
+        <{/if}>
+        <br>
+        <{/if}>
+
+        <{if $show_lang_keytooshort}>
+            <div class="webphoto_error"><{$lang_keytooshort}></div>
+        <{/if}>
+
+        <{if $show_nomatch}>
+            <div class="webphoto_error"><{$lang_nomatch_photo}></div>
+        <{/if}>
+
+    </div>
+
+    <{* ------- QR *}>
+    <{if $show_qr}>
+    <div>
+        <div align="center">
+            <img src="<{$qrs_url}>/qr_index.png" alt="qr_index" loading="lazy"><br>
+            <a href="mailto:<{$mobile_email}>?subject=webphoto_url&amp;body=<{$mobile_url}>"><{$lang_mobile_mailto}></a>
+            <br>
+        </div>
+    </div>
+    <{/if}>
+
+</section>
+
+
+<{* /////// -------------------- MENU-NAV *}>
+<{if $show_menu }>
+<{include file="db:`$mydirname`_inc_menu.html" }>
+<{/if}>
+
+
+
+
+
+<{if $show_photo_list}>
+<ul>
+    <li><{$lang_usage_photo}></li>
+    <li><{$lang_usage_title}></li>
+</ul>
+<br>
+<{/if}>
+
+
+<!--<{if $show_photo_list}>
+<div class="webphoto_photo_type">
+    |
+    <a href="javascript:webphoto_box_visible_flip('webphoto_box_photo', 0)">
+        <{$lang_viewtype_list}></a> |
+    <a href="javascript:webphoto_box_visible_flip('webphoto_box_photo', 1)">
+        <{$lang_viewtype_table}></a> |
+</div>
+<{/if}>-->
+
+
+
+
+<{* /////// -------------------- MEDIA-SORT-FILTER
+<!--<{if $show_sort || $show_navi }>
+<div class="webphoto_index_photo_header">
+<{/if}>
+
+    <{if $show_sort }>
+    <{include file="db:`$mydirname`_inc_sort.html" }>
+    <br>
+    <{/if}>
+
+    <{if $show_navi }>
+    <{include file="db:`$mydirname`_inc_navi.html" }>
+    <{/if}>
+
+<{if $show_sort || $show_navi }>
+</div>
+<{/if}>-->
+-------  /photo_sort_navi *}>
+
+
+
+
+
+<{* /////// -------------------- MEDIA LIST *}>
+<{if $show_photo_list}>
+<{include file="db:`$mydirname`_inc_photo_list.html"}>
+<{/if}>
+
+
+
+<{* /////// -------------------- PAGE-NAVI *}>
+<{if $show_navi }>
+<div class="webphoto_index_photo_footer">
+    <{include file="db:`$mydirname`_inc_navi.html"}>
+</div>
+<{/if}>
+
+<!--
+<{* -&#45;&#45;&#45;&#45;&#45;&#45; search form *}>
+<{if $show_search }>
+<{include file="db:`$mydirname`_inc_search.html" }>
+<{/if}>
+-->
+
+
+<{* /////// -------------------- TIMELINE-JS *}>
+<{if $show_timeline}>
+<{$timeline_js}>
+<{/if}>
+
+<{* ------- Timeline *}>
+<{if $show_timeline}>
+<h3><img class="svg timeline" src="<{$xoops_url}>/images/icons/timeline.svg" width="1em" height="1em" alt="timeline">
+    <input class="switch" type="checkbox" id="webphoto_box_timeline" onclick="slideToggle('.webphoto_box_timeline', this)" value="0">
+    <label for="webphoto_box_timeline"> <{$lang_timeline_off}> / <{$lang_timeline_on}></label></h3>
+
+<section class="webphoto_box_timeline" style="display:none">
+
+    <{if $show_timeline_large }>
+    <div class="webphoto_timeline_navi">
+        <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=timeline&amp;sm=<{$sub_mode}>&amp;sp=<{$sub_param}>">
+            <{$lang_timeline_large}></a>
+    </div>
+    <{/if}>
+
+    <{if $show_timeline_unit }>
+    <div class="webphoto_timeline_navi">
+        <a href="#" onClick="return webphoto_timeline_zoom( this,'<{$mode}>','<{$sub_mode}>','<{$sub_param}>','century')">
+            <{$lang_timeline_unit_century}></a> |
+        <a href="#" onClick="return webphoto_timeline_zoom( this,'<{$mode}>','<{$sub_mode}>','<{$sub_param}>','decade')">
+            <{$lang_timeline_unit_decade}></a> |
+        <a href="#" onClick="return webphoto_timeline_zoom( this,'<{$mode}>','<{$sub_mode}>','<{$sub_param}>','year')">
+            <{$lang_timeline_unit_year}></a> |
+        <a href="#" onClick="return webphoto_timeline_zoom( this,'<{$mode}>','<{$sub_mode}>','<{$sub_param}>','month')">
+            <{$lang_timeline_unit_month}></a> |
+        <a href="#" onClick="return webphoto_timeline_zoom( this,'<{$mode}>','<{$sub_mode}>','<{$sub_param}>','week')">
+            <{$lang_timeline_unit_week}></a> |
+        <a href="#" onClick="return webphoto_timeline_zoom( this,'<{$mode}>','<{$sub_mode}>','<{$sub_param}>','day')">
+            <{$lang_timeline_unit_day}></a>
+    </div>
+    <{/if}>
+
+    <div id="<{$timeline_element}>" class="<{$timeline_class}>">Loading ...</div>
+
+    <div class="webphoto_timeline_caution">
+        <{$lang_timeline_caution_ie}>
+    </div>
+
+</section>
+<{/if}>
+
+
+
+<{* /////// -------------------- GMAPS-JS *}>
+<{if $show_gmap}>
+<{include file="db:`$mydirname`_inc_gmap_js.html"}>
+<{include file="db:`$mydirname`_inc_gmap_icons.html"}>
+<{include file="db:`$mydirname`_inc_gmap_makers.html"}>
+<{/if}>
+
+<{* ------- gmap *}>
+<{if $show_gmap}>
+<h3><img class="svg map" src="<{$xoops_url}>/images/icons/map-place.svg" width="1em" height="1em" alt="Map">
+    <input class="switch" type="checkbox" id="webphoto_box_gmap" onclick="slideToggle('.webphoto_box_gmap', this)" value="0">
+    <label for="webphoto_box_gmap"> <{$lang_gmap_off}> / <{$lang_gmap_on}></label></h3>
+
+<section class="webphoto_box_gmap" style="display: none">
+    <{$lang_gmap_desc}><br>
+
+    <{if $show_map_large }>
+    <div class="webphoto_gmap_navi">
+        <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=map&amp;sm=<{$sub_mode}>&amp;sp=<{$sub_param}>">
+            <{$lang_map_large}></a>
+    </div>
+    <{/if}>
+
+    <div id="webphoto_gmap_map" class="<{$gmap_class}>">Loading ...</div>
+    <div id="webphoto_gmap_not_compatible" class="webphoto_error"></div>
+</section>
+<{/if}>
+
+
+
+
+
+<{* /////// -------------------- RANDOM MEDIA *}>
+<{if $show_random_more}>
+<div class="msg-callout msg-info">
+    <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/random/">
+        <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=random">
+    <{/if}>
+    <{$lang_random_more}></a>
+</div>
+<{/if}>
+
+
+<{* /////// -------------------- CATEGORIES LIST *}>
+<{if $show_catlist }>
+<h3><img class="svg folder" src="<{$xoops_url}>/images/icons/folder.svg" width="1em" height="1em" alt="<{$lang_catlist_on}>">
+    <input class="switch" type="checkbox" id="webphoto_categories" onclick="slideToggle('.webphoto_categories', this)" value="0">
+    <label for="webphoto_categories"> <{$lang_catlist_on}>: <{$lang_catlist_off}></label></h3>
+
+    <section class="webphoto_categories" style="display:none">
+    <{include file="db:`$mydirname`_inc_catlist.html"}>
+    </section>
+<{/if}>
+
+
+<{* /////// -------------------- TAG CLOUD *}>
+<{if $show_tagcloud}>
+<h3><img class="svg tags" src="<{$xoops_url}>/images/icons/tags.svg" width="1em" height="1em" alt="tags">
+    <input class="switch" type="checkbox" id="webphoto_tagcloud" onclick="slideToggle('.webphoto_tagcloud', this)" value="0">
+    <label for="webphoto_tagcloud"> <{$lang_tagcloud_off}></label></h3>
+
+<section class="webphoto_tagcloud" style="display:none">
+    <{foreach from=$tagcloud item=tagc}>
+    <a href="<{$tagc.link}>" style="text-decoration:none;padding:2px;font-size:<{$tagc.size}>px;">
+        <{$tagc.name|escape}></a>
+    <{/foreach}>
+</section>
+<{/if}>
+
+
+<{* /////// -------------------- NOTIFICATION *}>
+<{if $show_notification_select}>
+    <{include file="db:`$mydirname`_inc_notification_select.html"}>
+<{/if}>

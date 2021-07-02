@@ -1,0 +1,227 @@
+/*
+ * XCL 2.3.0 Theme : ui-basic5
+ * Refactoring of Theme Basic5
+ * @version    2.3.0
+ * @date       2021-05-21 (update)
+ * @author     NUno Luciano (aka gigamaster)
+ * @copyright  2005-2021 The XOOPSCube Project
+ * @license    Cube : https://github.com/xoopscube/xcl/blob/master/BSD_license.txt
+ * @link       https://github.com/xoopscube/xcl
+ */
+/* -------------------- -------------------- UI-DEV-MODE */
+/* 	Display  dev mode. Toggle comment of display : block / none */
+.ui-dev-mode {
+    background          : rgb(10, 10, 10);
+    color               : rgb(0, 204, 255);
+    font-size           : 12px;
+    display             : var( --ui-dev-mode );
+}
+
+html,
+body {
+	background          : var( --body-bg-color );
+	color               : var( --body-text-color);
+    font                : var( --body-font );
+    margin              : 0;
+    padding             : 0;
+
+    overflow-x          : hidden;
+    text-rendering      : optimizeLegibility;
+    transition-property : font-size;
+    transition-duration : 0.5s, 0.5s;
+    transition-timing-function: linear, ease-in;
+}
+
+/* -------------------- -------------------- HTML Elements */
+/* order: link, visited, hover, focus, active.*/
+
+
+
+a:link,
+a:visited {
+    background          : var( --link-bg-color );
+    border              : var( --link-border );
+    /*box-shadow          : inset 0 -4px 0 var( --link-bg-color );*/
+	color               : var( --link-color );
+    padding             : var( --ui-space-2 );
+    text-decoration-line : var( --link-deco );
+    text-decoration-color: currentColor;
+    transition          : all 0.5s ease;
+}
+a.btn {
+    text-decoration-line : none;
+}
+a:not(.btn):hover{
+    background-color    : var( --link-bg-hover );
+	color               : var( --link-hover );
+
+}
+a:focus {
+    background-color    : var( --link-bg-focus );
+    color               : var( --link-focus );
+}
+a:active {
+    background-color    : var( --link-bg-active );
+    color               : var( --link-active );
+ }
+
+/*.side-help a,
+main a{
+    display: block;
+    color: var( --link-border );
+    text-decoration: none;
+    position: relative;
+}
+.side-help a::after,
+main a::after{
+    content: "";
+    background: var( --link-bg-hover );
+    mix-blend-mode: exclusion;
+    width: calc(100% + 20px);
+    height: 0;
+    position: absolute;
+    bottom: -4px;
+    left: -10px;
+    transition: all .3s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+.side-help a:hover::after,
+main a:hover::after{
+    height: calc(100% + 8px)
+}*/
+
+/* -------------------- -------------------- Admin Action
+   Admin link for block management */
+a.admin:hover:after {
+    content             : "🖉"; /* "🛠";  "⬢" */
+    padding-left        : 1em;
+}
+
+h1 {font-size           : 2.5rem; /* 40px */ }
+h2 {font-size           : 2rem; /* 32px */ }
+h3 {font-size           : 24px }
+h4 {font-size           : 18px }
+h1, h2, h3, h4 {
+    margin              : var( --ui-space-5) 0;
+    font-weight         : lighter;
+}
+h1 > a:link, h2 > a:link, h3 > a:link, h4 > a:link {
+    text-decoration-line : none;
+    /*text-decoration-color: currentColor;*/
+}
+
+fieldset {
+    background      : var( --bg-linear-145 );
+    border          : var( --border );
+    border-radius   : var( --border-radius );
+    box-shadow      : none;
+    display         : block;
+    margin-inline   : 2px;
+    margin 			: 2em auto;
+    min-inline-size : min-content;
+    padding-block   : 0.35em 0.625em;
+    padding-inline  : 0.75em;
+}
+
+fieldset > ul {
+    list-style: none;
+    margin:0;
+    padding:1em;
+}
+
+fieldset legend {
+    background-color    : var( --color-80)/0.5;
+    padding             : var( --ui-space-2) var( --ui-space-6);
+    border              : var( --border );
+    color               : var( --link-color);
+}
+
+hr {
+    background-image    : linear-gradient(90deg, transparent, var( --color-80), transparent);
+    border              : 0;
+    border-top          : var( --border);
+    height              : 5px;
+    margin              : 2.5em 0;
+}
+
+img {
+    border              : 0;
+    min-width           : 0;
+    max-width           : 100%;
+}
+
+mark{
+    background          : #face74;
+    color               : #000
+}
+
+p { 
+    margin              : 0 0 var( --ui-space-4); /* paragraph margin-bottom 10px */
+} 
+
+pre,code,kbd {
+    /* word-break: break-all; /* webkit */
+    word-wrap           : break-word;
+    white-space         : pre;
+    white-space         : -moz-pre-wrap; /* fennec */
+    white-space         : pre-wrap;
+    white-space         : pre\9; /* IE7+ */
+    word-break          : keep-all;
+}
+code {
+    background: var( --color-80 );
+    font-size : .75em; /* 12px */
+    /* 14px */
+    /*font-size : .875em; */
+    padding: var( --ui-space-2 )
+}
+/* Legacy XOOPS Code & Quote */
+.xoopsCode {
+    background          : var( --color-80);
+    border              : var( --border);
+    border-radius       : var( --border-radius);
+    font-family         : var( --font-monospace );
+    font-size           : 13px;
+    margin              : var( --ui-space-4);
+    margin-bottom       : 0;
+    padding             : var( --ui-space-4);
+}
+.xoopsCode pre{
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -pre-wrap;     /* Opera 4-6 */
+    white-space: -o-pre-wrap;   /* Opera 7 */
+    white-space: pre-wrap;      /* CSS3 */
+    word-wrap: break-word;      /* IE 5.5+ */
+}
+.xoopsQuote {
+    margin : var(--ui-space-4)
+}
+blockquote {
+    background-color    : var( --color-80);
+    border              : var( --border);
+    border-radius       : var( --border-radius);
+    padding             : var( --ui-space-4);
+}
+
+/* -------------------- -------------------- CSS Pattern */
+.bg-pat-grid {
+    background-image    : linear-gradient(rgba(119, 142, 163, 0.3) 2px,transparent 2px),
+                        linear-gradient(90deg, rgb(119, 142, 163, 0.3) 2px, transparent 2px),
+                        linear-gradient(rgba(119, 142, 163, 0.3) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(119, 142, 163, 0.3) 1px, transparent 1px) 80px 20px -2px -1px;
+    background-size     : 80px 80px, 80px 80px, 
+                        20px 20px, 20px 20px;
+    background-position : -2px -2px, -2px -2px, 
+                        -1px -1px, -1px -1px;
+    }
+    
+.bg-pat-dots-lg {
+    background-image    : radial-gradient(currentColor 1.5px, transparent 1.5px);
+    background-size     : calc(10 * 1.5px) calc(10 * 1.5px);
+}
+
+.bg-pat-dots-md {
+    background-image    : radial-gradient(currentColor 1px, transparent 1px);
+    background-size     : calc(10 * 1px) calc(10 * 1px);
+}
+
+

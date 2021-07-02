@@ -1,0 +1,270 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<nav class="ui-navbar-wrap ui-navbar-nav">
+
+    <ul class="ui-navbar-menu">
+
+        <{if $xoops_isuser}>
+        <li class="ui-navbar-menu-item has-children"><a href="#"><{$lang_title_myphoto}> <span class="ui-navbar-dropdown-icon"></span></a>
+
+            <ul class="ui-navbar-menu-sub">
+
+            <li class="ui-navbar-menu-item">
+            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/myphoto/">
+            <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=myphoto">
+            <{/if}>
+            <{$lang_title_myphoto}></a>
+            </li>
+
+            <{* /////// -------------------- ADMIN-ACTIONS *}>
+            <{if $is_module_admin}>
+                <li class="ui-navbar-menu-item">
+                <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/admin/index.php">
+                    <img class="svg settings" src="<{$xoops_url}>/images/icons/settings.svg"> <{$lang_goto_admin}></a></li>
+
+                <li class="ui-navbar-menu-item">
+                <a href="http://xoopscube.test/stage/html/modules/webphoto/admin/index.php?fct=catmanager&disp=new">
+                    <img class="svg folder-plus" src="<{$xoops_url}>/images/icons/folder-plus.svg"> New Category</a></li>
+
+                <li class="ui-navbar-menu-item">
+                <a href="http://xoopscube.test/stage/html/modules/webphoto/admin/index.php?fct=catmanager&disp=new&cat_id=1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M7 15l4.5-6l3.5 4.5l2.5-3L21 15m1-11h-8l-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2M2 6H0v14a2 2 0 0 0 2 2h18v-2H2V6z"/>
+                    </svg>new sub category</a></li>
+
+                <li class="ui-navbar-menu-item">
+                <a href="http://xoopscube.test/stage/html/modules/webphoto/admin/index.php?fct=item_manager&op=submit_form&cat_id=1">new category item</a></li>
+
+                <li class="ui-navbar-menu-item">
+                <a href="http://xoopscube.test/stage/html/modules/webphoto/admin/index.php?fct=groupperm">
+                    <img class="svg lock" src="<{$xoops_url}>/images/icons/lock.svg"> Permissions</a></li>
+
+                <li class="ui-navbar-menu-item">
+                <a href="http://xoopscube.test/stage/html/modules/webphoto/admin/index.php?fct=file_table_manage&op=form">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9.09c-.06-.33-.09-.66-.09-1c0-.68.12-1.36.35-2H5l3.5-4.5l2.5 3l3.5-4.5l2.23 2.97c.97-.63 2.11-.97 3.27-.97c.34 0 .67.03 1 .09V5a2 2 0 0 0-2-2H5m14 13v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2z"/>
+                    </svg>
+                    add media</a></li>
+            <{/if}>
+
+            </ul>
+
+        </li>
+        <{/if}>
+
+        <{* -- 1st level -- *}>
+        <li class="ui-navbar-menu-item has-children"><a href="#">Filtre <span class="ui-navbar-dropdown-icon"></span></a>
+
+
+            <ul class="ui-navbar-menu-sub">
+
+                <li class="ui-navbar-menu-item has-children">
+                    <a href="#"><img class="svg tree" src="<{$xoops_url}>/images/icons/tree.svg">List<span class="ui-navbar-dropdown-icon"></span></a>
+                    <{* -- 2nd level -- *}>
+                    <ul class="ui-navbar-menu-sub">
+
+                        <li class="ui-navbar-menu-item">
+                            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/category/">
+                            <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=category">
+                            <{/if}>
+                            <{$lang_title_category_list}></a></li>
+
+                        <li class="ui-navbar-menu-item">
+                            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/tag/">
+                            <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=tag">
+                            <{/if}>
+                            <{$lang_title_tag_list}></a></li>
+
+                        <li class="ui-navbar-menu-item">
+                            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/user/">
+                            <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=user">
+                            <{/if}>
+                            <{$lang_title_user_list}></a></li>
+
+                        <li class="ui-navbar-menu-item">
+                            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/date/">
+                            <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=date">
+                            <{/if}>
+                            <{$lang_title_date_list}></a></li>
+
+                        <li class="ui-navbar-menu-item">
+                            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/place/">
+                            <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=place">
+                            <{/if}>
+                            <{$lang_title_place_list}></a></li>
+
+                    </ul>
+                </li>
+
+                <li class="ui-navbar-menu-item">
+                <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/latest/">
+                    <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=latest">
+                <{/if}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <path d="M13 13h-2V7h2m0 10h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2z" fill="currentColor"/>
+                </svg> <{$lang_title_latest}></a></li>
+
+                <li class="ui-navbar-menu-item">
+                <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/popular/">
+                    <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=popular">
+                <{/if}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/>
+                </svg> <{$lang_title_popular}></a></li>
+
+                <{if $show_rateview}>
+                <li class="ui-navbar-menu-item">
+                <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/highrate/">
+                    <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=highrate">
+                <{/if}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M18 4l2 3h-3l-2-3h-2l2 3h-3l-2-3H8l2 3H7L5 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4m-6.75 11.25L10 18l-1.25-2.75L6 14l2.75-1.25L10 10l1.25 2.75L14 14l-2.75 1.25m5.69-3.31L16 14l-.94-2.06L13 11l2.06-.94L16 8l.94 2.06L19 11l-2.06.94z"/>
+                </svg> <{$lang_title_highrate}></a>
+                </li>
+                <{/if}>
+
+                <li class="ui-navbar-menu-item">
+                <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/random/">
+                    <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=random">
+                <{/if}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M2 2h14v14H2V2m20 6v14H8v-4h2v2h10V10h-2V8h4z"/>
+                </svg> <{$lang_title_random}></a></li>
+
+            </ul>
+
+        </li>
+        <{* -- 2nd line -- *}>
+        <li class="ui-navbar-menu-item has-children"><a href="#">Media<span class="ui-navbar-dropdown-icon"></span></a>
+
+            <ul class="ui-navbar-menu-sub">
+
+            <li class="ui-navbar-menu-item">
+            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/picture/">
+                <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=picture">
+            <{/if}>
+            <{$lang_title_picture}></a></li>
+
+            <li class="ui-navbar-menu-item">
+            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/video/">
+                <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=video">
+            <{/if}>
+            <{$lang_title_video}></a></li>
+
+            <li class="ui-navbar-menu-item">
+            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/audio/">
+                <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=audio">
+            <{/if}>
+            <{$lang_title_audio}></a></li>
+
+            <li class="ui-navbar-menu-item">
+            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/office/">
+                <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=office">
+            <{/if}>
+            <{$lang_title_office}></a></li>
+
+            </ul>
+        </li>
+        <{* -- 3th line -- *}>
+
+        <{if $show_menu_map | $show_menu_timeline | $show_menu_mail || $show_menu_file}>
+        <li class="ui-navbar-menu-item has-children"><a href="#">3th line <span class="ui-navbar-dropdown-icon"></span></a>
+
+            <ul class="ui-navbar-menu-sub">
+                <{if $show_menu_map}>
+                <li class="ui-navbar-menu-item">
+
+                    <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/map/">
+                        <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=map">
+                    <{/if}>
+                    <{$lang_title_map}>
+                    </a>
+                </li>
+                <{/if}>
+
+                <{if $show_menu_timeline}>
+                <li class="ui-navbar-menu-item">
+                <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/timeline/">
+                    <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=timeline">
+                <{/if}>
+                    <{$lang_title_timeline}>
+                    </a>
+                </li>
+                <{/if}>
+
+
+                <{if $show_menu_mail}>
+                <li class="ui-navbar-menu-item">
+                <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=mail_register">
+                    <{$lang_title_mail_register}>
+                </a>
+                </li>
+
+                <li class="ui-navbar-menu-item">
+                <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=mail_retrieve">
+                    <{$lang_title_mail_retrieve}>
+                </a>
+                </li>
+                <{/if}>
+            </ul>
+
+        </li>
+        <{/if}>
+
+        <li class="ui-navbar-menu-item has-children" title="<{$lang_title_help}>">
+            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/help/">
+            <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=help">
+            <{/if}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M15.07 11.25l-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2a2 2 0 0 0-2 2H8a4 4 0 0 1 4-4a4 4 0 0 1 4 4a3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10c0-5.53-4.5-10-10-10z"/>
+            </svg></a>
+
+            <ul class="ui-navbar-menu-sub">
+                <li class="ui-navbar-menu-item"><a href="">s-Lorem</a></li>
+                <li class="ui-navbar-menu-item"><a href="">s-Nisi</a></li>
+                <li class="ui-navbar-menu-item"><a href="">s-Tenetur</a></li>
+                <li class="ui-navbar-menu-item"><a href="">s-Ullam</a></li>
+                <li class="ui-navbar-menu-item"><a href="">s-Quidem</a></li>
+            </ul>
+
+        </li>
+
+
+        <{if $show_photo_list}>
+        <li class="ui-navbar-menu-item">
+            <!--ref="javascript:webphoto_box_visible_flip('webphoto_box_photo', 0)" -->
+            <a href="#" id="list" title="<{$lang_viewtype_list}>">
+            <svg class="i-list" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <path d="M9 5v4h12V5M9 19h12v-4H9m0-1h12v-4H9M4 9h4V5H4m0 14h4v-4H4m0-1h4v-4H4v4z" fill="currentColor"/>
+            </svg>
+            </a>
+        </li>
+        <li class="ui-navbar-menu-item">
+            <!-- href="javascript:webphoto_box_visible_flip('webphoto_box_photo', 1)" -->
+            <a href="#" id="grid" title="<{$lang_viewtype_table}>">
+            <svg class="i-grid" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <path d="M16 5v6h5V5m-11 6h5V5h-5m6 13h5v-6h-5m-6 6h5v-6h-5m-6 6h5v-6H4m0-1h5V5H4v6z" fill="currentColor"/></svg>
+            </a>
+        </li>
+        <{/if}>
+
+
+        <{* ------- search form *}>
+        <{if $show_search }>
+        <li class="ui-navbar-menu-item">
+            <{include file="db:`$mydirname`_inc_search.html"}>
+        </li>
+        <{/if}>
+
+    </ul>
+
+</nav>
+
+
+<{* --- 5th line --- *}>
+<div class="webphoto_page_menu_line">
+    <{$lang_thereare}>
+</div>
+
+

@@ -1,0 +1,12 @@
+<form action="<{$xoops_url}>/search.php" method="get">
+    <div class="block-search">
+        <{xoops_input type=text name=query size=14}>
+            <{xoops_input type=hidden name=andor value=AND}>
+            <{xoops_input type=hidden name=action value=results}>
+        <button type="submit" name="submit" title="<{$smarty.const._MB_LEGACY_SEARCH}>">
+            <img class="svg i-search" src="<{$xoops_url}>/images/icons/search.svg">
+        </button>
+<!--            <a href="<{$xoops_url}>/search.php"><{$smarty.const._MB_LEGACY_ADVS}></a>-->
+    </div>
+</form>
+

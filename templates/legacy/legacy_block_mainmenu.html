@@ -1,0 +1,33 @@
+<ul class="ui-navbar-menu-sub">
+<{foreach item=module from=$block.modules}>
+
+<{* First, count the number of sublinks for the module
+    if the module doesn't have sublinks display menu-item *}>
+
+<{if ! $module.sublinks|@count > 0}>
+<li class="ui-navbar-menu-item"><a href="<{$xoops_url}>/modules/<{$module.directory}>/"><{$module.name}></a></li>
+
+<{* Otherwise create a link with "has-children"
+    and add a span with a dropdown icon
+    to display a submenu for the module sublinks *}>
+<{else}>
+<li class="ui-navbar-menu-item has-children"><a href="<{$xoops_url}>/modules/<{$module.directory}>/"><{$module.name}> <span class="ui-navbar-dropdown-icon"></span></a>
+
+    <ul class="ui-navbar-menu-sub">
+        <{foreach item=sublink from=$module.sublinks name=foo}>
+        <li class="ui-navbar-menu-item">
+            <a href="<{$sublink.url}>">
+                <{* Smarty Truncate for Modules sub-links eg: D3Forum and Pico
+                This truncates a variable to a character length, the default is 80.
+                As an optional second parameter, you can specify a string of text to display at the end if the variable was truncated. *}>
+                <{$sublink.name|truncate:32}>
+            </a>
+        </li>
+        <{/foreach}>
+    </ul>
+
+</li>
+<{/if}>
+
+<{/foreach}>
+</ul>

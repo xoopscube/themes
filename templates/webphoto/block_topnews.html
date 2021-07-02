@@ -1,0 +1,16 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<ul>
+    <{foreach item=photo from=$block.photo}>
+    <li>
+        <{if $block.cfg_use_pathinfo }>
+        <a href="<{$xoops_url}>/modules/<{$block.dirname}>/index.php/photo/<{$photo.photo_id}>/">
+            <{else}>
+            <a href="<{$xoops_url}>/modules/<{$block.dirname}>/index.php?fct=photo&amp;p=<{$photo.photo_id}>">
+                <{/if}>
+                <{$photo.title_s}></a>
+            (<{$photo.item_time_update|formatTimestamp:"s"}>)
+    </li>
+    <{/foreach}>
+</ul>

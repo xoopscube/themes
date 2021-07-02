@@ -1,0 +1,99 @@
+/*
+ * XCL 2.3.0 Theme : ui-basic5
+ * Refactoring of Theme Basic5
+ * @version    2.3.0
+ * @date       2021-05-21 (update)
+ * @author     NUno Luciano (aka gigamaster)
+ * @copyright  2005-2021 The XOOPSCube Project
+ * @license    Cube : https://github.com/xoopscube/xcl/blob/master/BSD_license.txt
+ * @link       https://github.com/xoopscube/xcl
+ */
+/* -------------------- -------------------- Table */
+
+table {
+    background          : var( --table-bg-color );
+    border              : var( --table-border );
+    border-radius       : var( --table-border-radius );
+    /*border-collapse     : collapse;*/
+    border-collapse: separate;
+    /*border-spacing      : 0;*/
+    border-spacing      : 0 var( --ui-space-1 ); /* space H/V */
+    box-shadow          : none;
+    /*padding             : var( --ui-space-6 );*/
+    /*margin              : var( --ui-space-6 ) 0;*/
+    width               : 100%;
+}
+
+table caption {
+    background          : var( --table-bg-color );
+    caption-side        : var( --table-caption );
+    padding             : var( --ui-space-6 );
+}
+caption {
+    caption-side:bottom;
+    display: table-caption;
+    text-align: center;
+}
+
+table thead {
+    background          : var( --table-bg-thead );
+}
+
+table tbody {
+    background          : var( --table-bg-tbody );
+}
+
+table tfoot {
+    background          : var( --table-bg-tfoot );
+}
+
+th {
+    border-bottom       : var( --table-border );
+    border-radius       : var( --table-border-radius );
+    padding             : var( --ui-space-2 );
+}
+/*th:first-child,*/
+/*tr:first-child {*/
+/*    border-radius       : var( --table-border-radius ) 0 0 0;*/
+/*}*/
+
+/*th:last-child,*/
+/*tr:last-child {*/
+/*    border-radius       : 0 var( --table-border-radius ) 0 0;*/
+/*}*/
+
+th:only-child,
+tr:only-child {
+    border-radius       : var( --table-border-radius ) var( --table-border-radius ) 0 0;
+}
+
+tr:nth-child(odd) {
+    background-color    : var( --table-bg-tbody );
+}
+
+tr:hover {
+    background-color    : var( --table-bg-hover );
+}
+
+/*th {*/
+/*    padding-top: 12px;*/
+/*    padding-bottom: 12px;*/
+/*    text-align: left;*/
+/*    background-color: #331763;*/
+/*    color: white;*/
+/*}*/
+
+td:first-child,
+th:first-child {
+    border-radius:  var( --table-border-radius ) 0 0  var( --table-border-radius );
+}
+td:last-child,
+th:last-child {
+    border-radius: 0  var( --table-border-radius )  var( --table-border-radius ) 0;
+}
+
+th,
+td {
+    border-bottom       : var( --table-border );
+    padding             : var( --table-padding );
+}

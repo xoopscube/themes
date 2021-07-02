@@ -1,0 +1,8 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<{if $show_page_detail }>
+<{include file="db:`$mydirname`_page_detail.html" }>
+<{else}>
+<{include file="db:`$mydirname`_page_list.html" }>
+<{/if}>

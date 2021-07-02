@@ -1,0 +1,61 @@
+<form action="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php" method="get" class="media_search_form">
+    <input type="hidden" name="fct" value="search">
+    <input type="hidden" name="andor" value="OR">
+    <input type="hidden" name="<{$search_show_ignore}>" value="1">
+    <input type="hidden" name="<{$search_show_candidate}>" value="1">
+    <input type="text" id="media" name="p" size="10" maxlength="191" value="<{$search_query}>">
+    <button type="submit" class="ui-navbar-search" title="<{$lang_sr_search}>">
+        <img class="svg search" src="<{$xoops_url}>/images/icons/search.svg" width="1em" height="1em">
+    </button>
+</form>
+<style>
+    .media_search_form{
+        margin      : 0 1em;
+        overflow    : hidden;
+        padding     :0;
+        vertical-align: middle;
+        width       : 320px;
+        white-space : nowrap;
+    }
+    .media_search_form input#media{
+        background  : #2b303b;
+        border      : 1px solid transparent;
+        border-radius: 5px;
+        color       : inherit;
+        font-size   : inherit;
+        float       : left;
+        height      : 1em;
+        padding     : 1em;
+        width       : 100%;
+    }
+    .media_search_form input#media::-webkit-input-placeholder { color: #65737e; }
+    .media_search_form input#media::-moz-placeholder {  /* Firefox 19+ */ color: #65737e; }
+    .media_search_form input#media:-ms-input-placeholder { color: #65737e; }
+    .media_search_form input#media:focus{outline: none;}
+    .media_search_form button.ui-navbar-search{
+        background: #232833;
+        border: 1px solid transparent;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        color: #4f5b66;
+        margin: .45em;
+        opacity: 0;
+        padding: .2em;
+        width: 50px;
+        transition: all .55s ease;
+        -webkit-transition: all .55s ease;
+        -moz-transition: all .55s ease;
+        -ms-transition: all .55s ease;
+        -o-transition: all .55s ease;
+    }
+    .media_search_form:active button.ui-navbar-search,
+    .media_search_form:focus button.ui-navbar-search,
+    .media_search_form:hover button.ui-navbar-search {
+        margin-left: -50px;
+        opacity: 1;
+        outline: none;
+    }
+    .media_search_form:hover button.ui-navbar-search:hover{
+        background:#face74;
+    }
+</style>

@@ -1,0 +1,10 @@
+<div class="block-left b-<{$block.weight}>">
+	<h3>
+		<{if $xoops_isadmin}>
+		<a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockEdit&amp;bid=<{$block.id}>" class="admin"><{$block.title}></a>
+		<{else}>
+		<{if ! $block.title|strstr:"none"}><{$block.title}><{/if}>
+		<{/if}>
+	</h3>
+	<div><{$block.content}></div>
+</div>

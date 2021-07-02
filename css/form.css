@@ -1,0 +1,345 @@
+/*
+ * XCL 2.3.0 Theme : ui-basic5
+ * Refactoring of Theme Basic5
+ * @version    2.3.0
+ * @date       2021-05-21 (update)
+ * @author     NUno Luciano (aka gigamaster)
+ * @copyright  2005-2021 The XOOPSCube Project
+ * @license    Cube : https://github.com/xoopscube/xcl/blob/master/BSD_license.txt
+ * @link       https://github.com/xoopscube/xcl
+ */
+/* -------------------- -------------------- FORM */
+div.collapse{
+    background      : transparent;
+    border-radius   : var( --border-radius );
+	padding 		: 1em 1.5em
+}
+
+input{
+	caret-color     : var( --body-text-color);
+}
+
+a.btn,
+input[type='button'] {
+	background      : inherit;
+	border          : var( --border );
+	border-radius   : var( --border-radius );
+	box-shadow      : none;
+	color           : inherit;
+	display         : block;
+	margin          : 1em .5em;
+	padding         : .5em 1em;
+	transition 		: all 0.2s ease;
+	width           : max-content;
+}
+
+a.btn:hover,
+input[type='button']:hover {
+	background      : var( --link-bg-hover );
+    box-shadow      : none;
+	color           : var( --link-hover );
+}
+
+form {
+	margin          : 0;
+}
+
+
+
+label {
+	background      : var( --bg-liner-145 );
+    vertical-align  : inherit;
+    /* line-height: 2.5em; */
+}
+
+
+button,
+input[type='reset'],
+input[type='submit']{
+    background      : var( --input-bg-color );
+    border          : var( --input-border );
+    border-radius   : var( --input-border-radius );
+    box-shadow      : none;
+    color           : inherit;
+	margin          : var( --input-margin );
+	padding         : var( --input-padding );
+}
+select,
+input[type='email'],
+input[type='number'],
+input[type="number" i],
+input[type='password'],
+input[type='search'],
+input[type='text'] {
+	background      : var( --input-bg-color );
+	border          : var( --input-border );
+	border-radius   : var( --input-border-radius );
+	box-shadow      : var( --input-box-shadow );
+	color           : var( --input-text-color );
+	margin          : var( --input-margin );
+	padding         : var( --input-padding );
+    max-width       : 100%;
+    transition      : 0.4s;
+
+}
+/* Upload file */
+.btn-wrap-upload {
+    display         : inline-block;
+    overflow        : hidden;
+    position        : relative;
+}
+.btn-wrap-upload input[type=file] {
+    font-size       : 100px;
+    left            : 0;
+    opacity         : 0;
+    position        : absolute;
+    top             : 0;
+}
+
+.headerSearchField {
+}
+
+.data {
+	font-style      : italic;
+}
+
+textarea {
+	background      : var( --input-bg-color );
+	border          : var( --input-border );
+	border-radius   : var( --input-border-radius );
+	box-shadow      : var( --input-box-shadow );
+	color           : var( --input-text-color );
+	margin          : var( --input-margin );
+	padding         : var( --input-padding );
+    width           : 100%;
+}
+
+select option {
+	border          : var( --input-border );
+	padding 		: var( --ui-space-2 ) var( --ui-space-5 )!important;;
+}
+
+select option {
+	background      : linear-gradient(145deg, var(--color-90), var(--color-80)), var( --color-90 );
+	/*color: #fff;*/
+}
+select option:hover,
+select option:focus,
+select option:active,
+select option:checked {
+	background      : linear-gradient(145deg, var(--color-70), var(--color-80)), var( --color-90 ) !important;
+}
+
+select option[value="1"] {
+	background      :linear-gradient(145deg, var(--color-80), var(--color-90)), var( --color-80 ) !important;
+    /*color: #fff;*/
+}
+
+select option[value="2"] {
+	background      : linear-gradient(145deg, var(--color-80), var(--color-90)), var( --color-80 ) !important;
+    /*color: #fff;*/
+}
+
+
+button:hover,
+input:hover,
+textarea:hover,
+select:hover,
+select option:hover {
+	border          : var( --input-border-hover ) /* !important;*/
+}
+
+/* -------------------- -------------------- FORM Autocomplete styles  */
+/* Change Autocomplete styles in Chrome*/
+
+input:-internal-autofill-selected {
+	appearance      : menulist-button;
+	background-color: var( --color-80 ) !important;
+	background-image: none !important;
+	color           : -internal-light-dark(black, white) !important;
+}
+input:focus,
+textarea:focus,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+	border          : var(--border) !important;
+	border-radius   : var( --input-border-radius );
+	background-color: var( --input-bg-color  ) !important;
+	-webkit-text-fill-color: var(--input-text-color );
+	-webkit-box-shadow: 0 0 0 1000px var( --color-80 ) inset;
+	transition      : background-color 5000s ease-in-out 1s;
+	outline         : #face74 !important;
+}
+
+ @-webkit-keyframes autofill {
+	 0%,100% {
+        color       : #152728;
+        background  : transparent;
+    }
+}
+
+input:-webkit-autofill {
+	-webkit-animation-delay: 2s; /* Safari support - any positive time runs instantly */
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+
+/* -------------------- -------------------- FORM CHECKBOX & RADIO  */
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+
+	input[type='checkbox'],
+	input[type='radio'] {
+
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		background: rgb(147, 147, 147);
+		border: 1px solid rgba(127, 122, 127, 0.7);
+		border-radius : var(--input-border-radius);
+		/*box-shadow: none;*/
+		cursor: pointer;
+		height: 20px;
+		margin: 1em;
+		outline: none;
+		padding: 0;
+		position: relative;
+		transition: background .3s ease, border-color .3s ease;
+        vertical-align: -1em;
+	}
+
+	input[type='checkbox']:after,
+	input[type='radio']:after {
+		content: '';
+		display: block;
+		left: 0;
+		position: absolute;
+		top: 0;
+		transition: opacity .2s ease, -webkit-transform .3s ease, -webkit-filter .3s ease;
+		transition: transform .3s ease, opacity .2s ease, filter .3s ease;
+		transition: transform .3s ease, opacity .2s ease, filter .3s ease, -webkit-transform .3s ease, -webkit-filter .3s ease;
+	}
+
+	input[type='checkbox']:checked,
+	input[type='radio']:checked {
+		animation: pulse 1s;
+		background: rgb(193, 193, 193);
+		border: 1px solid rgb(127, 127, 127);
+	}
+
+	input[type='checkbox']:checked:after,
+	input[type='radio']:checked:after {
+		filter: drop-shadow(0 1px 2px rgba(127, 127, 127, 0.25));
+		transition: opacity 0.3s ease, -webkit-filter 0.3s ease, -webkit-transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+		transition: opacity 0.3s ease, filter 0.3s ease, transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+		transition: opacity 0.3s ease, filter 0.3s ease, transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2),
+		-webkit-filter 0.3s ease, -webkit-transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+	}
+
+	input[type='checkbox']:disabled,
+	input[type='radio']:disabled {
+		background: rgb(147, 147, 147);
+		cursor: not-allowed;
+		opacity: .9;
+	}
+
+	input[type='checkbox']:disabled:checked,
+	input[type='radio']:disabled:checked {
+		background: rgb(147, 147, 147);
+		border: 1px solid rgb(127, 127, 127);
+	}
+
+	input[type='checkbox']:hover:not(:checked):not(:disabled),
+	input[type='radio']:hover:not(:checked):not(:disabled) {
+		border: 1px solid red;
+	}
+
+	input[type='checkbox']:not(.switch),
+	input[type='radio']:not(.switch) {
+		width: 20px;
+	}
+
+	input[type='checkbox']:not(.switch):after,
+	input[type='radio']:not(.switch):after {
+		opacity: 0;
+	}
+
+	input[type='checkbox']:not(.switch):checked:after,
+	input[type='radio']:not(.switch):checked:after {
+		opacity: 1;
+	}
+
+	input[type='checkbox']:not(.switch) {
+		/*border-radius: 5px;*/
+	}
+
+	input[type='checkbox']:not(.switch):after {
+		border: 2px solid var(--color-20);
+		border-left: 0;
+		border-top: 0;
+		height: 9px;
+		left: 7px;
+		top: 4px;
+		transform: rotate(20deg);
+		width: 5px;
+	}
+
+	input[type='checkbox']:not(.switch):checked:after {
+		transform: rotate(43deg);
+	}
+
+	input[type='checkbox'].switch {
+		border-radius: var(--input-border-radius);
+		width: 38px;
+	}
+
+	input[type='checkbox'].switch:after {
+        background: var(--color-80);
+		border-radius: var(--input-border-radius);
+		height: 18px;
+		left: 1px;
+		top: 0;
+		width: 18px;
+	}
+
+	input[type='checkbox'].switch:checked:after {
+		background: rgba(255, 255, 255, 0.9);
+		transform: translateX(17px);
+        /*box-shadow: 0 0 5px #face74, 0 0 20px #face74;*/
+	}
+
+	input[type='checkbox'].switch:disabled:not(:checked):after {
+		opacity: .6;
+	}
+
+	input[type='radio'] {
+		border-radius: var(--input-border-radius);
+	}
+
+	input[type='radio']:after {
+		background: rgba(255, 255, 255, 0.9);
+		border-radius: var(--input-border-radius);
+		height: 17px;
+		opacity: 0;
+		transform: scale(0.7);
+		width: 17px;
+	}
+
+	input[type='radio']:checked:after {
+		background: green;
+		transform: scale(0.5);
+	}
+
+	@keyframes pulse {
+		from {
+			box-shadow: 0 0 0 0 #face74;
+		}
+	}
+
+}

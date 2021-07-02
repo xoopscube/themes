@@ -1,0 +1,269 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<{if $mod_config.show_breadcrumbs}>
+<{include file="db:eguide_breadcrumbs.html"}>
+<{/if}>
+
+
+<{* ///////———————————————————— PRINT A DOCUMENT FROM DATA TABLE *}>
+
+
+<section name="receipt" layout="row">
+
+    <h3>
+        <a href="event.php?eid=<{$eid}><{if $exid}>&amp;sub=<{$exid}><{/if}>" class="evhead">
+        <img class="" src=""> <{$title}></a>
+    </h3>
+
+    <p
+    <a href="admin.php?eid=<{$eid}>" title="">
+        <img class="svg edit" src="<{$xoops_url}>/images/icons/edit.svg" alt="edit"> <{$smarty.const._EDIT}></a>
+
+    <{if $exid}>
+    <a href="editdate.php?eid=<{$eid}>">
+        <img class="svg date-edit" src="<{$xoops_url}>/images/icons/date-edit.svg" alt="edit"> <{$smarty.const._MD_EDIT_EXTENT}></a>
+    <{/if}>
+    </p>
+
+</section>
+
+
+<!--<div class="evlist">-->
+<{if $extents}>
+<article layout="column" style="border: 1px solid red;">
+
+    <table class="outer">
+        <tr class="head">
+            <th><{$smarty.const._MD_EXTENT_DATE}></th>
+            <th><{$smarty.const._MD_ORDER_COUNT}></th>
+            <th><{$smarty.const._MD_RESERV_PERSONS}></th>
+            <th><{$smarty.const._MD_OPERATION}></th>
+        </tr>
+        <{foreach from=$extents item=ext}>
+        <tr class="<{cycle values="even, odd"}>">
+        <td><a href="receipt.php?eid=<{$eid}>&amp;sub=<{$ext.exid}>"><{$ext.date}></a></td>
+        <td align="right"><{$ext.reserved}></td>
+        <td align="right"><{$ext.persons}></td>
+        <td align="center">
+            <a href="entry.php?eid=<{$eid}>&amp;sub=<{$ext.exid}>"><{$smarty.const._MD_RESERV_REGISTER}></a>
+        </td>
+        </tr>
+        <{/foreach}>
+    </table>
+
+</article>
+
+
+
+    <{else}>
+
+
+
+    <h3><{$smarty.const._MD_RESERV_LIST}></h3>
+
+    <table>
+        <tr>
+            <td>
+                <a class="btn" href="entry.php?eid=<{$eid}><{if $exid}>&amp;sub=<{$exid}><{/if}>">
+                    <{$smarty.const._MD_RESERV_REGISTER}>
+                </a>
+                <br>
+                <a href="receipt.php?op=print&amp;eid=<{$eid}><{if $exid}>&amp;sub=<{$exid}><{/if}>" target="_blank" title="<{$smarty.const._PRINT}>">
+                    <img class="svg print" src="<{$xoops_url}>/images/icons/print.svg" alt="print"><{$smarty.const._PRINT}></a>
+                <{$smarty.const._MD_ORDER_COUNT}> <span class="badge"><{$order_count}></span> <{$reserve_num}>
+            </td>
+            <td align="right"><{$smarty.const._MD_PRINT_DATE}> <{$print_date}></td>
+        </tr>
+    </table>
+
+
+<hr name="Data Table">
+
+
+    <{if $list}>
+    <form action="receipt.php" method="post">
+
+        <table width="100%" class="outer">
+
+
+            <tr class="head">
+
+                <th><{$smarty.const._MD_ORDER_DATE}></th>
+
+                <th><{$smarty.const._MD_STATUS}></th>
+
+                <th>Options</th>
+
+                <th><{$smarty.const._MD_OPERATION}></th>
+
+            </tr>
+
+
+            <{foreach from=$list item=order}>
+            <{*
+                    Order Status @array
+                    0 => "pending",
+                    1 => "reserved",
+                    2 => "refused"
+            *}>
+            <{if $order.stat && $order.status eq '0'}>
+            <{assign var="status" value="border-left:5px solid orange;"}>
+            <{elseif $order.status eq '1'}>
+            <{assign var="status" value="border-left:5px solid green;"}>
+            <{else}>
+            <{assign var="status" value="border-left:5px solid oranged;"}>
+            <{/if}>
+
+            <tr>
+
+                <td><{$order.date}></td>
+
+
+
+                <td style="<{$status}>"><{$order.stat}> <{$rv_stats}><br>
+                    <{if $order.uname}>
+                    <a href="<{$xoops_url}>/userinfo.php?uid=<{$order.uid}>"><{$order.uname}></a>
+                    <{/if}>
+
+                    <{if $order.email}>
+                    <a href="mailto:<{$order.email}>"><{$order.email}></a>
+                    <{/if}>
+
+                </td>
+
+
+                <td>
+
+                <div layout="row">
+
+                    <div layout="column" self="size-1of2">
+
+                        <{foreach from=$labels item=lab}>
+                        <div><{$lab}></div>
+                        <{/foreach}>
+                        </div>
+
+                        <div layout="column" self="size-1of2">
+                        <{foreach from=$order.add item=value}>
+                        <div self="size-1of2"><{$value}></div>
+                        <{/foreach}>
+
+                    </div>
+
+                </div>
+
+
+
+                    <br>
+                </td>
+
+
+
+            <td>
+                <a href="receipt.php?rvid=<{$order.rvid}>" title="<{$smarty.const._MD_DETAIL}>">
+                    <img class="svg date-view" src="<{$xoops_url}>/images/icons/view.svg" alt="view">
+                    <{$smarty.const._MD_DETAIL}></a>
+                <a href="receipt.php?op=edit&rvid=<{$order.rvid}>" title="<{$smarty.const._EDIT}>">
+                    <img class="svg edit" src="<{$xoops_url}>/images/icons/edit.svg" alt="edit">
+                    <{$smarty.const._EDIT}></a>
+                <a href="reserv.php?op=cancel&rvid=<{$order.rvid}>" title="<{$smarty.const._DELETE}>">
+                    <img class="svg delete" src="<{$xoops_url}>/images/icons/delete.svg" alt="delete">
+                    <{$smarty.const._DELETE}></a>
+
+                    <{if $order.confirm}>
+                    <input type="checkbox" name="act[]" value="<{$order.rvid}>" checked>
+                    <{/if}>
+            </td>
+
+            <tr>
+
+            <{/foreach}>
+
+        </table>
+
+
+        <{if $confirm}>
+
+        <input type='hidden' name='op' value='active'>
+
+        <input type='hidden' name='eid' value='<{$eid}>'>
+
+        <input type='hidden' name='sub' value='<{$exid}>'>
+
+        <hr>
+
+        <table>
+            <tr>
+                <td><select name='yesno'>
+                    <{foreach from=$operations key=value item=label}>
+                    <option value="<{$value}>"><{$label}></option>
+                    <{/foreach}>
+                </select></td>
+                <td>
+                    <button type="submit" value="<{$smarty.const._SUBMIT}>">
+                        <img class="svg check" src="<{$xoops_url}>/images/icons/check.svg" alt="check"> <{$smarty.const._SUBMIT}>
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+        <p><b><{$smarty.const._MD_RESERV_MSG_H}></b></p>
+        <textarea name="msg" cols="60" rows="10"><{$reserv_msg}></textarea>
+        <{/if}>
+
+<p>
+    <select data-menu>
+        <option selected>English</option>
+        <option value="receipt.php?op=csv&amp;eid=<{$eid}><{if $exid}>&amp;sub=<{$exid}><{/if}>"> <img class="svg file" src="<{$xoops_url}>/images/icons/file.svg" alt="file"> <{$smarty.const._MD_CSV_OUT}></option>
+        <option>Española</option>
+        <option>Français</option>
+        <option>Italiana</option>
+    </select>
+
+</p>
+    <p align='right'>
+        <a href="receipt.php?op=csv&amp;eid=<{$eid}><{if $exid}>&amp;sub=<{$exid}><{/if}>" title="<{$smarty.const._MD_CSV_OUT}>">
+            <img class="svg file" src="<{$xoops_url}>/images/icons/file.svg" alt="file">
+            <{$smarty.const._MD_CSV_OUT}></a>
+        <a href="export.php?eid=<{$eid}><{if $exid}>&amp;sub=<{$exid}><{/if}>" title="<{$smarty.const._MD_EXPORT_OUT}>">
+            <img class="svg file-excelt" src="<{$xoops_url}>/images/icons/file-excel.svg" alt="file-excel">
+            <{$smarty.const._MD_EXPORT_OUT}></a>
+        <a href="sendinfo.php?eid=<{$eid}><{if $exid}>&amp;sub=<{$exid}><{/if}>" title="<{$smarty.const._MD_INFO_MAIL}>">
+            <img class="svg email" src="<{$xoops_url}>/images/icons/email.svg" alt="email">
+            <{$smarty.const._MD_INFO_MAIL}></a>
+        <a href="receipt.php?op=print&amp;eid=<{$eid}><{if $exid}>&amp;sub=<{$exid}><{/if}>" title="<{$smarty.const._PRINT}>">
+            <img class="svg print" src="<{$xoops_url}>/images/icons/print.svg" alt="print"><{$smarty.const._PRINT}></a>
+    </p>
+
+    <{else}>
+
+    <p class='evnote'><{$smarty.const._MD_NODATA}></p>
+
+    <{/if}>
+
+
+
+    <{* ///////———————————————————— SUMMARY *}>
+
+    <{if $citem}>
+
+    <h3><{$smarty.const._MD_SUMMARY}></h3>
+
+    <table class="event-table-summary">
+        <tr class="head">
+            <th><{$smarty.const._MD_SUM_ITEM}></th>
+            <th><{$smarty.const._MD_SUM}></th>
+        </tr>
+        <{foreach from=$citem key=label item=count}>
+        <tr class="<{cycle values="even, odd"}>">
+        <td><{$label}></td>
+        <td align='right'><{$count}></td>
+        </tr>
+        <{/foreach}>
+    </table>
+
+    <{/if}>
+
+
+<{/if}>

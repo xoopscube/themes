@@ -1,0 +1,114 @@
+<footer layout="rows top-center sm-column" self="size-xlarge m-auto">
+
+    <article layout="row" class="footer-nav">
+        <{if $xoops_dirname == ""}>
+        <h3><{$xoops_sitename}> <{$xoops_slogan}></h3>
+        <{else}>
+        <{* Active module breadcrumb *}>
+        <{include file="$xoops_theme/component/theme_breadcrumb.html"}>
+        <{/if}>
+    </article>
+
+        <div self="size-1of3 sm-full">
+            <ul class="footer-nav-menu">
+            <{if !$xoops_isuser}>
+                <li><a href="<{$xoops_url}>/user.php"><{$smarty.const._BASIC_LOGIN_FORM}></a>
+                <{else}>
+                <li><a href="<{$xoops_url}>/user.php"><{$smarty.const._BASIC_USER_ACCOUNT}></a>
+                <li><a href="<{$xoops_url}>/edituser.php"><{$smarty.const._BASIC_EDIT_ACCOUNT}></a>
+                <li><a href="<{$xoops_url}>/notifications.php"><{$smarty.const._BASIC_NOTIFICATION}></a>
+                <li><a href="<{$xoops_url}>/viewpmsg.php" <{if $pm.new_messages}>class="new1"<{/if}>><{$smarty.const._BASIC_VIEWPMSG}>(<{$pm.new_messages}>)</a>
+                <li><a href="<{$xoops_url}>/user.php?op=logout"><{$smarty.const._BASIC_LOGOUT}></a>
+                <{if $xoops_isadmin}>
+                <li><a href="<{$xoops_url}>/admin.php"><{$smarty.const._BASIC_ADMIN_PAGE}></a>
+                <{/if}>
+            <{/if}>
+            </ul>
+        </div>
+
+        <div self="size-1of3 sm-full">
+            <ul class="footer-nav-menu">
+            <{if $menu0.dirname == $xoops_dirname}>
+                <li class="module_active"><a href="<{$xoops_url}>/"><{$smarty.const._BASIC_HOME_NAME}></a></li>
+            <{else}>
+                <li class="menu_c<{cycle values="1,2,3,4,5,6,7"}>"><a href="<{$xoops_url}>/"><{$smarty.const._BASIC_HOME_NAME}></a></li>
+            <{/if}>
+            <{foreach from=$theme_menus item="menu0"}>
+                <{if $menu0.dirname == $xoops_dirname}>
+                    <{assign var="theme_menus1" value=$menu0.sub}>
+                    <{assign var="menu0_class" value="s"}>
+                <{else}>
+                    <{assign var="menu0_class" value=""}>
+                <{/if}>
+                <li <{if $menu0.dirname == $xoops_dirname}>class="module_active"<{else}>class="menu_c<{cycle values="1,2,3,4,5,6,7"}>"<{/if}>>
+                <a href="<{$xoops_url}>/modules/<{$menu0.dirname}>/<{$menu0.url}>"><{$menu0.name}></a>
+                </li>
+            <{/foreach}>
+            </ul>
+        </div>
+
+        <div self="size-1of3 sm-full">
+            <{* -- Submenu *}>
+            <div id="menu_s">
+            <{if $theme_menus1}>
+                <ul class="footer-nav-menu">
+                <{foreach from=$theme_menus1 item="menu1"}>
+                <{if stristr( $smarty.server.REQUEST_URI , $menu1.url )}>
+                    <{assign var="theme_menus2" value=$menu1.sub}>
+                    <{assign var="menu1_class" value="selected"}>
+                <{else}>
+                    <{assign var="menu1_class" value=""}>
+                <{/if}>
+                <li class="menu_level1 <{$menu1_class}>"><a href="<{$xoops_url}>/modules/<{$menu1.dirname}>/<{$menu1.url}>"><{$menu1.name|truncate:"40"}></a></li>
+                <{/foreach}>
+                </ul>
+            <{/if}>
+            </div><{* -- End Submenu *}>
+
+        </div>
+
+
+
+</footer>
+
+<{* ---------- CREDITS - COPYRIGHT *}>
+<div layout="row center-center" class="foot-credits">
+    <p><small><a href="https://github.com/gigamaster" target="_blank">Theme Design by Gigamaster</a> |
+        <{$xoops_footer}></small></p>
+</div>
+
+<{* ---------- x-utils UI-Nav-Top *}>
+<div self="right sm-full">
+    <a id="ui-nav-top" aria-label="Scroll to Top"></a>
+</div>
+
+<{* ---------- Include Vendor Scripts *}>
+<!--<script defer src="<{$xoops_imageurl}>js/plugins.js"></script>-->
+<{* ---------- XCL UTILS *}>
+<script src="<{$xoops_url}>/common/js/xcl-utils.js"></script>
+<script src="<{$xoops_url}>/common/js/ui-render-svg.js"></script>
+<script src="<{$xoops_url}>/common/js/prismjs/prism.js"></script>
+
+<script>
+    $(document).ready(function ( event ) {
+        $('a.theme-css').click(function(){
+            event.preventDefault();
+            $('#main-content').load( './help.html' );
+        });
+        //remove this });
+        $('a.theme-html').click(function(){
+            // event.preventDefault();
+            $('#main-content').load( '../component/help.html' );
+        });
+
+        $('a.theme-layout').click(function(){
+            // event.preventDefault();
+            $('#main-content').load( '<{$xoops_url}>/themes/<{$xoops_theme}>/component/help.html' );
+        });
+        $('a.theme-layout').click(function(){
+            // event.preventDefault();
+            $('#main-content').load( '<{$xoops_url}>/themes/<{$xoops_theme}>/component/help.html' );
+        });
+    });
+</script>
+

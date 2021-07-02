@@ -1,0 +1,237 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<{* /////// -------------------- 1ST LINE OF INFORMATION *}>
+
+
+<{* /////// -------------------- ANCHOR *}>
+<a id="webphoto_list_id_<{$webphoto_list_num}>" name="<{$photo.photo_id}>"></a>
+
+
+<{* /////// -------------------- PHOTO SUBJECT *}>
+<{if $show_photo_title_link}>
+<{if $cfg_use_pathinfo && $search_merged_urlencode}>
+<a id="webphoto_list_link_<{$webphoto_list_num}>" href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/photo/<{$photo.photo_id}>/keywords=<{$search_merged_urlencode}>/">
+    <{elseif $cfg_use_pathinfo}>
+    <a id="webphoto_list_link_<{$webphoto_list_num}>" href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/photo/<{$photo.photo_id}>/">
+        <{elseif $search_merged_urlencode}>
+        <a id="webphoto_list_link_<{$webphoto_list_num}>" href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=photo&amp;p=<{$photo.photo_id}>&amp;keywords=<{$search_merged_urlencode}>">
+            <{else}>
+            <a id="webphoto_list_link_<{$webphoto_list_num}>" href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=photo&amp;p=<{$photo.photo_id}>">
+        <{/if}>
+<{/if}>
+
+<h3><{$photo.title_s}></h3>
+
+<{if $show_photo_title_link}></a><{/if}>
+
+
+    <{* /////// -------------------- SUBMITTER-USER *}>
+    <{if $photo.uid > 0}>
+        <{if $show_photo_uid_link}><a href="<{$xoops_url}>/userinfo.php?uid=<{$photo.uid}>"><{/if}>
+<!--    <img class="svg user" src="<{$xoops_url}>/images/icons/user.svg" width="1em" height="1em" alt="<{$lang_submitter}>" title="<{$lang_submitter}>"/>-->
+        <img src="<{$photo.uname_s|xoops_user_avatarize}>" width="24" class="avatar" loading="lazy"> <{$photo.uname_s}>
+        <{if !$show_photo_user_icon}> <{$photo.uname_s}> <{/if}>
+        <{if $show_photo_uid_link}></a><{/if}>
+
+
+    <{* ------- GUEST *}>
+    <{else}>
+    <img class="svg user" src="<{$xoops_url}>/images/icons/user.svg" width="1em" height="1em" alt="<{$lang_submitter}>" title="<{$lang_submitter}>"/>
+    <{$photo.uname_s}>
+    <{/if}>
+
+
+
+    <{* /////// -------------------- LAST UPDATED *}>
+    <img class="svg date-time" src="<{$xoops_url}>/images/icons/date-time.svg" width="1em" height="1em" alt="<{$lang_icon_lastupdate}>" title="<{$lang_icon_lastupdate}>"/>:
+    <{$photo.time_update_m}>
+
+    <{* /////// -------------------- PLACE *}>
+    <{if $photo.place_s !=''}>
+    <{if $show_photo_place_link}>
+    <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/place/<{$photo.place_urlencode}>/">
+    <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=place&amp;p=<{$photo.place_urlencode}>">
+    <{/if}>
+    <{/if}>
+    <img class="svg map-place" src="<{$xoops_url}>/images/icons/map-place.svg" width="1em" height="1em" alt="<{$lang_photo_place}>" title="<{$lang_photo_place}>"/>
+    <{$photo.place_s}>
+    <{if $show_photo_place_link}></a><{/if}>
+    <{/if}>
+    <br>
+
+
+    <{* /////// -------------------- EDIT ICON *}>
+    <{if $photo.can_edit}>
+    <{if $show_photo_edit_link}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=edit&amp;photo_id=<{$photo.photo_id}>"><{/if}>
+    <img class="svg file-edit" src="<{$xoops_url}>/images/icons/file-edit.svg" width="1em" height="1em" alt="<{$lang_title_edit}>" title="<{$lang_title_edit}>">
+    <{if $show_photo_edit_link}></a><{/if}>
+    <{/if}>
+
+
+
+    <{* /////// -------------------- DATE *}>
+    <{if $photo.datetime_disp !=''}>
+    <{if $show_photo_date_link}>
+    <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/date/<{$photo.datetime_urlencode}>/">
+    <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=date&amp;p=<{$photo.datetime_urlencode}>">
+    <{/if}>
+    <{/if}>
+    <img class="svg date-time" src="<{$xoops_url}>/images/icons/date-time.svg" width="1em" height="1em" alt="<{$lang_photo_datetime}>" title="<{$lang_photo_datetime}>"/>
+    <{$photo.datetime_disp}>
+    <{if $show_photo_date_link}></a><{/if}>
+    <{/if}>
+
+
+<details>
+
+    <summary>MOre..</summary>
+
+            <{* ------- GROUP ICON *}>
+            <{if !$photo.is_public}>
+            <img class="svg group" src="<{$xoops_url}>/images/icons/group.svg" alt="<{$lang_icon_group}>" title="<{$lang_icon_group}>"/></a>
+            <{/if}>
+
+    <{* /////// -------------------- UPDATE ICON *}>
+    <{if $photo.is_updatedphoto}>
+    <img class="svg update" src="<{$xoops_url}>/images/icons/update.svg" alt="<{$lang_icon_update}>" title="<{$lang_icon_update}>"/>
+    <{$lang_icon_update}>
+    <{/if}>
+
+
+
+    <{* /////// -------------------- NEW ICON *}>
+    <{if $photo.is_newphoto}>
+    <img class="svg new" src="<{$xoops_url}>/images/icons/new.svg" alt="<{$lang_icon_new}>" title="<{$lang_icon_new}>"/>
+    <{/if}>
+
+
+
+    <{* /////// -------------------- POPULAR ICON *}>
+    <{if $photo.is_popularphoto}>
+    <img class="svg popular" src="<{$xoops_url}>/images/icons/star-box.svg" width="1em" height="1em" alt="<{$lang_icon_popular}>" title="<{$lang_icon_popular}>"/>
+    <{/if}>
+
+<br>
+            <{if $show_photo_user_icon}>
+            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/user/<{$photo.uid}>/">
+            <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=user&amp;p=<{$photo.uid}>">
+            <{/if}>
+            <img class="svg view-list" src="<{$xoops_url}>/images/icons/view-list.svg" width="1em" height="1em" alt="<{$photo.info_morephotos}>" title="<{$photo.info_morephotos}>"/>
+            <{$photo.info_morephotos}></a>
+            <{/if}>
+
+
+    <{* /////// -------------------- 2ND LINE OF INFORMATION *}>
+
+
+        <{* ------- HIT COUNTS *}>
+        <img class="svg view" src="<{$xoops_url}>/images/icons/view.svg" width="1em" height="1em" alt="<{$lang_icon_hits}>" title="<{$lang_icon_hits}>"/>
+        <{$photo.hits}> &nbsp;
+
+
+        <{* /////// -------------------- COMMENT COUNTS *}>
+        <img class="svg comment" src="<{$xoops_url}>/images/icons/comment.svg" width="1em" height="1em" alt="<{$lang_icon_comments}>" title="<{$lang_icon_comments}>"/>
+        <{$photo.comments}>
+
+
+        <{* /////// -------------------- RANK & RATING *}>
+        <{if $show_rateview}>
+            <{if $photo.rating > 0}>
+            <img src="<{$xoops_url}>/modules/<{$xoops_dirname}>/images/icons/rank<{$photo.rank}>.png" alt="<{$photo.rating}>" title="<{$photo.rating}>"/>
+            <{$photo.info_votes}>
+            <{else}>
+            <img src="<{$xoops_url}>/modules/<{$xoops_dirname}>/images/icons/rank_none.png" alt="<{$photo.info_votes}>" title="<{$photo.info_votes}>"/>
+            <{$photo.info_votes}>
+            <{/if}>
+        <{/if}>
+
+
+        <{* /////// -------------------- VOTE BUTTON *}>
+        <{if $show_ratevote && $photo.can_rate}>
+            <{if $show_photo_rate_link}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=rate&amp;photo_id=<{$photo.photo_id}>"><{/if}>
+            <img class="svg vote-heart" src="<{$xoops_url}>/images/icons/heart.svg" alt="<{$lang_votethis}>" title="<{$lang_votethis}>"/>
+            <{$lang_votethis}>
+            <{if $show_photo_rate_link}></a><{/if}>
+        <{/if}>
+
+
+        <{* /////// -------------------- TELL A FRIEND *}>
+        <{if $show_tellafriend}>
+            <{if $show_photo_taf_link}>
+                <{if $is_taf_module}><a href="<{$xoops_url}>/modules/tellafriend/index.php?target_uri=<{$photo.taf_target_uri}>">
+                    <{else}><a target="_top" href="mailto:?<{$photo.taf_mailto}>">
+                <{/if}>
+            <{/if}>
+            <img class="svg email-send" src="<{$xoops_url}>/images/icons/email-send.svg" width="1em" height="1em" alt="<{$lang_tellafriend}>" title="<{$lang_tellafriend}>"/>
+            <{$lang_tellafriend}>
+            <{if $show_photo_taf_link}></a><{/if}>
+        <{/if}>
+
+<br>
+            <{* /////// -------------------- SIZE *}>
+            <{if $photo.cont_size_disp !=''}>
+            <img class="svg download" src="<{$xoops_url}>/images/icons/download.svg" width="1em" height="1em" alt="<{$lang_photo_cont_size}>" title="<{$lang_photo_cont_size}>"/>
+            <{$photo.cont_size_disp}>
+            <{/if}>
+
+
+    <{* /////// -------------------- EQUIPMENT *}>
+    <{if $photo.equipment_s !=''}>
+        <{if $show_photo_equipment_link}>
+        <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/search/<{$photo.equipment_urlencode}>/">
+            <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=search&amp;p=<{$photo.equipment_urlencode}>">
+        <{/if}>
+        <{/if}>
+        <img class="svg camera" src="<{$xoops_url}>/images/icons/camera.svg" width="1em" height="1em" alt="<{$lang_photo_equipment}>" title="<{$lang_photo_equipment}>"/>
+        <{$photo.equipment_s}>
+        <{if $show_photo_equipment_link}></a><{/if}>
+    <{/if}>
+
+
+
+    <{* /////// -------------------- VIDEO *}>
+    <{if $photo.is_video}>
+    <img class="svg file-video" src="<{$xoops_url}>/images/icons/file-video.svg" width="1em" height="1em" alt="<{$lang_icon_video}>" title="<{$lang_icon_video}>"/>
+    <{/if}>
+
+
+    <{* /////// -------------------- DURATION *}>
+    <{if $photo.duration_disp !=''}>
+    <{$photo.duration_disp}>
+    <{/if}>
+
+    <br>
+
+
+    <{* /////// -------------------- 3RD LINE OF INFORMATION *}>
+
+    <{* /////// -------------------- CATEGORY *}>
+    <{if $photo.cat_title_s}>
+        <{if $show_photo_category_link}>
+            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/category/<{$photo.cat_id}>/">
+                <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=category&amp;p=<{$photo.cat_id}>">
+            <{/if}>
+        <{/if}>
+        <img class="svg category" src="<{$xoops_url}>/images/icons/folder-image.svg" width="1em" height="1em" alt="<{$lang_category}>" title="<{$lang_category}>"/>
+        <{$photo.cat_title_s}>
+        <{if $show_photo_category_link}></a><{/if}>
+    <{/if}>
+
+            <br>
+
+    <{* /////// -------------------- TAG *}>
+    <img class="svg tag" src="<{$xoops_url}>/images/icons/tag.svg" width="1em" height="1em" alt="<{$lang_tags}>" title="<{$lang_tags}>"/>
+    <{foreach name=webphoto_tags item=tag from=$photo.tags}>
+        <{if $show_photo_tag_link}>
+            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/tag/<{$tag.urlencoded}>/">
+                <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=tag&amp;p=<{$tag.urlencoded}>">
+            <{/if}>
+        <{/if}>
+        <{$tag.tag_name_s}>
+        <{if $show_photo_tag_link}></a><{/if}>
+            <{if ! $smarty.foreach.webphoto_tags.last}>
+            ,
+            <{/if}>
+    <{/foreach}>
+            </details>

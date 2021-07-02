@@ -1,0 +1,566 @@
+/*
+ * XCL 2.3.0 Theme : ui-basic5
+ * Refactoring of Theme Basic5
+ * @version    2.3.0
+ * @date       2021-05-21 (update)
+ * @author     NUno Luciano (aka gigamaster)
+ * @copyright  2005-2021 The XOOPSCube Project
+ * @license    Cube : https://github.com/xoopscube/xcl/blob/master/BSD_license.txt
+ * @link       https://github.com/xoopscube/xcl
+ */
+
+ /* -------------------- -------------------- TODO Import partial modules CSS */
+.map-box {
+    width: 90%;
+}
+.user-x{ color: #ff2e2e
+}
+
+#ui-nav-top {
+    background      : linear-gradient(145deg, hsl(220, 15%, 15%), hsl(220, 21%, 15%));
+    border          : var(--border);
+    border-radius   : var(--border-radius);
+    bottom          : 30px;
+    box-shadow 		: var(--ui-box-shadow-2);
+    display         : inline-block;
+    height          : 50px;
+    opacity         : 0;
+    position        : fixed;
+    right           : 30px;
+    text-align      : center;
+    transition      : background-color .3s,
+                    box-shadow ease .3s,
+                    opacity .5s,
+                    visibility .5s;
+    visibility      : hidden;
+    width           : 50px;
+    z-index         : 1000;
+
+}
+#ui-nav-top::after {
+    content         : "\21EA";
+    font-weight     : normal;
+    font-style      : normal;
+    font-size       : 2em;
+    line-height     : 50px;
+    color           : var(--color-white);
+}
+#ui-nav-top:active {
+    background: var(--color-orange);
+ }
+#ui-nav-top.show {
+      background: var(--color-black);
+      opacity: 1;
+      visibility: visible;
+  }
+#ui-nav-top:hover{
+    background      : var(--color-white);
+    box-shadow 		: var(--ui-box-shadow-3);
+
+}
+#ui-nav-top:hover::after {
+    color : var(--color-black);
+    /*cursor: pointer;*/
+}
+
+
+
+/* -------------------- -------------------- Module Eguide */
+
+/* for eguide module */
+.error {
+    color: #ff0000;
+    font-weight: bold;
+    text-align: left;
+}
+
+.evhead {
+    /*color: #800000;*/
+    /*font-size: 120%;*/
+    font-weight: bold;
+    text-align: left;
+}
+
+.evmark {
+    float: right;
+    /*color: #000000;*/
+}
+
+.evinfo {
+    font-size: .9em;
+    padding:.5em 1em;
+    text-align: left;
+}
+
+.evinfo > a > img {
+    border-radius: 50%;
+    width: 1.25em;
+    height: 1.25em;
+    vertical-align: -0.25em;
+}
+
+.evprop {
+    background : rgba(0,0,0,.25);
+    border : 1px solid rgba(0,0,0,.5);
+
+    text-align : left;
+    margin : 1em auto;
+    padding : 2em;
+    width : 100%;
+}
+
+.evbody {
+    text-align: left;
+    padding: 1em;;
+}
+
+.evlink {
+    text-align: right;
+}
+
+.evline {
+    text-align: left;
+}
+
+.evnote {
+    font-size: 110%;
+    text-align: center;
+    font-weight: bold;
+    color: #c00000;
+}
+
+.evtitle {
+    font-size: 1.25em;
+    font-weight: lighter;;
+    text-align: left;
+    padding: 0.5em;
+    position: relative;
+}
+
+.evtitle:before{
+    content:'';
+    background: linear-gradient(to bottom, rgb(0, 0,0) 0%,rgb(33, 150, 243) 50%,rgb(10, 15, 20) 100%);
+    border-radius: 5px;
+    border: 1px solid rgb(21, 25, 27);
+    height: 12px;
+    left: -5px;
+    position: absolute;
+    top:0;
+    width: 10px;
+}
+
+.event-btn-reserve {
+    border:1px solid rgb(142, 193, 74);
+    margin: 1em auto;
+    padding: .5em 2em;
+}
+
+.evtbl th {
+    text-align: left;
+    vertical-align: top;
+}
+
+.event, .evform, .evlist, .entform {
+    background-color: rgb(21, 25, 27);
+    border: 1px solid rgb(5, 10, 10);
+    border-radius:5px;
+    padding: 1em;
+}
+
+
+
+.evms td {
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.evms th {
+    text-align: left;
+}
+
+.evop td {
+    padding: 5px;
+}
+
+.catbox {
+    float: right;
+}
+
+.evform th em,
+.evform em,
+.entform th em,
+.entform em {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+.evform th,
+.evform td {
+    padding: .5em 1em;
+}
+
+.evform td.head {
+    width: 10em;
+}
+
+.entform {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+
+#itemhelper, #itemhelper input, #itemhelper button,
+#itemhelper select {
+    /* font-size: 90%; */
+}
+
+tr.select td {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+/* -------------------- -------------------- CSS for Form Input number */
+input[type=number]{
+    width: 4em!important;
+    max-width: 5em!important;
+}
+
+
+/* -------------------- -------------------- CSS for Date */
+.time-day {
+    background: linear-gradient(to bottom, #ffc107 0%,#ff9800 50%,#ff5722 100%);
+}
+.time-nite {
+    background: linear-gradient(top, #3f51b5 0%,#2196f3 60%,#03a9f4 100%);
+}
+
+.day-timeline {
+    background: linear-gradient(to right,#3f51b5 0%, #2196f3 10%, #03a9f4 15%, #ffc107 25%,#ff9800 40%,#ff5722 70%, #03a9f4 80%, #2196f3 90%, #3f51b5 100% );
+}
+
+.day-time {
+    color: #f1f1f1;
+    text-shadow: 1px 1px 2px #111;
+    position: relative;
+    background: #0092db;
+    max-width: 4em;
+    border-radius: 5px;
+    top: -15px;
+    margin: -5px auto;
+}
+
+.day-time:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-top-color: #0092db;
+    border-bottom: 0;
+    margin-left: -5px;
+    margin-bottom: -7px;
+    filter: drop-shadow(1px 5px 3px #111);
+}
+
+
+/* -------------------- -------------------- CSS for EVENT TABLES */
+.event-table-summary table {
+}
+
+.event-table-summary th {
+    padding:.5em
+}
+
+.event-table-summary td {
+    padding:.5em
+}
+
+
+/* -------------------- -------------------- CSS for EVENT TIMELINE */
+.event-timeline{
+    margin-top:20px;
+    position:relative;
+}
+
+.event-timeline:before{
+    /*background: inherit;*/
+    background: linear-gradient(to right, rgb(0, 0,0) 0%,rgb(33, 150, 243) 50%,rgb(10, 15, 20) 100%);
+    border-radius:5px;
+    content:'';
+
+    height:calc(100% + 50px);
+    left:14px;
+    top:0;
+    position:absolute;
+    width:5px;
+}
+
+.event-timeline-date{
+    background-color: rgb(21, 25, 27);
+    border-radius: 5px;
+    border: 1px solid rgb(10, 15, 28);
+    border-bottom-color: rgb(5, 10, 10);
+    display: inline-block;
+    margin-bottom: 1.5em;
+    padding: .5em 1.5em .5em 3em;
+    position: relative;
+    width: auto;
+}
+
+.event-timeline-date:before{
+    background: rgb(21,25,27);
+    background: linear-gradient(to bottom, #ffc107 0%,#ff9800 50%,#ff5722 100%);
+    border-radius:100%;
+    border:1px solid rgb(21, 25, 27);
+    content:'';
+
+    height:20px;
+    left:5px;
+    position:absolute;
+    width:20px;
+
+
+}
+
+.event-timeline-date.nite:before {
+    background: linear-gradient(top, #ffc107 0%,#ff9800 60%,#ff5722 100%);
+}
+
+.event-timeline-date.nite:before {
+    background: linear-gradient(top, #3f51b5 0%,#2196f3 60%,#03a9f4 100%);
+}
+
+.event-timeline-section{
+    display:block;
+    padding-left:35px;
+    position:relative;
+    margin-bottom:30px;
+    width: 100%;
+}
+
+.event-timeline-category{
+    background 	    : var( --color-60  );
+    border 		    : var( --border );
+    border-radius   : var( --border-radius);
+    color 		    : var( --color-60 );
+    display         : inline-block;
+    margin 		    : var( --ui-space-5 );
+    padding 	    : var( --ui-space-5 );
+    position        : relative;
+}
+
+/* event line to event-timeline */
+.event-timeline-section:before{
+    background-color: #2196f3;
+    content:'';
+
+    height:1px;
+    left:20px;
+    position:absolute;
+    top:12px;
+    width:30px;
+}
+
+/* event dot over event-timeline */
+.event-timeline-section:after{
+    background: linear-gradient(to bottom, #2196f3 0%,#03a9f4 60%,#00bcd4 100%);
+    border: 1px solid rgb(21, 25, 27);
+    border-radius: 5px;
+    content: '';
+
+    height: 12px;
+    left: 12px;
+    position: absolute;
+    top: 7px;
+    width: 10px;
+}
+
+
+.event-timeline-section .col-sm-4{
+    margin-bottom:15px;
+}
+
+.event-timeline-card{
+    background 	    : var( --color-60  );
+    border 		    : var( --border );
+    border-radius   : var( --border-radius);
+    color 		    : var( --color-60 );
+    margin 		    : var( --ui-space-5 );
+    overflow        : hidden;
+    padding 	    : var( --ui-space-5 );
+    position        : relative;
+    transition      : all 0.3s ease;
+}
+
+.event-icon{
+    position:absolute;
+    right:5px;
+    top:0;
+}
+
+.event-title{
+    /* border-bottom: var(--border ); */
+    padding: 1em 1.5em;
+
+}
+
+.event-title a {
+    font-size: 1.25em;
+    font-weight: lighter;
+}
+
+.event-title-icon{
+    margin-right:5px;
+}
+
+.event-timeline-content{
+    /* background-color: rgb(23, 25, 27); */
+    padding:5px 15px;
+}
+
+.event-timeline-content strong{
+    margin-right:5px;
+}
+
+.event-item{
+    margin-bottom:5px;
+}
+
+.event-footer{
+    padding:5px 15px;
+    text-align:right;
+}
+
+/* -------------------- -------------------- User Profile timeline */
+
+.profile-timeline {
+    border-left         : var( --border );
+    margin-left         : 32px;
+    /*margin-right        : var( --ui-space-4);*/
+    padding-left        : var( --ui-space-7 );
+    position            : relative;
+}
+.profile-timeline .stream-left {
+    float               : left;
+    margin-left         : -32px;
+    margin-right        : 15px;
+    z-index             : 1;
+}
+.profile-timeline .stream-left img {
+    max-width           : 40px;
+}
+.profile-timeline .stream-item {
+    margin-top          : 8px;
+}
+.profile-timeline .stream-date {
+    font-size           : 12px;
+}
+.profile-timeline .time-item {
+    border-color        : var( --border );
+    padding-bottom      : 1px;
+    position            : relative;
+}
+.profile-timeline .time-item:before {
+    content             : " ";
+    display             : table;
+}
+.profile-timeline .time-item:after {
+    background-color    : #ffffff;
+    border-color        : rgba(120, 130, 140, 0.25);
+    border-radius       : 10px;
+    border-style        : solid;
+    border-width        : 2px;
+    bottom              : 0;
+    content             : '';
+    height              : 14px;
+    left                : 0;
+    margin-left         : -8px;
+    position            : absolute;
+    top                 : 5px;
+    width               : 14px;
+}
+.profile-timeline .time-item-item:after {
+    content             : " ";
+    display             : table;
+}
+.profile-timeline .item-info {
+    margin-bottom       : var( --ui-space-6 );
+    margin-left         : var( --ui-space-6 );
+}
+.profile-timeline .item-info p {
+    margin-bottom       : 10px !important;
+}
+
+/* -------------------- -------------------- User Streamline t*/
+
+.streamline {
+    border-left         : 1px solid rgba(120, 130, 140, 0.25);
+    margin-left         : 20px;
+    position            : relative;
+}
+.streamline .stream-left {
+    background          : #263238;
+    border-radius       : 100%;
+    float               : left;
+    height              : 40px;
+    line-height         : 40px;
+    margin-left         : -20px;
+    margin-right        : 15px;
+    text-align          : center;
+    width               : 40px;
+    z-index             : 1;
+}
+.streamline .stream-left img {
+    max-width           : 40px;
+}
+
+.streamline .stream-right {
+    padding-left        : 50px;
+}
+.streamline .stream-right .desc,
+.streamline .stream-right .inline-photos {
+    margin-bottom       : 30px;
+}
+.streamline .stream-item {
+    border-bottom       : 1px solid rgba(120, 130, 140, 0.25);
+    margin              : 20px 0;
+}
+.stream-date {
+    font-size           : 10px;
+}
+.time-item {
+    border-color        : rgba(120, 130, 140, 0.13);
+    padding-bottom      : 1px;
+    position            : relative;
+}
+.time-item:before {
+    content             : " ";
+    display             : table;
+}
+.time-item:after {
+    background-color    : #ffffff;
+    border-color        : rgba(120, 130, 140, 0.13);
+    border-radius       : 10px;
+    border-style        : solid;
+    border-width        : 2px;
+    bottom              : 0;
+    content             : '';
+    height              : 14px;
+    left                : 0;
+    margin-left         : -8px;
+    position            : absolute;
+    top                 : 5px;
+    width               : 14px;
+}
+.time-item-item:after {
+    content             : " ";
+    display             : table;
+}
+.item-info {
+    margin-bottom       : 15px;
+    margin-left         : 15px;
+}
+.item-info p {
+    margin-bottom       : 10px !important;
+}

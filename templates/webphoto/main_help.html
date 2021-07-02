@@ -1,0 +1,178 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php">
+    <{$xoops_modulename}></a> &gt;&gt;
+<b><{$lang_title_help}></b>
+<br><br>
+
+<{* === menue === *}>
+<{include file="db:`$mydirname`_inc_menu.html" }>
+
+<h3><{$lang_title_help}></h3>
+<{$lang_help_dsc}>
+<hr>
+<p>MAM / DAM</p>
+<p>Multimedia is the use of a computer to present and combine text, graphics, audio,
+    and video with links and tools that let the user navigate, interact, create, and communicate.</p>
+<section name="qr-help">
+<p>What Are Media Files<br>
+    Media files are your pictures, music, audios, videos, and documents in fact.
+    Computer programs or applications can read and work with a digital file after it is encoded during the saving process. For instance, document formats can be read and edited in word-processing programs like Microsoft Word.</p>
+<h3>Send URL Links from Computer to Mobile</h3>
+
+<p>Nowadays most users have multiple computers and devices to access the web.
+Many people would occasionally find URL or links that are so useful and want to share the URL links among different computers and devices.
+How do you send URL links from a PC to mobile phone? Do we have to manually type in the long URL address of a website on a mobile?</p>
+
+<p>If you use a web browser like Firefox or Google Chrome for PC, you can try below two ways to transfer URL links from PC to your mobile devices,
+    like iPhone, iPad, Android mobile phones (Samsung, HTC, etc).</p>
+
+<h3>Send URL Links from Computer to Mobile via Google Chrome</h3>
+
+<p>Recent Google Chrome has the built-in QR code generator which we can use to convert webpages into QR code.
+It is however disabled by default. You have to head into the Flags sections to turn it on before you can use it to share webpages
+    from computer to smartphones.</p>
+<ul>
+    <li>Visit <pre><code>chrome://flags/#sharing-qr-code-generator</code></pre>
+        in Chrome browser then press Enter to visit.
+    <li>Click Default button to expand more options and choose Enabled.
+    <li>Then relaunch the browser to allow the change to take effect.
+</ul>
+
+    <p>[picture here]</p>
+
+<p>From now on, you can right click any blank area on a web page to pop up the context menu, find the Create QR code for this page,
+    this is the tool that can convert the current website page into QR code.</p>
+
+    <p>[picture here]</p>
+
+    <h3>Create QR code for website page using Chrome browser</h3>
+
+<p>Firefox offers different ways to help you send a URL from computer to another device. Email sending is the easiest one.
+    As most computers should have an email client installed, otherwise you can always use a web mail to send the URLs that is however requires additional steps.</p>
+
+    <h3>Send URL Links from Computer to Mobile via Firefox Email Link</h3>
+
+    <p>
+        Firefox for PC has the quick URL sharing feature through email. Open any URL on the Firefox address bar,
+        then go to the File men > > Email Link. Firefox will then launch your default email client on the computer,
+        open the new email composing window on half of you. What’s more, Firefox will automatically fill in the web link
+        address in the mail body and the web page title info in the email subject box.
+        What you need to do is to choose or input email contact address and click send button.
+    </p>
+
+    <p>[picture here]</p>
+
+<h3>Send URL Links from PC to Mobile via QR code Generator for Firefox</h3>
+
+<p>Firefox has a lot of QR code image generator plugins and add-ons which allows you to easily share URL links among different computers and devices. To do that, you follow:</p>
+
+ <ol>
+     <li>Install an add-on to Firefox.<br>
+    Here is a free QR code generator for Firefox, you can choose QR Code Image Generator, here is the download link: https://addons.mozilla.org/en-US/firefox/addon/qr-code-image-generator/
+
+    <li>Access any website or URL from Firefox browser.
+
+    <li>Click the QR code generator icon from Add-on bar.
+
+    <li>Scan the QR code image with any scanner on your mobile.
+ </ol>
+
+     <p>[picture here]</p>
+
+<p>To scan the generated QR code on a mobile device, you can use the stock camera app or free qr code scanners online,
+    or use third party apps, such as WeChat from Tencent.
+    Recent iPhone models and Android devices can directly decode QR code in the stock Camera app.
+</p>
+
+<h3>Scan QR Code using WeChat on Mobile phones</h3>
+
+<P>Launch WeChat app on iPhone, Android, Samsung, Nokia or other compatible mobile phones, tap Discover,
+    then there will be an option to scan QR code. See below figure.</P>
+
+     <p>[picture here]</p>
+
+<p>Tap on the share icon on the top right corner to open or share the sent URL links on your mobile phone.</p>
+
+     <p>[picture here]</p>
+
+     <p>Open the shared URL link from computer on your tablet or mobile phones.</p>
+
+     <h4>Extra WeChat Link Sharing and QR code Scanning Tips:</h4>
+
+    <p>You can follow the instructions to scan QR code on many mobile devices like iPhone, Samsung smartphones, Nokia, BlackBerry,
+    Windows Phones and many other Android phones, such as Lenovo, HTC, Huawei, Xiaomi, LG, Sony.
+    If you are using iPhone, follow this guide to scan QR code on iPhone using WeChat.
+    WeChat is a great messaging app for mobile phones, it is cross platform that is able to work with a wide range of mobile devices.
+    It is powerful to do a lot more than just a mobile messaging solution.</p>
+
+</section>
+
+<hr>
+
+<div class="webphoto_help_subtitle">
+    <{$lang_help_piclens_title}>
+</div>
+
+<{$lang_help_piclens_dsc}>
+<br>
+
+<img src="<{$xoops_url}>/modules/<{$xoops_dirname}>/images/help/piclens_on.png" border="0"/>
+<img src="<{$xoops_url}>/modules/<{$xoops_dirname}>/images/help/piclens_off.png" border="0"/>
+<br><br>
+
+<div class="webphoto_help_subtitle">
+    <{$lang_help_mediarssslideshow_title}>
+</div>
+
+<{$lang_help_mediarssslideshow_dsc}>
+
+<{if $cfg_use_pathinfo }>
+<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/rss/random/" target="_blank">
+    <{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/rss/random/
+    <{else}>
+    <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=rss&amp;mode=random" target="_blank">
+        <{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=rss&amp;mode=random
+        <{/if}>
+
+    </a><br>
+
+    <div class="webphoto_help_subtitle">
+        <{$lang_help_mobile_title}>
+    </div>
+
+    <{$lang_help_mobile_dsc}><br><br>
+    <{$lang_help_mobile_text}><br><br>
+
+    <{if $show_help_mail }>
+    <div class="webphoto_help_subtitle">
+        <{$lang_help_mail_title}>
+    </div>
+    <{$lang_help_mail_dsc}><br><br>
+    <{if $lang_help_mail_perm }>
+    <{$lang_help_mail_perm}><br><br>
+    <{/if}>
+    <{if $show_help_mail_text }>
+    <{$lang_help_mail_text}>
+    <{/if}>
+    <{/if}>
+
+    <{if $show_help_file }>
+    <div class="webphoto_help_subtitle">
+        <{$lang_help_file_title}>
+    </div>
+    <{$lang_help_file_dsc}><br><br>
+    <{if $lang_help_file_perm }>
+    <{$lang_help_file_perm}><br><br>
+    <{/if}>
+    <{if $show_help_file_text }>
+    <{$lang_help_file_text_1}><br><br>
+    <{$lang_help_file_text_2}>
+    <{/if}>
+    <{/if}>
+
+    <{if $is_module_admin }>
+    <hr/>
+    <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/admin/index.php"><{$lang_goto_admin}></a>
+    <{/if}>

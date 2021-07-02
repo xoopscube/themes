@@ -1,0 +1,7 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<{foreach from=$block.tagcloud item=tagc }>
+<a href="<{$tagc.link}>" style="text-decoration:none;padding:2px;font-size:<{$tagc.size}>px;">
+    <{$tagc.name|escape}></a>
+<{/foreach}>

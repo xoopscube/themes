@@ -1,0 +1,8 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<{assign var="mydirname"     value=$block.dirname }>
+<{assign var="xoops_dirname" value=$block.dirname }>
+<{assign var="catlist"       value=$block.catlist }>
+
+<{include file="db:`$mydirname`_inc_catlist.html"}>

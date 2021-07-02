@@ -1,0 +1,254 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<ul class="breadcrumb" aria-label="breadcrumb">
+    <li><a href="<{$xoops_url}>/">
+        <svg class="i-home" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+        </svg></a>
+    <li><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php">
+        <svg class="i-chat" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2.5a2 2 0 0 1 1.6.8L8 14.333 9.9 11.8a2 2 0 0 1 1.6-.8H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+            <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg> <{$xoops_modulename}></a>
+    <li aria-current="page"><{$title_bread_crumb}>
+</ul>
+
+
+<h2>THEME : Page List</h2>
+<{if $is_module_admin}>
+<p><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/admin/index.php"><{$lang_goto_admin}></a></p>
+<{/if}>
+<div class="webphoto_page_title">
+    <{$sub_title_s}>
+</div>
+
+<{if $show_photo_list}>
+<div class="webphoto_photo_type">
+    |
+    <a href="javascript:webphoto_box_visible_flip('webphoto_box_photo', 0)">
+        <{$lang_viewtype_list}></a> |
+    <a href="javascript:webphoto_box_visible_flip('webphoto_box_photo', 1)">
+        <{$lang_viewtype_table}></a> |
+</div>
+<{/if}>
+
+<{if $error !=''}>
+<div class="webphoto_error"><{$error}></div>
+<{/if}>
+
+
+
+<{* ------- gmap js *}>
+<{if $show_gmap}>
+<{include file="db:`$mydirname`_inc_gmap_js.html"}>
+<{include file="db:`$mydirname`_inc_gmap_icons.html"}>
+<{include file="db:`$mydirname`_inc_gmap_makers.html"}>
+<{/if}>
+<{* ------- gmap js end *}>
+
+
+
+
+<{* ------- timeline js *}>
+<{if $show_timeline}>
+<{$timeline_js}>
+<{/if}>
+<{* === timeline js end === *}>
+
+
+
+
+<{* ------- windows js *}>
+<{if $show_js_window}>
+<script type="text/javascript">
+    //<![CDATA[
+    <{if $show_js_boxlist}>
+    var webphoto_box_list = "<{$js_boxlist}>";
+<{/if}>
+    <{if $show_js_load}>
+    window.onload   = <{$js_load}>;
+    <{/if}>
+    <{if $show_js_unload}>
+    window.onunload = <{$js_unload}>;
+    <{/if}>
+    //]]>
+</script>
+<{/if}>
+<{* ------- windows js end *}>
+
+
+
+
+<{* ------- menu *}>
+<{include file="db:`$mydirname`_inc_menu.html"}>
+
+
+<{* ------- search form *}>
+<{* include file="db:`$mydirname`_inc_search.html" *}>
+
+
+
+<{* ------- tag cloud *}>
+<{if $show_tagcloud}>
+<h3>
+    <svg class="i-bell" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z"/>
+        <path fill-rule="evenodd" d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+    </svg> <input class="switch" type="checkbox" id="webphoto_tagcloud" onclick="slideToggle('.webphoto_tagcloud', this)" value="0">
+    <label for="webphoto_tagcloud"> <{$lang_tagcloud_off}></label></h3>
+
+<section class="webphoto_tagcloud" style="display:none">
+        <{foreach from=$tagcloud item=tagc}>
+        <a href="<{$tagc.link}>" style="text-decoration:none;padding:2px;font-size:<{$tagc.size}>px;">
+            <{$tagc.name|escape}></a>
+        <{/foreach}>
+</section>
+<{/if}>
+
+
+
+<{* ------- cat list *}>
+<{if $show_catlist}>
+<h3>
+    <svg class="i-bell" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z"/>
+        <path fill-rule="evenodd" d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+    </svg> <input class="switch" type="checkbox" id="webphoto_categories" onclick="slideToggle('.webphoto_categories', this)" value="0">
+    <label for="webphoto_categories"> <{$lang_catlist_off}> / <{$lang_catlist_on}></label></h3>
+
+<section class="webphoto_categories" style="display:none">
+        <{include file="db:`$mydirname`_inc_catlist.html"}>
+</section>
+<{/if}>
+
+
+
+
+<{* ------- timeline *}>
+<{if $show_timeline}>
+<h3>
+    <svg class="i-bell" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z"/>
+        <path fill-rule="evenodd" d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+    </svg> <input class="switch" type="checkbox" id="webphoto_box_timeline" onclick="slideToggle('.webphoto_box_timeline', this)" value="0">
+    <label for="webphoto_box_timeline"> <{$lang_timeline_off}> / <{$lang_timeline_on}></label></h3>
+
+<section class="webphoto_box_timeline" style="display:none">
+
+    <{if $show_timeline_large}>
+    <div class="webphoto_timeline_navi">
+        <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/timeline/">
+            <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?op=timeline">
+        <{/if}>
+        <{$lang_timeline_large}></a>
+    </div>
+    <{/if}>
+
+    <{if $show_timeline_unit}>
+    <div class="webphoto_timeline_navi">
+        <a href="#" onClick="return webphoto_timeline_zoom( this,'<{$op}>','decade')">
+            <{$lang_timeline_scale_decade}></a>
+        <a href="#" onClick="return webphoto_timeline_zoom( this,'<{$op}>','year')">
+            <{$lang_timeline_scale_year}></a> |
+        <a href="#" onClick="return webphoto_timeline_zoom( this,'<{$op}>','month')">
+            <{$lang_timeline_scale_month}></a> |
+        <a href="#" onClick="return webphoto_timeline_zoom( this,'<{$op}>','week')">
+            <{$lang_timeline_scale_week}></a>
+    </div>
+    <{/if}>
+
+    <div id="<{$timeline_element}>" class="<{$timeline_class}>">Loading ...</div>
+
+    <div class="webphoto_timeline_caution">
+        <{$lang_timeline_caution_ie}>
+    </div>
+
+</section>
+<{/if}>
+
+
+
+
+<{* ------- gmap *}>
+<{if $show_gmap}>
+<h3>
+    <svg class="i-bell" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z"/>
+        <path fill-rule="evenodd" d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+    </svg> <input class="switch" type="checkbox" id="webphoto_box_gmap" onclick="slideToggle('.webphoto_box_gmap', this)" value="0">
+    <label for="webphoto_box_gmap"> <{$lang_gmap_off}> / <{$lang_gmap_on}></label></h3>
+
+<section class="webphoto_box_gmap" style="display: none">
+    <{$lang_gmap_desc}><br>
+    <div id="webphoto_gmap_not_compatible" class="webphoto_error"></div>
+    <div id="webphoto_gmap_map" class="<{$gmap_class}>">Loading ...</div>
+</section>
+<{/if}>
+
+
+
+<{* ------- photo  *}>
+
+<{foreach item=list from=$photo_list}>
+
+<div class="webphoto_list_frame" style="border: 1px solid indianred">
+
+    <{* ------- link *}>
+
+    <{if $list.title_s !=''}>
+    <{if $list.link_s}>
+    <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/<{$list.link_s}>">
+        <{/if}>
+        <span class="webphoto_list_title"><{$list.title_s}></span>
+        <{if $list.link_s}>
+    </a>
+    <{/if}>
+
+    (<{$list.total}>)
+
+    <{* ------- photo *}>
+    <{if $list.total > 0}>
+        <{assign var="photo" value=$list.photo}>
+        <{include file="db:`$mydirname`_inc_photo_in_list.html"}>
+    <{/if}>
+
+    <{/if}>
+</div>
+<{/foreach}>
+
+
+
+<{* ------- photo (for category) *}>
+
+<{foreach item=list from=$category_photo_list}>
+
+<div class="webphoto_list_frame" style="border: 1px solid indianred">
+
+    <{* ------- link *}>
+    <{assign var="catpath" value=$list.catpath}>
+    <{include file="db:`$mydirname`_inc_catpath.html"}>
+    (<{$list.total}>)
+    <br>
+
+    <{if $list.cat_summary_disp !=''}>
+    <div class="webphoto_cat_desc"><{$list.cat_summary_disp}></div>
+    <{/if}>
+
+    <{* ------- photo *}>
+    <{if $list.sum > 0}>
+    <{assign var="photo" value=$list.photo}>
+    <{include file="db:`$mydirname`_inc_photo_in_list.html"}>
+    <{/if}>
+</div>
+<{/foreach}>
+
+<hr>
+
+<div class="webphoto_execution_time">execution time : <{$execution_time}> sec</div>
+<{if $is_module_admin && ($memory_usage > 0)}>
+<div class="webphoto_memory_usage">memory usage : <{$memory_usage}> MB</div>
+<{/if}>
+
+

@@ -1,0 +1,40 @@
+<{strip}>
+<{include_php file="`$smarty.const.XOOPS_THEME_PATH`/`$xoops_theme`/theme_assign_language.php"}>
+<{include_php file="`$smarty.const.XOOPS_THEME_PATH`/`$xoops_theme`/theme_assign_menu.php"}>
+<!DOCTYPE html>
+<{/strip}>
+<html class="no-js" lang="<{$xoops_langcode}>">
+<!--
+  /**
+  * XCL Theme Basic5
+  *
+  * @package    Theme Basic5
+  * @author     Nuno Luciano (aka Gigamaster), XCL 2.3.0
+  * @author     Original Author : Marine / Mistgreen
+  * @copyright  2005-2021 The XOOPSCube Project
+  * @license    MIT
+  * @version    2.3.0
+  * @link       https://github.com/xoopscube/xcl
+  */
+  -->
+
+<head>
+	<{include file="$xoops_theme/component/app_head.html"}>
+</head>
+
+<body id="home" class="<{if $smarty.server.SCRIPT_FILENAME|basename == "index.php" and $smarty.server.SCRIPT_FILENAME|dirname|basename == $smarty.const.XOOPS_ROOT_PATH|basename}>home<{else}><{if !$xoops_dirname == ""}><{$xoops_dirname}><{else}>other<{/if}><{/if}>">
+
+<{assign var="adminHelp" value="$legacy_module&file=help.html article#help-overview"}>
+<{include file="$xoops_theme/component/layout_help.html"}>
+
+
+<{* ------------------------------------------ Layout *}>
+<{include file="$xoops_theme/component/app_layout.html"}>
+
+
+
+<{* ------------------------------------------ Scripts *}>
+<{include file="$xoops_theme/component/app_footer.html"}>
+
+</body>
+</html>

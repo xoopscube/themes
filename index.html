@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../../common/css/xcl-style.css">
+    <link rel="stylesheet" href="../../common/js/jquery-ui.min.css">
+    <link rel="stylesheet" href="../../common/js/prismjs/prism.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="../../common/js/jquery.min.js"></script>
+    <script src="../../common/js/jquery-ui.min.js"></script>
+
+
+
+</head>
+<body>
+
+<header id="header">
+    <div class="site-title">
+        <h1 self="lg-show md-hide sm-hide"><a href="../index.php">_{xoops_sitename}></a></h1>
+        <h2 self="lg-show md-hide sm-hide"> _{xoops_slogan}> </h2>
+
+        <div>_{xoops_banner}></div>
+
+    </div>
+
+</header>
+
+
+<nav class="ui-navbar-fixed ui-navbar-nav">
+
+    <ul class="ui-navbar-menu">
+
+        <li self="sm-show md-hide lg-hide" class="ui-navbar-menu-item">
+            <a href="#" title="_{xoops_sitename}> - _{xoops_slogan}>">
+                <img class="svg logo" src="_{xoops_url}>/images/icons/cube-line.svg" alt="_{xoops_sitename}>">
+                <span>_{xoops_sitename}></span>
+            </a>
+        </li>
+
+        <li class="ui-navbar-menu-item has-children"><a href="../">HOME <span class="ui-navbar-dropdown-icon"></span></a>
+            <ul class="ui-navbar-menu-sub">
+                <li class="ui-navbar-menu-item">_{block.content}></li>
+            </ul>
+        </li>
+
+        <li class="ui-navbar-menu-item has-children"><a href="#">block.title}> <span class="ui-navbar-dropdown-icon"></span></a>
+            <ul class="ui-navbar-menu-sub">
+                <li class="ui-navbar-menu-item">_{block.content}></li>
+            </ul>
+        </li>
+
+        <li class="ui-navbar-menu-item">
+            <label class="theme-switch" for="checkbox">
+                <input class="switch" type="checkbox" id="checkbox">
+            </label>
+        </li>
+
+        <li class="ui-navbar-menu-item search">
+            legacy_block_search.html
+        </li>
+
+    </ul>
+
+</nav>
+
+
+
+<main>
+
+    <!-- LAYOUT BLOCK/CONTENT/BLOCK-CENTER -->
+    <div layout="column sm-p-0 sm-m-0" class="main-content">
+
+
+        <!-- Block-Left, Content, Block-Right -->
+        <div layout="lg-column" self="size-x1">
+
+
+            <div self="size-xsmall p-2 sm-p-0">
+                include file= component block_left.html
+            </div>
+
+
+            <div self="size-x3 sm-first p-2 sm-p-0" data-tooltip="(first on small screen)">
+                <div id="includeHelp"></div>
+
+            </div>
+
+
+
+
+            <div self="size-x1 p-2 sm-p-0" name="render-right-block">
+                include file= component block_right.html
+            </div>
+
+
+        </div><!-- Block-Left, Content, Block-Right -->
+
+        <hr>
+
+        <section class="full-width" name="main-center-blocks">
+            <div layout="row center md-column sm-column m-0 p-0" self="center size-xlarge">
+
+                <div self="size-x1 sm-first">
+                    include file= component block_center_left.html
+                </div>
+
+                <div self="size-x1 sm-full" data-tooltip="(first on small screen)">
+                    include file= component block_center_center.html
+                </div>
+
+
+                <div self="size-x1 sm-full">
+                    include file= component block_center_right.html
+                </div>
+
+
+            </div>
+
+        </section>
+
+        <!-- Banner Center -->
+        <div self="center center sm-hide" class="banner-center">_{xoops_banner}> center</div>
+
+
+    </div><!-- LAYOUT BLOCK/CONTENT/BLOCK-CENTER -->
+
+</main>
+
+
+<div class="side-help">
+    <span class="code-label">Code</span>
+    <div class="code-logos">
+        <a href="#info-css" title="CSS3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);color: #027dde;" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" data-inline="false" data-width="1em" data-height="1em" data-icon="simple-icons:css3"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622l10.125.002l-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523l-2.91.804l-2.956-.81l-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z" fill="currentColor"></path></svg></a>
+
+        <a href="#info-render" title="HTML5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" style="vertical-align: -0.125em;-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);color: #ff460c;" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718l10.059.003l.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426l-2.91.804l-2.955-.81l-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443l.744-8.157H8.531z" fill="currentColor"></path></svg></a>
+    </div>
+</div>
+
+
+<footer layout="rows top-center sm-column" self="size-xlarge m-auto">
+
+    <article layout="row" class="footer-breadcrumb">
+
+        <h3>Active module breadcrumb</h3>
+
+    </article>
+
+    <div self="size-1of3 sm-full">
+        <ul class="footer-nav-menu">
+
+            <li><a href="../user.php">_{smarty.const._BASIC_LOGIN_FORM}></a>
+            <li><a href="../user.php">_{smarty.const._BASIC_USER_ACCOUNT}></a>
+            <li><a href=../edituser.php">_{smarty.const._BASIC_EDIT_ACCOUNT}></a>
+            <li><a href="../notifications.php">_{smarty.const._BASIC_NOTIFICATION}></a>
+            <li><a href="../viewpmsg.php" class="new1">_{smarty.const._BASIC_VIEWPMSG $pm.new_messages}></a>
+            <li><a href="../user.php?op=logout"><{smarty.const._BASIC_LOGOUT}></a>
+
+            <li><a href="../admin.php"><{ADMIN_PAGE}></a>
+
+        </ul>
+    </div>
+
+    <div self="size-1of3 sm-full">
+        <ul class="footer-nav-menu">
+
+            <li class="module_active"><a href="_{xoops_url}>/">_{smarty.const._BASIC_HOME_NAME}></a></li>
+
+            <li class="menu_c1"><a href="_{xoops_url}>/">_{smarty.const._BASIC_HOME_NAME}></a></li>
+
+
+            <li class="module_active">
+                <a href="#">_{menu0.name}></a>
+            </li>
+            <li class="menu_c1">
+                link
+            </li>
+        </ul>
+    </div>
+
+    <div self="size-1of3 sm-full">
+        <!-- Submenu -->
+        <div id="menu_s">
+            <ul class="footer-nav-menu">
+                <li class="menu_level1 _{menu1_class}>"><a href="_{xoops_url}>/modules/_{menu1.dirname}>/_{menu1.url}>">_{menu1.name|truncate:"40"}></a></li>
+            </ul>
+
+        </div><!-- End Submenu -->
+
+    </div>
+
+
+
+</footer>
+
+<div layout="row center-center" class="foot-credits">
+    <p><small>
+        <a href="https://xoops123.com/" target="_blank">Original Theme by Marine/mistgreen</a> |
+        <a href="https://github.com/gigamaster" target="_blank">Design by Gigamaster</a><br>
+        _{xoops_footer}>
+    </small></p>
+</div>
+
+<!-- x-utils UI-Nav-Top -->
+<div self="right sm-full">
+    <a id="ui-nav-top" aria-label="Scroll to Top"></a>
+</div>
+
+
+
+<script src="../../common/js/xcl-utils.js"></script>
+<script src="../../common/js/prismjs/prism.js"></script>
+
+<script>
+
+</script>
+
+</body>
+</html>

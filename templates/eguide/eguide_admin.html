@@ -1,0 +1,259 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<{if $mod_config.show_breadcrumbs}>
+<{include file="db:eguide_breadcrumbs.html"}>
+<{/if}>
+
+<{if $event}>
+<{include file="db:eguide_event.html"}>
+<{/if}>
+
+<div class="event">
+
+    <h2><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+        <path d="M15 13h1.5v2.82l2.44 1.41l-.75 1.3L15 16.69V13m4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67V8M5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2H5m11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85z" fill="currentColor"/>
+        </svg> <{$lang_event_edit}>
+    </h2>
+
+    <form action="admin.php<{if $eid}>?eid=<{$eid}><{/if}>" method="post" class="evbody" name="evform" id="evform"
+          onsubmit="return xoopsFormValidate_evform();">
+
+        <table>
+            <tr>
+                <td>
+                    <h3><{$smarty.const._MD_TITLE}></h3>
+                    <input type="text" name="title" id="title" value="<{$title}>" size="60" maxlength="80">
+                </td>
+                <{if $input_category}>
+                <td>
+                    <h3><{$smarty.const._MD_EVENT_CATEGORY}></h3>
+                    <{$input_category}>
+                </td>
+                <{/if}>
+            </tr>
+        </table>
+
+
+        <h3><{$smarty.const._MD_EVENT_DATE}></h3>
+
+        <label for="edateymd">
+
+            <{$input_edate}> <{$smarty.const._MD_TIMEC}>
+        </label>
+
+
+            <{if $timetable}>
+			<p>
+            <select name="edatetime">
+                <{foreach item=timeopt from=$timetable}>
+                <option value="<{$timeopt.value}>" <{if $timeopt.value==$edatetime}> selected="selected"<{/if}>><{$timeopt.label}></option>
+                <{/foreach}>
+            </select>
+            <{else}>
+            <{$input_edatetime}>
+    		</p>
+			<{/if}>
+
+
+        <fieldset>
+            <legend>
+                <script type="text/javascript">
+                    <{if $extent_sets || $edata.closetime!=3600}>
+                    document.write('<input type="checkbox" onClick="toggle(\'exdate\',this);" checked="checked" id="dateck"/>');
+                    <{else}>
+                    document.write('<input type="checkbox" onClick="toggle(\'exdate\',this);" id="dateck"/>');
+                    <{/if}>
+                </script>
+                <{$smarty.const._MD_EDIT_EXTENT}>
+            </legend>
+
+
+            <div id="exdate">
+                <p><b><{$smarty.const._MD_EVENT_EXPIRE}></b> <{$input_expire}></p>
+                <p><b><{$smarty.const._MD_CLOSEBEFORE}></b>
+                    <input type="text" name="before" id="before" size="7" value="<{$before}>"/>
+                    <span class="evinfo"><{$smarty.const._MD_CLOSEBEFORE_DESC}></span>
+                </p>
+
+                <{if $input_extent}>
+                <div>
+                    <b><{$smarty.const._MD_EVENT_EXTENT}></b> <{$input_extent}>
+
+                    <{if $extent_sets}>
+                    <div class="extents">
+                    <{foreach from=$extent_sets item=ext}>
+                    <nobr><{if $ext.disable}>&middot; <{else}>
+                        <input type="checkbox" value="<{$ext.exdate}>" name="extent_sets[<{$ext.no}>]" <{if $ext.checked}> checked<{/if}>/><{/if}><{$ext.date}>
+                    </nobr>
+                    <{/foreach}>
+                    </div>
+                    <{/if}>
+                </div>
+                <{/if}>
+            </div>
+        </fieldset>
+
+
+
+        <h3><{$smarty.const._MD_INTROTEXT}></h3>
+
+        <{xoops_dhtmltarea editor=html id="summary" name="summary" value=$summary}>
+
+
+        <h3><{$smarty.const._MD_EXTEXT}></h3>
+
+        <{xoops_dhtmltarea editor=html name="body" id="body" value=$body}>
+
+		<input type="hidden" name="style" value="0">
+
+
+        <h3><{$smarty.const._MD_EVENT_STYLE}></h3>
+
+        <p><i>Allow or remove format</i> <{$input_style}></p>
+
+
+        <{if $mod_config.emap}>
+
+        <h3>Map : <{$smarty.const._MD_EVENT_MAP}></h3>
+
+        <textarea name="emap" wrap="virtual" cols="60" rows="5"><{$emap}></textarea>
+
+        <{/if}>
+
+
+
+        <h3><{$smarty.const._MD_RESERV_SETTING}></h3>
+
+        <div><input type="checkbox" name="reservation" value="1"<{if $reservation}> checked<{/if}>/>
+            <{$smarty.const._MD_RESERV_DESC}>
+        </div>
+
+        <div>
+            <input type="checkbox" name="strict" value="1"<{if $strict}> checked<{/if}>/>
+            <{$smarty.const._MD_RESERV_STOPFULL}><br>
+            <input type="checkbox" name="autoaccept" value="1"<{if $autoaccept}> checked<{/if}>/>
+            <{$smarty.const._MD_RESERV_AUTO}>
+        </div>
+
+        <div><input type="checkbox" name="notify" value="1"<{if $notify}> checked<{/if}>/>
+            <{$smarty.const._MD_RESERV_NOTIFYPOSTER}>
+        </div>
+
+        <div>
+            <b><{$smarty.const._MD_RESERV_PERSONS}></b>
+            <input type="number" name="persons" value="<{$persons}>" size="3"> <{$smarty.const._MD_RESERV_UNIT}>
+        </div>
+
+        <h3><{$smarty.const._MD_RESERV_ITEM}></h3>
+
+        <textarea name="optfield" wrap="virtual" cols="60" rows="5"><{$optfield}></textarea>
+
+        <div id="itemhelper" style="display:none;">
+            <{$smarty.const._MD_RESERV_LAB}> <input type="text" name="xelab" size="10">
+            <input type="checkbox" name="xereq" title="<{$smarty.const._MD_RESERV_REQ}>"><{$smarty.const._MD_RESERV_REQ}>
+            <select name="xetype">
+                <option value="text">text</option>
+                <option value="checkbox">checkbox</option>
+                <option value="radio">radio</option>
+                <option value="textarea">textarea</option>
+                <option value="select">select</option>
+                <option value="hidden">hidden</option>
+                <option value="const">const</option>
+            </select>
+            <input type="text" name="xeopt" size="30">
+            <button onClick="return addFieldItem();"><{$smarty.const._MD_RESERV_ADD}></button>
+        </div>
+
+        <div class="evinfo">
+            <{$smarty.const._MD_RESERV_ITEM_DESC}> <{$label_desc}>
+        </div>
+
+        <fieldset>
+            <legend>
+                <script type="text/javascript">
+                    <{if $edata.optvars}>
+                    document.write('<input type="checkbox" onClick="toggle(\'optvars\',this);" checked="checked" id="optck"/>');
+                    <{else}>
+                    document.write('<input type="checkbox" onClick="toggle(\'optvars\',this);" id="optck"/>');
+                    <{/if}>
+                </script>
+                <{$smarty.const._MD_OPTION_VARS}>
+            </legend>
+            <div id="optvars">
+                <h3><{$smarty.const._MD_RESERV_REDIRECT}></h3>
+                <input type="text" name="redirect" value="<{$optvars.redirect|escape}>" size="60"/>
+                <div class="evinfo"><{$smarty.const._MD_RESERV_REDIRECT_DESC}></div>
+                <h3><{$smarty.const._MD_OPTION_OTHERS}></h3>
+                <textarea name="opt_others" cols="60" rows="4"><{$opt_others|escape}></textarea>
+            </div>
+        </fieldset>
+
+        <{if $input_status}>
+        <p><{$input_status}></p>
+        <{/if}>
+
+        <p>
+        <{if $eid && $enable_copy}>
+        <input type="checkbox" name="eid" value="0"><{$smarty.const._MD_NEWTITLE}>
+        <{/if}>
+        <input type="submit" name="preview" value="<{$smarty.const._MD_PREVIEW}>"/>
+        <input type="submit" name="save" value="<{$smarty.const._MD_SAVE}>"/>
+        </p>
+
+    </form>
+
+    <script type="text/javascript">
+        <!--//
+
+        // display only JavaScript enable
+        xoopsGetElementById("itemhelper").style.display = "block";
+
+        function addFieldItem() {
+            var myform = window.document.evform;
+            var item = myform.xelab.value;
+            if (item == "") {
+                alert("<{$smarty.const._MD_RESERV_LABREQ}>");
+                myform.xelab.focus();
+                return false;
+            }
+            if (myform.xereq.checked) item += '*';
+            var ty = myform.xetype.value;
+            var ov = myform.xeopt.value;
+            item += ',' + ty;
+            if (ty != 'text' && ty != 'textarea' && ov == "") {
+                alert(ty + ": <{$smarty.const._MD_RESERV_OPTREQ}>");
+                myform.xeopt.focus();
+                return false;
+            }
+            if (ov != "") item += ',' + ov;
+            opts = myform.optfield;
+            if (opts.value != "" && !opts.value.match(/[\n\r]$/)) item = "\n" + item;
+            opts.value += item;
+            myform.xelab.value = ""; // clear old value
+            myform.xeopt.value = "";
+            return false; // always return false
+        }
+
+        function xoopsFormValidate_evform() {
+            myform = window.document.evform;
+            <{foreach from=$check key=name item=msg}>
+            if (myform.<{$name}>.value == "")
+            {window.alert("<{$msg}>");
+                myform.<{$name}>.focus();
+                return false;
+            }
+            <{/foreach}>
+                return true;
+
+            }
+
+            function toggle(id, a) {
+                xoopsGetElementById(id).style.display = a.checked ? "block" : "none";
+            }
+
+            toggle("exdate", xoopsGetElementById("dateck"));
+            toggle("optvars", xoopsGetElementById("optck"));
+
+        //--></script>
+</div>

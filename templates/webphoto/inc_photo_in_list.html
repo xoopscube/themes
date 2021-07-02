@@ -1,0 +1,69 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<{* ------- IMAGE PART *}>
+
+<div class="webphoto_list_image" layout="column top" style="border:1px solid violet;padding:1em">
+
+    <{* ------- POPUP IMAGE *}>
+    <{if ($photo.onclick == 2) && $cfg_use_popbox}>
+        <{if $photo.img_thumb_width && $photo.img_thumb_height}>
+        <img src="<{$photo.img_thumb_src_s}>" alt="<{$photo.title_s}>" title="<{$photo.title_s}>" loading="lazy"
+             width="<{$photo.img_thumb_width}>" height="<{$photo.img_thumb_height}>" class="PopBoxImageSmall"
+             onclick="Pop(this,100,'PopBoxImageLarge');" pbSrcNL="<{$photo.img_large_src_s}>"/>
+        <{else}>
+        <img src="<{$photo.img_thumb_src_s}>" alt="<{$photo.title_s}>" title="<{$photo.title_s}>" loading="lazy"
+             width="<{$cfg_thumb_width}>" class="PopBoxImageSmall" onclick="Pop(this,100,'PopBoxImageLarge');"
+             pbSrcNL="<{$photo.img_large_src_s}>"/>
+        <{/if}>
+
+        <{* ------- DIRECT LINK *}>
+        <{elseif $photo.onclick == 1}>
+        <{if $photo.media_url_s}><a href="<{$photo.media_url_s}>" target="_blank">
+            <{elseif $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/photo/<{$photo.photo_id}>/">
+            <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=photo&amp;p=<{$photo.photo_id}>">
+        <{/if}>
+
+        <{if $photo.img_thumb_width && $photo.img_thumb_height}>
+        <img src="<{$photo.img_thumb_src_s}>" alt="<{$photo.title_s}>" title="<{$photo.title_s}>" width="<{$photo.img_thumb_width}>" height="<{$photo.img_thumb_height}>" loading="lazy">
+        <{else}>
+        <img src="<{$photo.img_thumb_src_s}>" alt="<{$photo.title_s}>" title="<{$photo.title_s}>" width="<{$cfg_thumb_width}>" loading="lazy">
+        <{/if}>
+        </a>
+
+        <{* ------- PHOTO PAGE *}>
+        <{else}>
+
+            <{if $cfg_use_pathinfo}>
+            <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/photo/<{$photo.photo_id}>/">
+                <{else}>
+                <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=photo&amp;p=<{$photo.photo_id}>">
+            <{/if}>
+
+                <{if $photo.img_thumb_width && $photo.img_thumb_height}>
+                <img src="<{$photo.img_thumb_src_s}>" alt="<{$photo.title_s}>" title="<{$photo.title_s}>" width="<{$photo.img_thumb_width}>" height="<{$photo.img_thumb_height}>" loading="lazy">
+                <{else}>
+                <img src="<{$photo.img_thumb_src_s}>" alt="<{$photo.title_s}>" title="<{$photo.title_s}>" width="<{$cfg_thumb_width}>" loading="lazy">
+                <{/if}>
+
+            </a>
+            <{/if}>
+
+
+
+
+
+            <{* ------- INFORMATION PART *}>
+
+            <{include file="db:`$mydirname`_inc_photo_info.html"}>
+
+            <{* ------- SUMMARY *}>
+            <{if $show_photo_summary && ($photo.summary !='')}>
+            <div class="webphoto_description" style="border:1px solid orangered">
+                <{* $photo.summary|html_entity_decode|wordwrap:60 *}>
+                <{* $photo.summary|wordwrap:60 *}>
+                <{$photo.summary}>
+            </div>
+            <{/if}>
+
+    </div>

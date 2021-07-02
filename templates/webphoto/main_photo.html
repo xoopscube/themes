@@ -1,0 +1,253 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+
+<ul class="breadcrumb" aria-label="breadcrumb">
+    <li><a href="<{$xoops_url}>/">
+        <svg class="i-home" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+        </svg></a></li>
+    <li><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php">
+        <svg class="i-chat" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2.5a2 2 0 0 1 1.6.8L8 14.333 9.9 11.8a2 2 0 0 1 1.6-.8H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+            <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg> <{$xoops_modulename}></a></li>
+
+    <{if $photo.cat_title}>
+    <li>
+        <{if $show_photo_category_link}>
+            <{if $cfg_use_pathinfo}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php/category/<{$photo.cat_id}>/">
+                <{else}><a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=category&amp;p=<{$photo.cat_id}>">
+            <{/if}>
+        <{/if}>
+        <img class="svg category" src="<{$xoops_url}>/images/icons/folder-image.svg" width="1em" height="1em" alt="<{$lang_category}>" title="<{$lang_category}>"/>
+        <{$photo.cat_title}>
+        <{if $show_photo_category_link}></a><{/if}>
+    </li>
+        <{/if}>
+
+    <li aria-current="page"><{$photo.title}></li>
+</ul>
+
+
+
+<hr>
+
+<p>cat_title :: <{$catpath.first.cat_title}><br>
+    photo.cat_title_s :: <{$photo.cat_title_s}><br>
+</p>
+
+
+<{* ------- menu *}>
+<{include file="db:`$mydirname`_inc_menu.html"}>
+
+
+
+<!--
+<{* -&#45;&#45;&#45;&#45;&#45;&#45; search form *}>
+<{* include file="db:`$mydirname`_inc_search.html" *}>
+-->
+
+
+
+<!--
+<div class="webphoto_page_title">
+    <{* include file="db:`$mydirname`_inc_catpath.html" *}>
+    &gt; <{* $photo.title_s *}>
+    <{* if $show_rss_icon *}>
+    <{* include file="db:`$mydirname`_inc_rss_icon.html" *}>
+    <{* /if *}>
+</div>
+-->
+
+
+
+
+<!--
+<div align="center">
+    <{* $photo_nav *}>
+</div>
+<br>
+
+-->
+
+
+<div align="center">
+    <{include file="db:`$mydirname`_inc_photo_view.html"}>
+</div>
+
+<br>
+
+
+<{* ------- NAV THUMB *}>
+<div align="center">
+    <{$photo_nav}>
+</div>
+
+<br>
+
+
+<section name="ui-navbar-data" layout="row top-justify sm-column">
+
+    <div self="size-x1 sm-full">
+    <{include file="db:`$mydirname`_inc_photo_info.html"}>
+    <{include file="db:`$mydirname`_inc_photo_desc.html"}>
+    </div>
+
+    <{* ------- QR MOBILE ICON *}>
+    <{if $show_qr}>
+    <div align="center">
+        <img src="<{$qrs_url}>/<{$mobile_qr_image}>" border="0" alt="qr_image" loading="lazy"><br>
+        <a href="mailto:<{$mobile_email}>?subject=webphoto_url&amp;body=<{$mobile_url}>"><{$lang_mobile_mailto}></a><br>
+    </div>
+    <{/if}>
+
+</section>
+
+
+
+<{* ------- EDIT ICON *}>
+<{if $photo.can_edit}>
+<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php?fct=edit&amp;photo_id=<{$photo.photo_id}>">
+    <img class="svg edit" src="<{$xoops_url}>/images/icons/edit.svg" alt="<{$lang_title_edit}>"
+         title="<{$lang_title_edit}>"/><{$lang_title_edit}></a><br>
+<{/if}>
+
+
+<br>
+
+
+<{if $show_tagedit}>
+<h3><img class="svg tag-edit" src="<{$xoops_url}>/images/icons/tag.svg" width="1em" height="1em" alt="tag-edit">
+    <input class="switch" type="checkbox" id="webphoto_tag_edit" onclick="slideToggle('.webphoto_tag_edit', this)" value="0">
+    <label for="webphoto_tag_edit"> <{$lang_edit_tag}></label></h3>
+
+<section class="webphoto_tag_edit" style="display:none">
+
+<div class="resultMsg msg-callout msg-info">
+    1-<{$lang_dsc_tag_editable}> <br>
+    2-<{$lang_dsc_tag_divid}> <br>
+    <form action="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php" method="post">
+        <input type="hidden" name="<{$token_name}>" value="<{$token_value}>">
+        <input type="hidden" name="fct" value="photo">
+        <input type="hidden" name="op" value="tagedit">
+        <input type="hidden" name="photo_id" value="<{$photo_id}>">
+        <input type="text" name="tags" size="50" maxlength="191" value="<{$tags}>">
+        <input class="btn" type="submit" name="submit" value="<{$lang_edit_tag}>">
+    </form>
+</div>
+
+</section>
+
+<{/if}>
+
+
+<{* ------- gmap js *}>
+
+<{if $show_gmap}>
+<{include file="db:`$mydirname`_inc_gmap_js.html"}>
+<{include file="db:`$mydirname`_inc_gmap_icons.html"}>
+
+<script type="text/javascript">
+    //<![CDATA[
+    webphoto_gmap_info[0] = new Array(<{$gmap_photo.gmap_latitude}>, <{$gmap_photo.gmap_longitude}>, <{$gmap_photo.gmap_icon_id}>, <{$gmap_photo.gmap_info}>);
+    //]]>
+</script>
+<{/if}>
+<{* ------- /gmap js *}>
+
+<{* ------- gmap *}>
+<{if $show_gmap}>
+
+<div id="webphoto_box_gmap_b">
+    <a href="javascript:webphoto_box_gmap_off()">
+        <img src="<{$xoops_url}>/modules/<{$xoops_dirname}>/images/icons/box_minus.png" width="16" height="16"
+             border="0" alt="minus"/>
+        <{$lang_gmap_off}></a> <br>
+    <{$lang_gmap_desc}><br>
+    <div id="webphoto_gmap_not_compatible" class="webphoto_error"></div>
+    <div id="webphoto_gmap_map" class="webphoto_gmap_normal">Loading ...</div>
+</div>
+
+<div id="webphoto_box_gmap_a" style="display:none">
+    <img src="<{$xoops_url}>/modules/<{$xoops_dirname}>/images/icons/box_plus.png" width="16" height="16" border="0"
+         alt="minus"/>
+    <a href="javascript:webphoto_box_gmap_on()">
+        <{$lang_gmap_on}></a>
+</div>
+
+<br>
+<{/if}>
+
+
+
+<div class="webphoto_commentsnav">
+    <{$commentsnav}>
+    <{$lang_notice}>
+</div>
+
+<{* /////// -------------------- CODEBOX *}>
+<{if $photo.show_codebox}>
+
+<h3><img class="svg code" src="<{$xoops_url}>/images/icons/code.svg" width="1em" height="1em" alt="code-embed">
+    <input class="switch" type="checkbox" id="webphoto_codebox" onclick="slideToggle('.webphoto_codebox', this)" value="0">
+    <label for="webphoto_codebox"> <{$lang_item_codeinfo_embed}> <{$lang_item_codeinfo_cont}></label></h3>
+
+<section class="webphoto_codebox" style="display:none">
+    <{include file="db:`$mydirname`_inc_photo_codebox.html"}>
+</section>
+<{/if}>
+
+
+
+
+
+<div class="webphoto_comments">
+    <{* ------- start comments loop *}>
+    <{* if $comment_mode == "flat" *}>
+    <{* include file="db:system_comments_flat.html" *}>
+    <{* elseif $comment_mode == "thread" *}>
+    <{* include file="db:system_comments_thread.html" *}>
+    <{* elseif $comment_mode == "nest" *}>
+    <{* include file="db:system_comments_nest.html" *}>
+    <{* /if *}>
+    <{* ------- end comments loop *}>
+</div>
+
+
+<br>
+
+<{* ------- d3forum comment integration
+    Should be able to add if not available show system comments *}>
+
+<{if $cfg_comment_dirname && $cfg_comment_forum_id}>
+<{* ------- remove asterisk (*) in the following, if you use *}>
+<{d3forum_comment dirname=$cfg_comment_dirname forum_id=$cfg_comment_forum_id class="WebphotoD3commentContent" mytrustdirname="webphoto" id=$photo.photo_id subject=$photo.title_s subject_escaped=1 view=$cfg_comment_view posts_num=10}>
+<{/if}>
+
+
+<{* /////// -------------------- NOTIFICATION *}>
+<{if $show_notification_select }>
+    <{include file="db:`$mydirname`_inc_notification_select.html"}>
+<{/if}>
+
+<hr>
+
+
+<noscript>
+    <div class="webphoto_error"><{$lang_js_invalid}></div>
+</noscript>
+
+
+<div class="webphoto_execution_time">execution time : <{$execution_time}> sec</div>
+
+<{if $is_module_admin && ($memory_usage > 0)}>
+<div class="webphoto_memory_usage">memory usage : <{$memory_usage}> MB</div>
+<{/if}>
+
+
+<{if $is_module_admin}>
+<br>
+<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/admin/index.php"><{$lang_goto_admin}></a>
+<{/if}>

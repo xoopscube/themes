@@ -6,18 +6,24 @@ All notable changes to this project will be documented in this file.
 - This project adheres to [Semantic Versioning](https://semver.org/).
 
 
-## [unreleased] - 2019-03-04.
+## [unreleased] - 2021-07-01
 
-**XCL 2.3.0 THEMES**
+**XCL UI-JQUERY THEME**
 
 ### Added
 
-- Initial commit
-- update repo status active
+- Dark mode switch
+- Update repo status active
+- Theme Assign Language ( Marine @xoops123 )
+- Theme Assign Menu ( Marine @xoops123 )
 
 ### Changed
 
-- no
+- X-Helper 
+- Layout Flexbox
+- Block-Left and Block-Right
+- Center Blocks
+- Custom Properties
 
 ### Deprecated
 
@@ -29,7 +35,9 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- no
+- CSS Tabs and Tables
+- Layout columns
+- Form input
 
 ### Security
 

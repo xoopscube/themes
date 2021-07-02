@@ -1,0 +1,66 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<header layout="row" id="header">
+
+    <div layout="row mx-auto" self="size-xlarge">
+
+        <div layout="column" self="size-x2" class="site-title">
+
+        <h1 self="lg-show md-hide sm-hide"><a href="<{$xoops_url}>/"><{$xoops_sitename}></a></h1>
+        <h2 self="lg-show md-hide sm-hide"><{$xoops_slogan}></h2>
+        
+    </div>
+    <div layout="column" self="size-x1 right">
+        <a href="#" class="btn">Facebook</a>
+        <a href="#" class="btn">Twitter</a>
+    </div>
+
+    </div>
+
+</header>
+
+
+<nav class="ui-navbar-fixed ui-navbar-nav">
+
+    <ul class="ui-navbar-menu">
+
+        <li self="sm-show md-hide lg-hide" class="ui-navbar-menu-item">
+            <a href="<{$xoops_url}>/" title="<{$xoops_sitename}> - <{$xoops_slogan}>">
+                <img class="svg logo" src="<{$xoops_url}>/images/icons/cube-line.svg" alt="<{$xoops_sitename}>">
+                <span><{$xoops_sitename}></span>
+            </a>
+        </li>
+
+        <{if $xoops_showlblock==1}>
+            <{foreach item=block from=$xoops_lblocks}>
+
+            <{if $block.title|strstr:"Main"}>
+            <li class="ui-navbar-menu-item has-children"><a href="#"><{$smarty.const._MB_LEGACY_HOME}> <span class="ui-navbar-dropdown-icon"></span></a>
+                <{$block.content}>
+            </li>
+            <{/if}>
+
+            <{if $block.title|strstr:"User"}>
+            <li class="ui-navbar-menu-item has-children"><a href="#"><{$block.title}> <span class="ui-navbar-dropdown-icon"></span></a>
+                <{$block.content}>
+            </li>
+            <{/if}>
+
+            <{/foreach}>
+        <{/if}>
+
+
+        <{* ------- Theme Switch and Block Search *}>
+        <li class="ui-navbar-menu-item search">
+            <div  layout="row center-right">
+            <label class="theme-switch" for="checkbox">
+                <input class="switch" type="checkbox" id="checkbox">
+            </label>
+            <{include file="db:legacy_block_search.html"}>
+            </div>
+        </li>
+
+    </ul>
+
+</nav>

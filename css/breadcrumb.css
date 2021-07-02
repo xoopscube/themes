@@ -1,0 +1,96 @@
+/*
+ * XCL 2.3.0 Theme : ui-basic5
+ * Refactoring of Theme Basic5
+ * @version    2.3.0
+ * @date       2021-05-21 (update)
+ * @author     NUno Luciano (aka gigamaster)
+ * @copyright  2005-2021 The XOOPSCube Project
+ * @license    Cube : https://github.com/xoopscube/xcl/blob/master/BSD_license.txt
+ * @link       https://github.com/xoopscube/xcl
+ */
+/* -------------------- -------------------- TOP BREADCRUMB */
+/* Truncate long link titles and auto-resize to display within breadcrumb container */
+ul.breadcrumb {
+    background          : var( --bg-pat-stripes );
+    border              : var( --border );
+    border-radius       : var( --border-radius );
+    list-style-type     : none;
+    display             : flex;
+
+    margin              : 0 0 var( --ui-space-8);
+    padding             : var( --ui-space-2);
+    width               : fit-content;
+    /* Required by Firefox */
+    width               : -moz-fit-content;
+    max-width           : 57.5em;
+}
+
+ul.breadcrumb li {
+    /*margin              : var( --ui-space-2 );*/
+    overflow            : hidden;
+    text-overflow       : ellipsis;
+    white-space         : nowrap;
+}
+
+ul.breadcrumb li a,
+    /* Last element without a link*/
+ul.breadcrumb li+[aria-current],
+    /* Last element with a link*/
+ul.breadcrumb li [aria-current]:last-of-type {
+    background          : var( --color-90 );
+    border              : var( --border );
+    border-radius       : var( --border-radius );
+    color               : var( --color-20 );
+    display             : block;
+    padding             : var( --ui-space-2 ) var(--ui-space-5);
+    text-decoration     : none;
+    transition          : all .3s;
+}
+
+ul.breadcrumb li a:focus,
+ul.breadcrumb li a:hover
+{
+    background          : var( --link-bg-hover );
+    color               : var( --link-hover );
+    padding             : var( --ui-space-2 ) var(--ui-space-5);
+}
+ul.breadcrumb li [aria-current],
+ul.breadcrumb li [aria-current]:hover,
+ul.breadcrumb li [aria-current]:focus {
+    background          : var( --link-bg-hover );
+    color               : var( --link-hover );
+}
+    /* Do Not Truncate home and module top category*/
+ul.breadcrumb li:nth-child(n+3) > a {
+    white-space         : nowrap;
+    overflow            : hidden;
+    text-overflow       : ellipsis;
+}
+    /* Do Not Shrink home and module top category*/
+ul.breadcrumb li:nth-child(-n+2) {
+    flex                : 0 0 auto;
+}
+ul.breadcrumb li:nth-last-child(1) {
+    text-overflow       : clip;
+    overflow            : visible;
+}
+
+ul.breadcrumb li:last-child {
+    flex                : 0 0 auto;
+    color               : var( --color-link );
+}
+
+/* -------------------- -------------------- ASIDE BREADCRUMB */
+aside.vertical-breadcrumb {
+    background      : var( --nav-menu-bg-color );
+    border          : var( --border );
+    border-radius   : var( --border-radius );
+    color           : var( --nav-menu-link );
+    height          : auto;
+    left            : var( --ui-space-6 );
+    position        : absolute;
+    text-orientation: sideways;
+    top             : 250px;
+    width           : auto;
+    writing-mode    : vertical-lr;
+}

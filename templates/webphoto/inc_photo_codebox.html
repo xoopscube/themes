@@ -1,0 +1,44 @@
+<{* Dev-Mode Toggle *}>
+<div class="ui-dev-mode"><{$smarty.template}></div>
+
+<div class="webphoto_div_codebox">
+<!--    <form name="webphoto_codebox_form" id="webphoto_codebox_form">-->
+        <table class="webphoto_table_code">
+
+            <{foreach from=$photo.codes item=code}>
+            <{if $code.show}>
+            <tr>
+                <td class="webphoto_td_code_left">
+                    <{if $code.href_s}>
+                    <a href="<{$code.href_s}>" target="<{$code.target}>" title="<{$code.title_s}>">
+                        <{$code.caption_s}>
+                    </a>
+                    <{else}>
+                        <{$code.caption_s}>
+                    <{/if}>
+                </td>
+                <td class="webphoto_td_code_middle">
+                    <{if $code.filesize}>
+                        <{if $code.show_img_download}>
+                        <img class="svg download" src="<{$xoops_url}>/images/icons/download.svg" alt="<{$lang_download}>" title="<{$lang_download}>">
+                        <{elseif $code.show_img_view }>
+                        <img class="svg view" src="<{$xoops_url}>/images/icons/view.svg" alt="<{$lang_view}>" title="<{$lang_view}>0">
+                        <{/if}>
+                    <{$code.filesize}>
+                    <{/if}>
+                </td>
+                <td class="webphoto_td_code_right">
+<!--                    <input id="webphoto_code_<{$code.name}>" type="text" value="<{$code.value_s}>" size="40"-->
+<!--                           class="webphoto_input_codebox" readonly="true">-->
+
+                    <pre id="webphoto_code_<{$code.name}>">
+                        <code class="lang-html"><{$code.value_s}></code>
+                    </pre>
+
+                </td>
+            </tr>
+            <{/if}>
+            <{/foreach}>
+
+        </table>
+</div>
