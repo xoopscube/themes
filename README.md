@@ -11,8 +11,8 @@ GitHub | [XOOPSCUBE-THEMES](https://github.com/xoopscube-themes)
 ------------ | -------------
 Description | Starter Themes built with different CSS Frameworks
 Render Engine | Smarty v2 and Smarty v3
-Version | 2.3.1
-Copyright | 2011-2022 Authors
+Version | 2.3.x
+Copyright | 2011-2023 Authors
 License | Misc.
 
 
